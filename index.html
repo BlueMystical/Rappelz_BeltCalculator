@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Cutcsa - Nombre del Sitio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Ing. Jhollman Chacon R. Cutcsa - 2017">
+    <meta name="copyright" content="CUTCSA - Departamento Inform&aacute;tico">
+    <meta name='description' content='Información de Servicios de Cutcsa'>
+
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+    <meta expires="Sat, 26 Jul 1997 05:00:00 GMT" />
+    <meta pragma="no-cache" />
+
+    <link rel="shortcut icon" href="img/proxy_icon_2.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+    <link rel="stylesheet" href="js/jquery-confirm.min.css" />
+    <link rel="stylesheet" href="js/noty/noty.css" />
+
+    <script type="application/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="application/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+
+    <script type="application/javascript" src="js/noty/noty.js"></script>
+    <script type="application/javascript" src="js/jquery-confirm.min.js"></script>
+
+    <!-- Captcha de Google v2 -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=Iniciar&render=explicit" async defer></script>
+
+    <style type="text/css">
+        /* Prevent copy paste for all elements except text fields */
+
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        }
+
+        input,
+        textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        /* Oculta la scroll-bar pero sigue permitiendo hacer scroll con el mouse */
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ui-page {
+            background-size: auto;
+            background-repeat: repeat;
+        }
+
+        html,
+        body,
+        #pageChat {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #pageChat,
+        #pageChat * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        #pageChat .ui-content {
+            height: inherit;
+            /* inherit height without padding nor border */
+        }
+
+        a.media {
+            display: block;
+        }
+
+        div.media {
+            font-size: small;
+            margin: 25px;
+            margin: auto
+        }
+
+        div.media div {
+            font-style: italic;
+            color: #888;
+        }
+
+        .TextLabel {
+            color: white !important;
+        }
+
+        .cls_text_title {
+            color: black !important;
+        }
+
+        .cls_text_normal {
+            color: black;
+        }
+
+        /* Permite que el Panel Scrolee independientemente del Body */
+
+        .ui-panel.ui-panel-open {
+            position: fixed;
+        }
+
+        .ui-panel-inner {
+            position: absolute;
+            top: 1px;
+            left: 0;
+            right: 0;
+            bottom: 0px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+
+        .ui-grid-a.align-widgets {
+            display: table;
+        }
+
+        .ui-grid-a.align-widgets>.ui-block-a,
+        .ui-grid-a.align-widgets>.ui-block-b {
+            display: table-cell;
+            float: none;
+            vertical-align: bottom;
+        }
+
+        .column {
+            float: left;
+            width: 12.5%; /* 8 image containers (use 25% for four, and 50% for two, etc) */            
+            max-width: 120px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        /* Clear floats after image containers */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .overlay {
+          position:relative;
+          left: 30px;
+          top: 30px;
+          color: white;
+          background:orange;
+        }
+        
+        /* Container holding the image and the text */
+        .container {
+          position: relative;
+          text-align: center;
+          color: white;
+        }
+        
+        /* Top left text over Image */
+        .top-left {
+          position: absolute;
+          top: 8px;
+          left: 16px;
+        }
+        
+        /* Bottom right text */
+        .bottom-right {
+          position: absolute;
+          bottom: 8px;
+          right: 16px;
+          text-align: right;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Pagina de inicio -->
+    <div data-role="page" id="viewMain" class="ui-responsive-panel" data-theme="b">
+
+        <!-- Encabezado -->
+        <div data-role="header" data-theme="b" data-position="fixed">
+            <h1>Card Abilities Calculator</h1>
+        </div>
+        <!-- /header -->
+
+        <!-- Cuerpo -->
+        <div role="main" data-theme="b" class="ui-content jqm-content jqm-fullwidth">
+            <div id="contenido">
+                <!-- ************ AQUI VA EL CONTENIDO DE LA PAGINA ****************** -->
+
+                <div style="text-align: center;"><img src="img/WikiLogo_NEON.png" alt="Cutcsa" id="LogoCutcsa_1" style="vertical-align: middle" /></div>
+                <div class="ui-body ui-body-b ui-corner-all">
+                    <h4>Welcome:</h4>
+                    <li>En este sitio puede ver sus Recibos de Sueldo de hasta los ultimos 6 meses.</li>
+                    <li>Para empezar, verifique el siguiente Captcha e Idéntifiquese:</li>
+                    </br>
+                </div>
+
+                <a href="#page2" class="ui-btn ui-btn-a ui-corner-all ui-icon-arrow-r ui-btn-icon-right " title="Start">Start</a>
+            </div>
+        </div>
+        <!-- /main -->
+
+        <!-- Pie de pagina -->
+        <div data-role="footer" data-theme="b" data-position="fixed" style="text-align: center;vertical-align: middle;">
+            <img src="img/ergo-proxy-circled.png" alt="Cutcsa" style="height: 42px; margin: 5px;" />
+            <h2>By <a href="https://rappelz.fandom.com/wiki/User:BlueMystical" target="_blank" title="Start">BlueMystical</a></h2>
+        </div>
+        <!-- /footer -->
+
+    </div>
+    <!-- /page -->
+
+    <!-- Pagina 2 -->
+    <div data-role="page" id="page2" data-theme="b" style="width: 100%">
+
+        <!-- Ventana Flotante para el  Login-->
+        <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
+            <div class="ui-field-contain">
+                <div style="vertical-align: middle;text-align: center;"><img src="img/login.png" alt="login" height="60" style="vertical-align: middle" /></div>
+
+                <label for="cboPetChoose">Pet:</label>
+                <select name="cboPetChoose" id="cboPetChoose">
+                    <option></option>
+                </select>
+
+                <label for="cboPetStage">Stage:</label>
+                <select name="cboPetStage" id="cboPetStage">
+                    <option value="0">Stage 0</option>
+                    <option value="1">Stage 1</option>
+                    <option value="2">Stage 2</option>
+                    <option value="3">Stage 3</option>
+                    <option value="4">Stage 4</option>
+                    <option value="5">Stage 5</option>
+                </select>
+            </div>
+            <button type="submit" id="cmdSetPetInBelt" class="ui-btn-b ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
+            <label id="lblLogin" style="font-size: small">Choose a Pet.</label>
+        </div>
+
+        <!-- Encabezado -->
+        <div data-role="header" data-theme="b" data-position="fixed">
+            <a href="#viewMain" data-rel="back" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-home">Back</a>
+            <h2 id='lblTituloP2'>Belt Calculator</h2>
+        </div>
+        <!-- /header -->
+
+        <!-- Cuerpo -->
+        <div role="main" class="ui-content" data-theme="b" style="width: 98%">
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <div class="ui-bar ui-bar-b">
+                        <div data-role="fieldcontain">
+                            <label for="text-STR">STR:</label>
+                            <input type="text" id="text-STR" value="0%" data-times='0'>
+
+                            <label for="text-VIT">VIT:</label>
+                            <input type="text" id="text-VIT" value="0%" data-times='0'>
+
+                            <label for="text-AGI">AGI:</label>
+                            <input type="text" id="text-AGI" value="0%" data-times='0'>
+
+                            <label for="text-HP">Max.HP:</label>
+                            <input type="text" id="text-HP" value="0%" data-times='0'>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-block-b">
+                    <div class="ui-bar ui-bar-b">
+                        <div data-role="fieldcontain">
+                            <label for="text-INT">INT:</label>
+                            <input type="text" id="text-INT" value="0%" data-times='0'>
+
+                            <label for="text-WIS">WIS:</label>
+                            <input type="text" id="text-WIS" value="0%" data-times='0'>
+
+                            <label for="text-DEX">DEX:</label>
+                            <input type="text" id="text-DEX" value="0%" data-times='0'>
+
+                            <label for="text-LUCK">LUCK:</label>
+                            <input type="text" id="text-LUCK" value="0%" data-times='0'>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-block-a">
+                    <div class="ui-bar ui-bar-c">
+                        <div data-role="fieldcontain">
+                            <label for="text-PATK">P.Atk:</label>
+                            <input type="text" id="text-PATK" value="0%" data-times='0'>
+
+                            <label for="text-PDEF">P.Def:</label>
+                            <input type="text" id="text-PDEF" value="0%" data-times='0'>
+
+                            <label for="text-ATKSPD">Atk.Spd:</label>
+                            <input type="text" id="text-ATKSPD" value="0%" data-times='0'>
+
+                            <label for="text-ACCU">Accu:</label>
+                            <input type="text" id="text-ACCU" value="0%" data-times='0'>
+
+                            <label for="text-CRIT">Crit.Rat:</label>
+                            <input type="text" id="text-CRIT" value="0%" data-times='0'>
+
+                            <label for="text-BLOCK">Block Per:</label>
+                            <input type="text" id="text-BLOCK" value="0%" data-times='0'>
+
+                            <label for="text-HPREGEN">HP.Regen:</label>
+                            <input type="text" id="text-HPREGEN" value="0%" data-times='0'>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-block-b">
+                    <div class="ui-bar ui-bar-C">
+                        <div data-role="fieldcontain">
+                            <label for="text-MATK">M.Atk:</label>
+                            <input type="text" id="text-MATK" value="0%">
+
+                            <label for="text-MDEF">M.Def:</label>
+                            <input type="text" id="text-MDEF" value="0%">
+
+                            <label for="text-CAST">Cast Spd:</label>
+                            <input type="text" id="text-CAST" value="0%">
+
+                            <label for="text-MACC">M.Acc:</label>
+                            <input type="text" id="text-MACC" value="0%">
+
+                            <label for="text-CRITPOW">Crit.Pow:</label>
+                            <input type="text" id="text-CRITPOW" value="0%">
+
+                            <label for="text-EVA">Evasion:</label>
+                            <input type="text" id="text-EVA" value="0%">
+
+                            <label for="text-MPREGEN">MP.Regen:</label>
+                            <input type="text" id="text-MPREGEN" value="0%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /grid-a -->
+
+        </div>
+        <!-- /main -->
+
+        <!-- Pie de pagina -->
+        <div data-role="footer" data-theme="b" data-position="fixed" style="text-align: center;vertical-align: middle;">
+
+            <div class="row">
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_1a"><img id="BeltSlot_1" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_1b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_2a"><img id="BeltSlot_2" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_2b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_3a"><img id="BeltSlot_3" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_3b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_4a"><img id="BeltSlot_4" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_4b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_5a"><img id="BeltSlot_5" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_5b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_6a"><img id="BeltSlot_6" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_6b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_7a"><img id="BeltSlot_7" src="img/pets/card_empty.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_7b"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container">
+                        <a href="#" id="BeltSlot_8a"><img id="BeltSlot_8" src="img/pets/card_empty.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <div class="bottom-right" id="BeltSlot_7b"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /footer -->
+
+    </div>
+    <!-- /page -->
+
+    <script type="application/javascript" src="js/pages/index.js"></script>
+    <script type="application/javascript">
+        //Evento al cargar la pagina
+        $(document).on("pagecreate", "#viewMain", function() {
+            //$( "body>[data-role='panel']" ).panel(); //<-Precarga el Panel MainMenu           
+            //Iniciar();		 
+        });
+
+    </script>
+
+</body>
+
+</html>
