@@ -7,9 +7,9 @@
 
     <title>Cutcsa - Nombre del Sitio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Ing. Jhollman Chacon R. Cutcsa - 2017">
-    <meta name="copyright" content="CUTCSA - Departamento Inform&aacute;tico">
-    <meta name='description' content='Información de Servicios de Cutcsa'>
+    <meta name="author" content="Ing. Jhollman Chacon R. Cutcsa - 2019">
+    <meta name="copyright" content="BlueMystic">
+    <meta name='description' content='Belt Stats Calculator for Rappelz'>
 
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <meta expires="Sat, 26 Jul 1997 05:00:00 GMT" />
@@ -29,12 +29,8 @@
     <script type="application/javascript" src="js/noty/noty.js"></script>
     <script type="application/javascript" src="js/jquery-confirm.min.js"></script>
 
-    <!-- Captcha de Google v2 -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=Iniciar&render=explicit" async defer></script>
-
     <style type="text/css">
         /* Prevent copy paste for all elements except text fields */
-
         * {
             user-select: none;
             -webkit-user-select: none;
@@ -48,7 +44,6 @@
         }
 
         /* Oculta la scroll-bar pero sigue permitiendo hacer scroll con el mouse */
-
         body::-webkit-scrollbar {
             display: none;
         }
@@ -58,36 +53,14 @@
             background-repeat: repeat;
         }
 
-        html,
-        body,
-        #pageChat {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        #pageChat,
-        #pageChat * {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        #pageChat .ui-content {
-            height: inherit;
-            /* inherit height without padding nor border */
-        }
-
         a.media {
             display: block;
         }
-
         div.media {
             font-size: small;
             margin: 25px;
             margin: auto
         }
-
         div.media div {
             font-style: italic;
             color: #888;
@@ -96,21 +69,17 @@
         .TextLabel {
             color: white !important;
         }
-
         .cls_text_title {
             color: black !important;
         }
-
         .cls_text_normal {
             color: black;
         }
 
         /* Permite que el Panel Scrolee independientemente del Body */
-
         .ui-panel.ui-panel-open {
             position: fixed;
         }
-
         .ui-panel-inner {
             position: absolute;
             top: 1px;
@@ -125,7 +94,6 @@
         .ui-grid-a.align-widgets {
             display: table;
         }
-
         .ui-grid-a.align-widgets>.ui-block-a,
         .ui-grid-a.align-widgets>.ui-block-b {
             display: table-cell;
@@ -140,14 +108,12 @@
             padding: 5px;
             text-align: center;
         }
-
         /* Clear floats after image containers */
         .row::after {
             content: "";
             clear: both;
             display: table;
-        }
-        
+        }        
         .overlay {
           position:relative;
           left: 30px;
@@ -174,8 +140,20 @@
         .bottom-right {
           position: absolute;
           bottom: 8px;
-          right: 16px;
+          right: 6px;
           text-align: right;
+        }
+        
+        .controlgroup-textinput{
+            padding-top:.22em;
+            padding-bottom:.22em;
+        }
+        
+        .div-box {
+            width:96%; height: 20px; text-align:left;
+            border-radius:5px;
+            background-color:rgba(50, 50, 50, 0.3); 
+            margin:1px; padding:0.5em;
         }
 
     </style>
@@ -200,8 +178,8 @@
                 <div style="text-align: center;"><img src="img/WikiLogo_NEON.png" alt="Cutcsa" id="LogoCutcsa_1" style="vertical-align: middle" /></div>
                 <div class="ui-body ui-body-b ui-corner-all">
                     <h4>Welcome:</h4>
-                    <li>En este sitio puede ver sus Recibos de Sueldo de hasta los ultimos 6 meses.</li>
-                    <li>Para empezar, verifique el siguiente Captcha e Idéntifiquese:</li>
+                    <li>This is a Belt Stats Calculator that will help you to choose the best pets to wear in your belt.</li>
+                    <li>This app was developped for the <a href="https://rappelz.fandom.com/wiki/Rappelz_Wiki" target="_blank" title="Start">Rappelz Wiki</a></li>
                     </br>
                 </div>
 
@@ -223,7 +201,7 @@
     <!-- Pagina 2 -->
     <div data-role="page" id="page2" data-theme="b" style="width: 100%">
 
-        <!-- Ventana Flotante para el  Login-->
+        <!-- Ventana Flotante para Elejir un Pet -->
         <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
             <div class="ui-field-contain">
                 <div style="vertical-align: middle;text-align: center;"><img src="img/login.png" alt="login" height="60" style="vertical-align: middle" /></div>
@@ -251,8 +229,7 @@
         <div data-role="header" data-theme="b" data-position="fixed">
             <a href="#viewMain" data-rel="back" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-home">Back</a>
             <h2 id='lblTituloP2'>Belt Calculator</h2>
-        </div>
-        <!-- /header -->
+        </div><!-- /header -->
 
         <!-- Cuerpo -->
         <div role="main" class="ui-content" data-theme="b" style="width: 98%">
@@ -261,17 +238,18 @@
                 <div class="ui-block-a">
                     <div class="ui-bar ui-bar-b">
                         <div data-role="fieldcontain">
+                            
                             <label for="text-STR">STR:</label>
-                            <input type="text" id="text-STR" value="0%" data-times='0'>
+                            <div id='text-STR' class='div-box'></div>                            
 
                             <label for="text-VIT">VIT:</label>
-                            <input type="text" id="text-VIT" value="0%" data-times='0'>
+                            <div id='text-VIT' class='div-box'></div>  
 
                             <label for="text-AGI">AGI:</label>
-                            <input type="text" id="text-AGI" value="0%" data-times='0'>
+                            <div id='text-AGI' class='div-box'></div>    
 
                             <label for="text-HP">Max.HP:</label>
-                            <input type="text" id="text-HP" value="0%" data-times='0'>
+                            <div id='text-HP' class='div-box'></div>  
                         </div>
                     </div>
                 </div>
@@ -279,16 +257,16 @@
                     <div class="ui-bar ui-bar-b">
                         <div data-role="fieldcontain">
                             <label for="text-INT">INT:</label>
-                            <input type="text" id="text-INT" value="0%" data-times='0'>
+                            <div id='text-INT' class='div-box'></div>  
 
                             <label for="text-WIS">WIS:</label>
-                            <input type="text" id="text-WIS" value="0%" data-times='0'>
+                            <div id='text-WIS' class='div-box'></div>  
 
                             <label for="text-DEX">DEX:</label>
-                            <input type="text" id="text-DEX" value="0%" data-times='0'>
+                            <div id='text-DEX' class='div-box'></div>  
 
                             <label for="text-LUCK">LUCK:</label>
-                            <input type="text" id="text-LUCK" value="0%" data-times='0'>
+                            <div id='text-LUCK' class='div-box'></div>  
                         </div>
                     </div>
                 </div>
@@ -297,25 +275,25 @@
                     <div class="ui-bar ui-bar-c">
                         <div data-role="fieldcontain">
                             <label for="text-PATK">P.Atk:</label>
-                            <input type="text" id="text-PATK" value="0%" data-times='0'>
+                            <div id='text-PATK' class='div-box'></div>  
 
                             <label for="text-PDEF">P.Def:</label>
-                            <input type="text" id="text-PDEF" value="0%" data-times='0'>
+                            <div id='text-PDEF' class='div-box'></div>  
 
                             <label for="text-ATKSPD">Atk.Spd:</label>
-                            <input type="text" id="text-ATKSPD" value="0%" data-times='0'>
+                            <div id='text-ATKSPD' class='div-box'></div>  
 
                             <label for="text-ACCU">Accu:</label>
-                            <input type="text" id="text-ACCU" value="0%" data-times='0'>
+                            <div id='text-ACCU' class='div-box'></div>  
 
                             <label for="text-CRIT">Crit.Rat:</label>
-                            <input type="text" id="text-CRIT" value="0%" data-times='0'>
+                            <div id='text-CRIT' class='div-box'></div>  
 
-                            <label for="text-BLOCK">Block Per:</label>
-                            <input type="text" id="text-BLOCK" value="0%" data-times='0'>
+                            <label for="text-BLOCK">Block.Per:</label>
+                            <div id='text-BLOCK' class='div-box'></div>  
 
                             <label for="text-HPREGEN">HP.Regen:</label>
-                            <input type="text" id="text-HPREGEN" value="0%" data-times='0'>
+                            <div id='text-HPREGEN' class='div-box'></div>  
                         </div>
                     </div>
                 </div>
@@ -323,37 +301,34 @@
                     <div class="ui-bar ui-bar-C">
                         <div data-role="fieldcontain">
                             <label for="text-MATK">M.Atk:</label>
-                            <input type="text" id="text-MATK" value="0%">
+                            <div id='text-MATK' class='div-box'></div> 
 
                             <label for="text-MDEF">M.Def:</label>
-                            <input type="text" id="text-MDEF" value="0%">
+                            <div id='text-MDEF' class='div-box'></div> 
 
-                            <label for="text-CAST">Cast Spd:</label>
-                            <input type="text" id="text-CAST" value="0%">
+                            <label for="text-CAST">Cast.Spd:</label>
+                            <div id='text-CAST' class='div-box'></div> 
 
                             <label for="text-MACC">M.Acc:</label>
-                            <input type="text" id="text-MACC" value="0%">
+                            <div id='text-MACC' class='div-box'></div> 
 
                             <label for="text-CRITPOW">Crit.Pow:</label>
-                            <input type="text" id="text-CRITPOW" value="0%">
+                            <div id='text-CRITPOW' class='div-box'></div> 
 
                             <label for="text-EVA">Evasion:</label>
-                            <input type="text" id="text-EVA" value="0%">
+                            <div id='text-EVA' class='div-box'></div> 
 
                             <label for="text-MPREGEN">MP.Regen:</label>
-                            <input type="text" id="text-MPREGEN" value="0%">
+                            <div id='text-MPREGEN' class='div-box'></div> 
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /grid-a -->
+            </div><!-- /grid-a -->
 
-        </div>
-        <!-- /main -->
+        </div><!-- /main -->
 
         <!-- Pie de pagina -->
         <div data-role="footer" data-theme="b" data-position="fixed" style="text-align: center;vertical-align: middle;">
-
             <div class="row">
                 <div class="column">
                     <div class="container">
@@ -404,18 +379,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /footer -->
+        </div><!-- /footer -->
 
-    </div>
-    <!-- /page -->
+    </div><!-- /page -->
 
     <script type="application/javascript" src="js/pages/index.js"></script>
     <script type="application/javascript">
         //Evento al cargar la pagina
         $(document).on("pagecreate", "#viewMain", function() {
             //$( "body>[data-role='panel']" ).panel(); //<-Precarga el Panel MainMenu           
-            //Iniciar();		 
+            Iniciar();		 
         });
 
     </script>
