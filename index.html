@@ -204,7 +204,7 @@
         <!-- Ventana Flotante para Elejir un Pet -->
         <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
             <div class="ui-field-contain">
-                <div style="vertical-align: middle;text-align: center;"><img src="img/login.png" alt="login" height="60" style="vertical-align: middle" /></div>
+                <div style="vertical-align: middle;text-align: center;"><img src="img/ergo-proxy-circled.png" alt="login" height="60" style="vertical-align: middle" /></div>
 
                 <label for="cboPetChoose">Pet:</label>
                 <select name="cboPetChoose" id="cboPetChoose">
@@ -221,7 +221,7 @@
                     <option value="5">Stage 5</option>
                 </select>
             </div>
-            <button type="submit" id="cmdSetPetInBelt" class="ui-btn-b ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
+            <button type="submit" id="cmdSetPetInBelt" class="ui-btn-a ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
             <label id="lblLogin" style="font-size: small">Choose a Pet.</label>
         </div>
 
@@ -229,6 +229,7 @@
         <div data-role="header" data-theme="b" data-position="fixed">
             <a href="#viewMain" data-rel="back" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-home">Back</a>
             <h2 id='lblTituloP2'>Belt Calculator</h2>
+            <a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right" id="cmdIniciarSesion">Reset</a>
         </div><!-- /header -->
 
         <!-- Cuerpo -->
@@ -239,33 +240,31 @@
                     <div class="ui-bar ui-bar-b">
                         <div data-role="fieldcontain">
                             
-                            <label for="text-STR">STR:</label>
+                            <label for="text-STR" style='color:gray'>STR:</label>
                             <div id='text-STR' class='div-box'></div>                            
 
-                            <label for="text-VIT">VIT:</label>
+                            <label for="text-VIT" style='color:gray'>VIT:</label>
                             <div id='text-VIT' class='div-box'></div>  
 
-                            <label for="text-AGI">AGI:</label>
+                            <label for="text-AGI" style='color:gray'>AGI:</label>
                             <div id='text-AGI' class='div-box'></div>    
 
-                            <label for="text-HP">Max.HP:</label>
-                            <div id='text-HP' class='div-box'></div>  
+                            <label for="text-DEX" style='color:gray'>DEX:</label>
+                            <div id='text-DEX' class='div-box'></div>  
+                            
                         </div>
                     </div>
                 </div>
                 <div class="ui-block-b">
                     <div class="ui-bar ui-bar-b">
                         <div data-role="fieldcontain">
-                            <label for="text-INT">INT:</label>
+                            <label for="text-INT" style='color:gray'>INT:</label>
                             <div id='text-INT' class='div-box'></div>  
 
-                            <label for="text-WIS">WIS:</label>
+                            <label for="text-WIS" style='color:gray'>WIS:</label>
                             <div id='text-WIS' class='div-box'></div>  
 
-                            <label for="text-DEX">DEX:</label>
-                            <div id='text-DEX' class='div-box'></div>  
-
-                            <label for="text-LUCK">LUCK:</label>
+                            <label for="text-LUCK" style='color:gray'>LUCK:</label>
                             <div id='text-LUCK' class='div-box'></div>  
                         </div>
                     </div>
@@ -274,52 +273,64 @@
                 <div class="ui-block-a">
                     <div class="ui-bar ui-bar-c">
                         <div data-role="fieldcontain">
-                            <label for="text-PATK">P.Atk:</label>
+                            <label for="text-MAXHP" style='color:gray'>Max.HP:</label>
+                            <div id='text-HP' class='div-box'></div>  
+                            
+                            <label for="text-PATK" style='color:gray'>P.Atk:</label>
                             <div id='text-PATK' class='div-box'></div>  
 
-                            <label for="text-PDEF">P.Def:</label>
+                            <label for="text-PDEF" style='color:gray'>P.Def:</label>
                             <div id='text-PDEF' class='div-box'></div>  
 
-                            <label for="text-ATKSPD">Atk.Spd:</label>
+                            <label for="text-ATKSPD" style='color:gray'>Atk.Spd:</label>
                             <div id='text-ATKSPD' class='div-box'></div>  
 
-                            <label for="text-ACCU">Accu:</label>
+                            <label for="text-ACCU" style='color:gray'>Accu:</label>
                             <div id='text-ACCU' class='div-box'></div>  
 
-                            <label for="text-CRIT">Crit.Rat:</label>
+                            <label for="text-CRIT" style='color:gray'>Crit.Rat:</label>
                             <div id='text-CRIT' class='div-box'></div>  
 
-                            <label for="text-BLOCK">Block.Per:</label>
+                            <label for="text-BLOCK" style='color:gray'>Block.Per:</label>
                             <div id='text-BLOCK' class='div-box'></div>  
 
-                            <label for="text-HPREGEN">HP.Regen:</label>
+                            <label for="text-HPREGEN" style='color:gray'>HP.Regen:</label>
                             <div id='text-HPREGEN' class='div-box'></div>  
+                            
+                            <label for="text-MRES" style='color:gray'>M.Res:</label>
+                            <div id='text-MRES' class='div-box'></div>  
                         </div>
                     </div>
                 </div>
                 <div class="ui-block-b">
                     <div class="ui-bar ui-bar-C">
                         <div data-role="fieldcontain">
-                            <label for="text-MATK">M.Atk:</label>
+                            <label for="text-MAXMP" style='color:gray'>Max.MP:</label>
+                            <div id='text-MP' class='div-box'></div>  
+                            
+                            <label for="text-MATK" style='color:gray'>M.Atk:</label>
                             <div id='text-MATK' class='div-box'></div> 
 
-                            <label for="text-MDEF">M.Def:</label>
+                            <label for="text-MDEF" style='color:gray'>M.Def:</label>
                             <div id='text-MDEF' class='div-box'></div> 
 
-                            <label for="text-CAST">Cast.Spd:</label>
+                            <label for="text-CAST" style='color:gray'>Cast.Spd:</label>
                             <div id='text-CAST' class='div-box'></div> 
 
-                            <label for="text-MACC">M.Acc:</label>
+                            <label for="text-MACC" style='color:gray'>M.Acc:</label>
                             <div id='text-MACC' class='div-box'></div> 
 
-                            <label for="text-CRITPOW">Crit.Pow:</label>
+                            <label for="text-CRITPOW" style='color:gray'>Crit.Pow:</label>
                             <div id='text-CRITPOW' class='div-box'></div> 
 
-                            <label for="text-EVA">Evasion:</label>
+                            <label for="text-EVA" style='color:gray'>Evasion:</label>
                             <div id='text-EVA' class='div-box'></div> 
 
-                            <label for="text-MPREGEN">MP.Regen:</label>
+                            <label for="text-MPREGEN" style='color:gray'>MP.Regen:</label>
                             <div id='text-MPREGEN' class='div-box'></div> 
+                            
+                            <label for="text-WEIGHT" style='color:gray'>Max.Weight:</label>
+                            <div id='text-WEIGHT' class='div-box'></div>  
                         </div>
                     </div>
                 </div>
