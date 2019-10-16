@@ -5,24 +5,24 @@ var selected_slot = null;
 var selected_pets = null;
 
 class BeltSlot {
-    constructor(stage, data) {
+    constructor(pet_name, stage, stats) {
+        this.pet_name = pet_name;
         this.stage = stage;
-        this.data = data;
+        this.stats = stats;
     }
 }
 
 class Stat {
-    constructor(name, value, percentage, extra, setTimes, stats) {
+    constructor(name, value, percentage, extra, setTimes) {
         this.name = name;
         this.value = value;
         this.percentage = percentage;
         this.extra = extra;
         this.setTimes = setTimes;
-        this.stats = stats;
     }
 }
 
-var BeltSlot_1 = null; //  = new BeltSlot(_stage, _petData);
+var BeltSlot_1 = null; //  = new BeltSlot(_stage, _petData, _stats);
 var BeltSlot_2 = null;
 var BeltSlot_3 = null;
 var BeltSlot_4 = null;
@@ -31,30 +31,33 @@ var BeltSlot_6 = null;
 var BeltSlot_7 = null;
 var BeltSlot_8 = null;
 
-var STR = new Stat('Srenght', 0, 0, 0, 0, null);
-var VIT = new Stat('Vitality', 0, 0, 0, 0, null);
-var INT = new Stat('Inteligence', 0, 0, 0, 0, null);
-var WIS = new Stat('Wisdom', 0, 0, 0, 0, null);
-var AGI = new Stat('Agility', 0, 0, 0, 0, null);
-var DEX = new Stat('Dexterity', 0, 0, 0, 0, null);
-var WIS = new Stat('Wisdom', 0, 0, 0, 0, null);
-var MAXHP = new Stat('Max.HP', 0, 0, 0, 0, null);
-var LUCK = new Stat('Luck', 0, 0, 0, 0, null);
 
-var PATK = new Stat('P.Atk', 0, 0, 0, 0, null);
-var MATK = new Stat('M.Atk', 0, 0, 0, 0, null);
-var PDEF = new Stat('P.Def', 0, 0, 0, 0, null);
-var MDEF = new Stat('M.Def', 0, 0, 0, 0, null);
-var ATKSPD = new Stat('Atk.Spd', 0, 0, 0, 0, null);
-var CASTSPD = new Stat('Cast.Spd', 0, 0, 0, 0, null);
-var ACCU = new Stat('Accuracity', 0, 0, 0, 0, null);
-var MACC = new Stat('Magic Acc.', 0, 0, 0, 0, null);
-var CRIT = new Stat('Crit.Rate', 0, 0, 0, 0, null);
-var CRITPOW = new Stat('Crit.Pow', 0, 0, 0, 0, null);
-var BLOCK = new Stat('Block Def', 0, 0, 0, 0, null);
-var EVA = new Stat('Evasion', 0, 0, 0, 0, null);
-var HPREGEN = new Stat('HP.Regen', 0, 0, 0, 0, null);
-var MPREGEN = new Stat('MP.Regen', 0, 0, 0, 0, null);
+var STR = new Stat('STR', 0, 0, 0, 0);
+var VIT = new Stat('VIT', 0, 0, 0, 0);
+var INT = new Stat('INT', 0, 0, 0, 0);
+var WIS = new Stat('WIS', 0, 0, 0, 0);
+var AGI = new Stat('AGI', 0, 0, 0, 0);
+var DEX = new Stat('DEX', 0, 0, 0, 0);
+var MAXHP = new Stat('MAXHP', 0, 0, 0, 0);
+var MAXMP = new Stat('MAXMP', 0, 0, 0, 0);
+var LUCK = new Stat('LUCK', 0, 0, 0, 0);
+
+var PATK = new Stat('PATK', 0, 0, 0, 0);
+var MATK = new Stat('MATK', 0, 0, 0, 0);
+var PDEF = new Stat('PDEF', 0, 0, 0, 0);
+var MDEF = new Stat('MDEF', 0, 0, 0, 0);
+var ATKSPD = new Stat('ATKSPD', 0, 0, 0, 0);
+var CAST = new Stat('CASTSPD', 0, 0, 0, 0);
+var ACCU = new Stat('ACCU', 0, 0, 0, 0);
+var MACC = new Stat('MACC', 0, 0, 0, 0);
+var CRIT = new Stat('CRIT', 0, 0, 0, 0);
+var CRITPOW = new Stat('CRITPOW', 0, 0, 0, 0);
+var BLOCK = new Stat('BLOCK', 0, 0, 0, 0);
+var EVA = new Stat('EVA', 0, 0, 0, 0);
+var HPREGEN = new Stat('HPREGEN', 0, 0, 0, 0);
+var MPREGEN = new Stat('MPREGEN', 0, 0, 0, 0);
+var MRESIST = new Stat('MRESIST', 0, 0, 0, 0);
+var WEIGHT = new Stat('WEIGHT', 0, 0, 0, 0);
 
 //Esto se usa para leer archivos desde JQuery:
 var files;
@@ -107,10 +110,10 @@ function Iniciar() {
         if (typeof _pet !== "undefined" && _pet !== null && _pet !== '') {
 
             var _stage = $('#cboPetStage').val();
-            console.log(selected_slot);
+            var _SlotId = selected_slot.substring(selected_slot.length - 1, selected_slot.length);
 
             //1.Cambiar la Imagen de la Pet Seleccionada:     
-            var img_name = 'img/pets/' + _pet + '.jpg'; //console.log(img_name);
+            var img_name = 'img/pets/' + _pet + '.jpg';
             $('#' + selected_slot).attr("src", img_name);
 
             //2.Obtener los datos de la Pet:
@@ -119,48 +122,9 @@ function Iniciar() {
             });
             if (typeof _petData !== "undefined" && _petData !== null) {
                 //console.log(_petData);
-                switch (selected_slot) {
-                    case 'BeltSlot_1':
-                        BeltSlot_1 = new BeltSlot(_stage, _petData);
-                        //console.log(BeltSlot_1);
-                        break;
-
-                    case 'BeltSlot_2':
-
-                        //console.log('x2');
-                        BeltSlot_2 = new BeltSlot(_stage, _petData);
-                        //console.log(BeltSlot_2);
-                        break;
-
-                    case 'BeltSlot_3':
-                        BeltSlot_3 = new BeltSlot(_stage, _petData);
-                        break;
-
-                    case 'BeltSlot_4':
-                        BeltSlot_4 = new BeltSlot(_stage, _petData);
-                        break;
-
-                    case 'BeltSlot_5':
-                        BeltSlot_5 = new BeltSlot(_stage, _petData);
-                        break;
-
-                    case 'BeltSlot_6':
-                        BeltSlot_6 = new BeltSlot(_stage, _petData);
-                        break;
-
-                    case 'BeltSlot_7':
-                        BeltSlot_7 = new BeltSlot(_stage, _petData);
-                        break;
-
-                    case 'BeltSlot_8':
-                        BeltSlot_8 = new BeltSlot(_stage, _petData);
-                        break;
-
-                    default:
-                        // code block
-                }
-
-                CalcularBeltStats();
+                //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
+                window[selected_slot] = new BeltSlot(_pet, parseInt(_stage), null);
+                window[selected_slot].stats = [];
 
                 //Texto Sobre la Imagen del Pet:
                 var _petBonus = '<p style="font-size:8px">' + _pet + '<br>Stage: ' + _stage;
@@ -168,21 +132,23 @@ function Iniciar() {
                 //3.Establecer las Abilidades que ofrece el Pet:               
                 _petData.forEach(function (_petInfo) {
                     //console.log(_petInfo);
+                    var stat_value = parseFloat(_petInfo['s' + _stage]);
+                    window[selected_slot].stats.push(new Stat(_petInfo.ability, stat_value, 0, 0, 0));
 
-                    var new_val = parseFloat(_petInfo['s' + _stage]);
-                    _petBonus += '<br>' + _petInfo.ability + ': ' + new_val + '%';
+                    //4. Mostrar sobre la imagen del Pet sus Datos:
+                    _petBonus += '<br>' + _petInfo.ability + ': ' + stat_value + '%';
                     $('#' + selected_slot + 'b').html(_petBonus + '</p>');
                 });
-            }
-            //$('#' + selected_slot + 'a').focus();
 
+                console.log(window[selected_slot]);
+                //5. Re-calcular Todas las Stats
+                CalcularBeltStats();
+            }
         }
         hidePopUp();
     });
 
     $(document).on("click", "#BeltSlot_1", function (evt) {
-        //selected_slot = $('#BeltSlot_1');
-        console.log('BeltSlot_1');
         selected_slot = 'BeltSlot_1';
         showPopUp();
     });
@@ -225,77 +191,53 @@ function Iniciar() {
 
 
 function CalcularBeltStats() {
-    //console.log('Calculando..');
     try {
-        console.log(BeltSlot_1);
-        console.log(BeltSlot_2);
-        console.log(BeltSlot_3);
+
+        STR = new Stat('STR', 0, 0, 0, 0);
+        VIT = new Stat('VIT', 0, 0, 0, 0);
+        INT = new Stat('INT', 0, 0, 0, 0);
+        WIS = new Stat('WIS', 0, 0, 0, 0);
+        AGI = new Stat('AGI', 0, 0, 0, 0);
+        DEX = new Stat('DEX', 0, 0, 0, 0);
+        MAXHP = new Stat('MAXHP', 0, 0, 0, 0);
+        MAXMP = new Stat('MAXMP', 0, 0, 0, 0);
+        LUCK = new Stat('LUCK', 0, 0, 0, 0);
+
+        PATK = new Stat('PATK', 0, 0, 0, 0);
+        MATK = new Stat('MATK', 0, 0, 0, 0);
+        PDEF = new Stat('PDEF', 0, 0, 0, 0);
+        MDEF = new Stat('MDEF', 0, 0, 0, 0);
+        ATKSPD = new Stat('ATKSPD', 0, 0, 0, 0);
+        CAST = new Stat('CAST', 0, 0, 0, 0);
+        ACCU = new Stat('ACCU', 0, 0, 0, 0);
+        MACC = new Stat('MACC', 0, 0, 0, 0);
+        MRESIST = new Stat('MRESIST', 0, 0, 0, 0);
+        CRIT = new Stat('CRIT', 0, 0, 0, 0);
+        CRITPOW = new Stat('CRITPOW', 0, 0, 0, 0);
+        BLOCK = new Stat('BLOCK', 0, 0, 0, 0);
+        EVA = new Stat('EVA', 0, 0, 0, 0);
+        HPREGEN = new Stat('HPREGEN', 0, 0, 0, 0);
+        MPREGEN = new Stat('MPREGEN', 0, 0, 0, 0);        
+        WEIGHT = new Stat('WEIGHT', 0, 0, 0, 0);
 
 
         if (typeof BeltSlot_1 !== "undefined" && BeltSlot_1 !== null) {
-            console.log('1');
             ProcesarPet(BeltSlot_1);
-
-            /*BeltSlot_1.data.forEach(function (_petInfo) {
-                /*  +1% x cada pet que aporte la misma stat
-                 *  Max % = 33%
-                 *  30% + 1% x Pet
-                */
-
-            /* var _Stat = window[_petInfo.ability];
-                _Stat.setTimes++;  
-                
-                console.log(_Stat);
-                
-                var old_val = parseFloat(_Stat.percentage);                    
-                var new_val = parseFloat(_petInfo['s' + BeltSlot_1.stage]);
-                var times = 0;
-                var _extra = 0;
-                
-                _Stat.extra += new_val; 
-                
-                if (_Stat.setTimes > 1) {
-                    times = _Stat.setTimes;
-                } else {
-                    times = 0;
-                };
-                
-                if((old_val + new_val + times) > 30){
-                    _Stat.percentage = 30 + times;     
-                    _extra = _Stat.extra - _Stat.percentage;
-                } else {
-                    _Stat.percentage = old_val + new_val + times;
-                    _extra = 0;
-                };
-                
-                //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-                var set_html = _Stat.percentage + '%'; 
-                
-                if(_extra > 0) {
-                    set_html +=  "&nbsp;<spam style='color:red'>(" + _extra + '% Extra)</spam>';
-                };
-                if (_Stat.value > 0) {
-                    set_html += "&nbsp;<spam style='color:greenyellow'>+" + _Stat.value + "</spam>";
-                };
-                
-                //Mostar el bonus para la Stat en su Control correspondiente:
-                $('#text-' + _petInfo.ability).html(set_html);                
-            }); */
         };
         if (typeof BeltSlot_2 !== "undefined" && BeltSlot_2 !== null) {
-            console.log('2');
+            ProcesarPet(BeltSlot_2);
         };
         if (typeof BeltSlot_3 !== "undefined" && BeltSlot_3 !== null) {
-            console.log('3');
+            ProcesarPet(BeltSlot_3);
         };
         if (typeof BeltSlot_4 !== "undefined" && BeltSlot_4 !== null) {
-
+            ProcesarPet(BeltSlot_4);
         };
         if (typeof BeltSlot_5 !== "undefined" && BeltSlot_5 !== null) {
-
+            ProcesarPet(BeltSlot_5);
         };
         if (typeof BeltSlot_6 !== "undefined" && BeltSlot_6 !== null) {
-
+            ProcesarPet(BeltSlot_6);
         };
         if (typeof BeltSlot_7 !== "undefined" && BeltSlot_7 !== null) {
 
@@ -309,57 +251,119 @@ function CalcularBeltStats() {
     }
 }
 
-function ProcesarPet(pDatos) {
-    if (typeof pDatos !== "undefined" && pDatos !== null) {
+function ProcesarPet(pBeltSlot) {
+    if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
 
-        pDatos.data.forEach(function (_petData) {
-            /*  +1% x cada pet que aporte la misma stat
-             *  Max % = 33%
-             *  30% + 1% x Pet
-             */
-            var _Stat = new Stat('Srenght', 0, 0, 0, 0, null);
-            
-            var _Stat = window[_petData.ability];
+        pBeltSlot.stats.forEach(function (_petStat) {            
+            CalcularStat(_petStat, true);
+        });
+    };
+}
+
+function CalcularStat(_petStat, pCalcular) {
+    if (typeof _petStat !== "undefined" && _petStat !== null) {
+        var _Stat = window[_petStat.name];
             if (typeof _Stat !== "undefined" && _Stat !== null) {
-                _Stat.setTimes++;
+                
+                if (pCalcular == true) {  
+                    
+                    var old_val = parseFloat(_Stat.percentage); //console.log('old_val:' + old_val);
+                    var new_val = parseFloat(_petStat.value); //console.log('new_val:' + new_val);
+                    var times = 0;
+                    var _extra = 0;
 
-                console.log(_Stat);
+                    _Stat.extra += new_val;
+                    _Stat.setTimes++; 
 
-                var old_val = parseFloat(_Stat.percentage);
-                var new_val = parseFloat(_petData['s' + pDatos.stage]);
-                var times = 0;
-                var _extra = 0;
+                    // Bono hasta 3 pets (la primera no cuenta):
+                    if (_Stat.setTimes > 1) {
+                        if (_Stat.setTimes < 4) {    
+                            times = _Stat.setTimes;
+                        } else { times = 3; }
+                    } else {
+                        times = 0;
+                    };
+                    
+                    //console.log(times);
 
-                _Stat.extra += new_val;
-
-                if (_Stat.setTimes > 1) {
-                    times = _Stat.setTimes;
-                } else {
-                    times = 0;
-                };
-
-                if ((old_val + new_val + times) > 30) {
-                    _Stat.percentage = 30 + times;
-                    _extra = _Stat.extra - _Stat.percentage;
-                } else {
-                    _Stat.percentage = old_val + new_val + times;
-                    _extra = 0;
-                };
-
+                    /*  +1% x cada pet que aporte la misma stat
+                     *  Max % = 33%
+                     *  30% + 1% x Pet  */
+                    var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
+                    if (_setval > 30) {    
+                        if (times > 1) {
+                            _Stat.percentage = 30 + times;
+                            _extra = _Stat.extra - _Stat.percentage;
+                        } else {
+                            _Stat.percentage = 30 ;
+                            _extra = _Stat.extra - _Stat.percentage;
+                        }
+                    } else {
+                        _Stat.percentage = _setval;
+                        _extra = 0;
+                    };
+                }
+                
                 //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-                var set_html = _Stat.percentage + '%';
+                var set_html = '';
+                if (parseFloat(_Stat.percentage) > 0) {  set_html = parseFloat(_Stat.percentage).toFixed(1) + '%'; }
 
                 if (_extra > 0) {
-                    set_html += "&nbsp;<spam style='color:red'>(" + _extra + '% Extra)</spam>';
+                    set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
                 };
                 if (_Stat.value > 0) {
-                    set_html += "&nbsp;<spam style='color:greenyellow'>+" + _Stat.value + "</spam>";
+                    set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
                 };
 
                 //Mostar el bonus para la Stat en su Control correspondiente:
-                $('#text-' + _petData.ability).html(set_html);
+                $('#text-' + _petStat.name).html(set_html);
+               // console.log(_Stat);
+
+                //console.log(_petStat.name);
+                if (_petStat.name == 'VIT') {
+                    /* 1 Vit = 1,6 P.Def and 33 Max HP */
+                    window['PDEF'].value += 1.6 * _Stat.percentage; CalcularStat(window['PDEF'], false);
+                    window['MAXHP'].value += 33 * _Stat.percentage; CalcularStat(window['MAXHP'], false);
+                }
+                if (_petStat.name == 'STR') {
+                    /* 1 Str = 2,8 P.Atk, 10 carrying capacity */
+                    window['PATK'].value += 2.8 * _Stat.percentage; CalcularStat(window['PATK'], false);
+                    window['WEIGHT'].value += 10 * _Stat.percentage; CalcularStat(window['WEIGHT'], false);
+                }
+                if (_petStat.name == 'AGI') {
+                    /* 1 Agi = 0.5 Evasion, 1.2 P.Atk (Ranged), 0.1 Atk.Spd */
+                    window['EVA'].value += 0.5 * _Stat.percentage; CalcularStat(window['EVA'], false);
+                    window['PATK'].value += 1.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
+                    window['ATKSPD'].value += 0.1 * _Stat.percentage; CalcularStat(window['ATKSPD'], false);
+                }
+                if (_petStat.name == 'INT') {
+                    /* 1 Int = 2 M.Atk and 30 Max MP */
+                    window['MATK'].value += 2 * _Stat.percentage; CalcularStat(window['MATK'], false);
+                    window['MAXMP'].value += 30 * _Stat.percentage; CalcularStat(window['MAXMP'], false);
+                }                
+                if (_petStat.name == 'WIS') {
+                    /* 1 Wis = 2 M.Def, 0.5 M.Acc, 0.5 M.Res and 4.1 MP Recov. */
+                    window['MDEF'].value += 2 * _Stat.percentage; CalcularStat(window['MDEF'], false);
+                    window['MACC'].value += 0.5 * _Stat.percentage; CalcularStat(window['MACC'], false);
+                    window['MPREGEN'].value += 4.1 * _Stat.percentage; CalcularStat(window['MPREGEN'], false);
+                    window['MRESIST'].value += 0.5 * _Stat.percentage; CalcularStat(window['MRESIST'], false);
+                }
+                if (_petStat.name == 'DEX') {
+                    /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
+                    window['PATK'].value += 2.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
+                    window['ACCU'].value += 0.5 * _Stat.percentage; CalcularStat(window['ACCU'], false);
+                } 
+                if (_petStat.name == 'DEX') {
+                    /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
+                    window['PATK'].value += 2.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
+                    window['ACCU'].value += 0.5 * _Stat.percentage; CalcularStat(window['ACCU'], false);
+                } 
+                if (_petStat.name == 'LUCK') {
+                    /* 1 Luck = 0.2% Critical Ratio and Drop Rate. */
+                    window['CRIT'].value += 0.2 * _Stat.percentage; CalcularStat(window['CRIT'], false);
+                }                 
+                
             };
-        });
     };
 }
 
