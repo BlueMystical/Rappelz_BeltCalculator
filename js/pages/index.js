@@ -217,7 +217,7 @@ function Iniciar() {
                     window[selected_slot].stats.push(new Stat(_CardInfo.ability, stat_value, stat_perce, stat_extra, 0));
 
                     //4. Mostrar sobre la imagen del Pet sus Datos:
-                    _petBonus += '<br>' + _CardInfo.ability + ': ' + stat_value + '%';                    
+                    _petBonus += '<br>' + _CardInfo.ability + ': +' + stat_value;                    
                 });
                 
                 $('#' + selected_slot + 'b').html(_petBonus + '</p>');                
