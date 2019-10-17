@@ -103,8 +103,8 @@
 
         .column {
             float: left;
-            width: 12.5%; /* 8 image containers (use 25% for four, and 50% for two, etc) */            
-            max-width: 120px;
+            width: 12%; /* 8 image containers (use 25% for four, and 50% for two, etc) */            
+            max-width: 100px;
             padding: 5px;
             text-align: center;
         }
@@ -150,10 +150,11 @@
         }
         
         .div-box {
-            width:96%; height: 20px; text-align:left;
+            width:96%; height: 12px; text-align:left;
             border-radius:5px;
             background-color:rgba(50, 50, 50, 0.3); 
             margin:1px; padding:0.5em;
+            font-size: small;
         }
 
     </style>
@@ -225,6 +226,21 @@
             <label id="lblLogin" style="font-size: small">Choose a Pet.</label>
         </div>
 
+         <!-- Ventana Flotante para Elejir una Boss Card -->
+        <div data-role="popup" id="popBossCard" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
+            <div class="ui-field-contain">
+                <div style="vertical-align: middle;text-align: center;"><img src="img/ergo-proxy-circled.png" alt="login" height="60" style="vertical-align: middle" /></div>
+
+                <label for="cboBossChoose">Boss Card:</label>
+                <select name="cboBossChoose" id="cboBossChoose">
+                    <option></option>
+                </select>
+            </div>
+            <button type="submit" id="cmdSetBossInBelt" class="ui-btn-a ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
+            <label id="lblLogin" style="font-size: small">Choose a Boss Card.</label>
+        </div>
+
+        
         <!-- Encabezado -->
         <div data-role="header" data-theme="b" data-position="fixed">
             <a href="#viewMain" data-rel="back" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-home">Back</a>
@@ -240,16 +256,16 @@
                     <div class="ui-bar ui-bar-b">
                         <div data-role="fieldcontain">
                             
-                            <label for="text-STR" style='color:gray'>STR:</label>
-                            <div id='text-STR' class='div-box'></div>                            
-
-                            <label for="text-VIT" style='color:gray'>VIT:</label>
+                            <label for="text-VIT" style='color:gray; font-size:small;'>VIT:</label>
                             <div id='text-VIT' class='div-box'></div>  
+                            
+                            <label for="text-STR" style='color:gray; font-size:small;'>STR:</label>
+                            <div id='text-STR' class='div-box'></div>                           
 
-                            <label for="text-AGI" style='color:gray'>AGI:</label>
+                            <label for="text-AGI" style='color:gray; font-size:small;'>AGI:</label>
                             <div id='text-AGI' class='div-box'></div>    
 
-                            <label for="text-DEX" style='color:gray'>DEX:</label>
+                            <label for="text-DEX" style='color:gray; font-size:small;'>DEX:</label>
                             <div id='text-DEX' class='div-box'></div>  
                             
                         </div>
@@ -258,14 +274,17 @@
                 <div class="ui-block-b">
                     <div class="ui-bar ui-bar-b">
                         <div data-role="fieldcontain">
-                            <label for="text-INT" style='color:gray'>INT:</label>
+                            <label for="text-INT" style='color:gray; font-size:small;'>INT:</label>
                             <div id='text-INT' class='div-box'></div>  
 
-                            <label for="text-WIS" style='color:gray'>WIS:</label>
+                            <label for="text-WIS" style='color:gray; font-size:small;'>WIS:</label>
                             <div id='text-WIS' class='div-box'></div>  
 
-                            <label for="text-LUCK" style='color:gray'>LUCK:</label>
+                            <label for="text-LUCK" style='color:gray; font-size:small;'>LUCK:</label>
                             <div id='text-LUCK' class='div-box'></div>  
+                            
+                            <label for="text-XXX" style='color:gray; font-size:small;'> </label>
+                            <div id='text-XXX' class='div-box'></div> 
                         </div>
                     </div>
                 </div>
@@ -273,68 +292,83 @@
                 <div class="ui-block-a">
                     <div class="ui-bar ui-bar-c">
                         <div data-role="fieldcontain">
-                            <label for="text-MAXHP" style='color:gray'>Max.HP:</label>
+                            <label for="text-MAXHP" style='color:gray; font-size:small;'>Max.HP:</label>
                             <div id='text-HP' class='div-box'></div>  
                             
-                            <label for="text-PATK" style='color:gray'>P.Atk:</label>
+                            <label for="text-PATK" style='color:gray; font-size:small;'>P.Atk:</label>
                             <div id='text-PATK' class='div-box'></div>  
 
-                            <label for="text-PDEF" style='color:gray'>P.Def:</label>
+                            <label for="text-PDEF" style='color:gray; font-size:small;'>P.Def:</label>
                             <div id='text-PDEF' class='div-box'></div>  
 
-                            <label for="text-ATKSPD" style='color:gray'>Atk.Spd:</label>
+                            <label for="text-ATKSPD" style='color:gray; font-size:small;'>Atk.Spd:</label>
                             <div id='text-ATKSPD' class='div-box'></div>  
 
-                            <label for="text-ACCU" style='color:gray'>Accu:</label>
+                            <label for="text-ACCU" style='color:gray; font-size:small;'>Accu:</label>
                             <div id='text-ACCU' class='div-box'></div>  
 
-                            <label for="text-CRIT" style='color:gray'>Crit.Rat:</label>
+                            <label for="text-CRIT" style='color:gray; font-size:small;'>Crit.Rat:</label>
                             <div id='text-CRIT' class='div-box'></div>  
 
-                            <label for="text-BLOCK" style='color:gray'>Block.Per:</label>
+                            <label for="text-BLOCK" style='color:gray; font-size:small;'>Block.Per:</label>
                             <div id='text-BLOCK' class='div-box'></div>  
 
-                            <label for="text-HPREGEN" style='color:gray'>HP.Regen:</label>
+                            <label for="text-HPREGEN" style='color:gray; font-size:small;'>HP.Regen:</label>
                             <div id='text-HPREGEN' class='div-box'></div>  
                             
-                            <label for="text-MRES" style='color:gray'>M.Res:</label>
+                            <label for="text-MRES" style='color:gray; font-size:small;'>M.Res:</label>
                             <div id='text-MRES' class='div-box'></div>  
+                            
+                            <label for="text-PPIERCE" style='color:gray; font-size:small;'>P.Pierce:</label>
+                            <div id='text-PPIERCE' class='div-box'></div> 
+                            
+                            <label for="text-PIGNORE" style='color:gray; font-size:small;'>P.Ignore:</label>
+                            <div id='text-PIGNORE' class='div-box'></div> 
                         </div>
                     </div>
                 </div>
                 <div class="ui-block-b">
                     <div class="ui-bar ui-bar-C">
                         <div data-role="fieldcontain">
-                            <label for="text-MAXMP" style='color:gray'>Max.MP:</label>
+                            <label for="text-MAXMP" style='color:gray; font-size:small;'>Max.MP:</label>
                             <div id='text-MP' class='div-box'></div>  
                             
-                            <label for="text-MATK" style='color:gray'>M.Atk:</label>
+                            <label for="text-MATK" style='color:gray; font-size:small;'>M.Atk:</label>
                             <div id='text-MATK' class='div-box'></div> 
 
-                            <label for="text-MDEF" style='color:gray'>M.Def:</label>
+                            <label for="text-MDEF" style='color:gray; font-size:small;'>M.Def:</label>
                             <div id='text-MDEF' class='div-box'></div> 
 
-                            <label for="text-CAST" style='color:gray'>Cast.Spd:</label>
+                            <label for="text-CAST" style='color:gray; font-size:small;'>Cast.Spd:</label>
                             <div id='text-CAST' class='div-box'></div> 
 
-                            <label for="text-MACC" style='color:gray'>M.Acc:</label>
+                            <label for="text-MACC" style='color:gray; font-size:small;'>M.Acc:</label>
                             <div id='text-MACC' class='div-box'></div> 
 
-                            <label for="text-CRITPOW" style='color:gray'>Crit.Pow:</label>
+                            <label for="text-CRITPOW" style='color:gray; font-size:small;'>Crit.Pow:</label>
                             <div id='text-CRITPOW' class='div-box'></div> 
 
-                            <label for="text-EVA" style='color:gray'>Evasion:</label>
+                            <label for="text-EVA" style='color:gray; font-size:small;'>Evasion:</label>
                             <div id='text-EVA' class='div-box'></div> 
 
-                            <label for="text-MPREGEN" style='color:gray'>MP.Regen:</label>
+                            <label for="text-MPREGEN" style='color:gray; font-size:small;'>MP.Regen:</label>
                             <div id='text-MPREGEN' class='div-box'></div> 
                             
-                            <label for="text-WEIGHT" style='color:gray'>Max.Weight:</label>
+                            <label for="text-WEIGHT" style='color:gray; font-size:small;'>Max.Weight:</label>
                             <div id='text-WEIGHT' class='div-box'></div>  
+                            
+                            <label for="text-MPIERCE" style='color:gray; font-size:small;'>M.Pierce:</label>
+                            <div id='text-MPIERCE' class='div-box'></div> 
+                            
+                            <label for="text-MIGNORE" style='color:gray; font-size:small;'>M.Ignore:</label>
+                            <div id='text-MIGNORE' class='div-box'></div> 
                         </div>
                     </div>
                 </div>
+
             </div><!-- /grid-a -->
+
+            <textarea id="text-EXTRA" style="font-size: small"></textarea>
 
         </div><!-- /main -->
 
@@ -386,7 +420,7 @@
                 <div class="column">
                     <div class="container">
                         <a href="#" id="BeltSlot_8a"><img id="BeltSlot_8" src="img/pets/card_empty.jpg" alt="Belt Slot 1" style="width:100%" /></a>
-                        <div class="bottom-right" id="BeltSlot_7b"></div>
+                        <div class="bottom-right" id="BeltSlot_8b"></div>
                     </div>
                 </div>
             </div>
