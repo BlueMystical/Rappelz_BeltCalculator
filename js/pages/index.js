@@ -152,6 +152,10 @@ function Iniciar() {
             $('#grpBoss').hide();
         }
     });
+    $("#checkYushivaBelt").change(function () {
+        var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
+        CalcularBeltStats();
+    });
 
     $(document).on("click", "#cmdSetPetInBelt", function (evt) {
         //console.log(_state.toString());
@@ -186,7 +190,6 @@ function Iniciar() {
         selected_slot = 'BeltSlot_6';
         showPopUp(false, true);
     });
-
     $(document).on("click", "#BeltSlot_7", function (evt) {
         selected_slot = 'BeltSlot_7';
         showPopUp(true, false);
