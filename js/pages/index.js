@@ -77,6 +77,8 @@ var fs = null;
 
 function Iniciar() {
     try {
+        $('#grpBoss').hide();
+
         //Cargar los Datos de las Abilidades de los Pets:
         $.getJSON('data/pet_card_abilities.json', function (data) {
             jsonPet_abilities = data;
@@ -100,11 +102,11 @@ function Iniciar() {
                 ListVar.selectmenu().selectmenu('refresh', true);
             }
         });
-        
+
         //Cargar la lista de BossCards:
         $.getJSON('data/boss_list.json', function (data) {
             jsonBossCardsList = data;
-            
+
             if (typeof jsonBossCardsList !== "undefined" && jsonBossCardsList !== null) {
                 //Carga la Lista de Pets en un Combo:
                 var ListVar = $("#cboBossChoose");
@@ -117,14 +119,14 @@ function Iniciar() {
                     ListVar.append(opt);
                 });
                 ListVar.selectmenu().selectmenu('refresh', true);
-            } 
+            }
         });
-        
+
         //Cargar los Datos de las BossCards:
         $.getJSON('data/boss_cards.json', function (data) {
             jsonBossCardsData = data;
         });
-        
+
     } catch (e) {
         $.alert({
             title: e.name,
@@ -139,140 +141,197 @@ function Iniciar() {
 
 
     /******** AQUI SE ENLAZAN LOS EVENTOS DE LOS CONTROLES ***********/
+    var _state = false;
+    $("#flipPetBossGrps").change(function () {
+        _state = !_state;
+        if (_state == true) {
+            $('#grpPet').hide();
+            $('#grpBoss').show();
+        } else {
+            $('#grpPet').show();
+            $('#grpBoss').hide();
+        }
+    });
+
     $(document).on("click", "#cmdSetPetInBelt", function (evt) {
-        var _pet = $('#cboPetChoose').val();
-        if (typeof _pet !== "undefined" && _pet !== null && _pet !== '') {
-
-            var _stage = $('#cboPetStage').val();
-            var _SlotId = selected_slot.substring(selected_slot.length - 1, selected_slot.length);
-
-            //1.Cambiar la Imagen de la Pet Seleccionada:     
-            var img_name = 'img/pets/' + _pet + '.jpg';
-            $('#' + selected_slot).attr("src", img_name);
-
-            //2.Obtener los datos de la Pet:
-            var _petData = jsonPet_abilities.filter(function (item) {
-                return item.pet_name === _pet;
-            });
-            if (typeof _petData !== "undefined" && _petData !== null) {
-                //console.log(_petData);
-                //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
-                window[selected_slot] = new BeltSlot(_pet, parseInt(_stage), null, null);
-                window[selected_slot].stats = [];
-
-                //Texto Sobre la Imagen del Pet:
-                var _petBonus = '<p style="font-size:8px">' + _pet + '<br>Stage: ' + _stage;
-
-                //3.Establecer las Abilidades que ofrece el Pet:               
-                _petData.forEach(function (_petInfo) {
-                    //console.log(_petInfo);
-                    var stat_value = parseFloat(_petInfo['s' + _stage]);
-                    window[selected_slot].stats.push(new Stat(_petInfo.ability, stat_value, 0, 0, 0));
-
-                    //4. Mostrar sobre la imagen del Pet sus Datos:
-                    _petBonus += '<br>' + _petInfo.ability + ': ' + stat_value + '%';
-                    $('#' + selected_slot + 'b').html(_petBonus + '</p>');
-                });
-
-                console.log(window[selected_slot]);
-                
-                //5. Re-calcular Todas las Stats
-                CalcularBeltStats();
-            }
+        //console.log(_state.toString());
+        if (_state == false) {
+            SetPetCard();
+        } else {
+            SetBossCard();
         }
-        hidePopUp();
-    });
-    
-    $(document).on("click", "#cmdSetBossInBelt", function (evt) {
-        var _cardName = $('#cboBossChoose').val();
-        if (typeof _cardName !== "undefined" && _cardName !== null && _cardName !== '') {
-            
-            //1.Cambiar la Imagen de la BossCard Seleccionada:     
-            var img_name = 'img/boss_cards/' + _cardName + '.png';
-            $('#' + selected_slot).attr("src", img_name);
-            
-            //2.Obtener los datos de la BossCard:
-            var _BossData = jsonBossCardsData.filter(function (item) {
-                return item.short_name === _cardName;
-            });
-            
-            if (typeof _BossData !== "undefined" && _BossData !== null) {
-               //console.log(_BossData);
-                
-                //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
-                window[selected_slot] = new BeltSlot(_cardName, 0, null, null);
-                window[selected_slot].stats = [];
-                window[selected_slot].info = _BossData[0].extra;
-
-                //Texto Sobre la Imagen del Pet:
-                var _petBonus = '<p style="font-size:8px">' + _cardName ;
-
-                //3.Establecer las Abilidades que ofrece el Pet:               
-                _BossData.forEach(function (_CardInfo) {
-
-                    var stat_value = parseFloat(_CardInfo.value);
-                    var stat_perce = parseFloat(_CardInfo.percentage);
-                    var stat_extra = parseFloat(_CardInfo.extra);
-                    
-                    window[selected_slot].stats.push(new Stat(_CardInfo.ability, stat_value, stat_perce, stat_extra, 0));
-
-                    //4. Mostrar sobre la imagen del Pet sus Datos:
-                    _petBonus += '<br>' + _CardInfo.ability + ': +' + stat_value;                    
-                });
-                
-                $('#' + selected_slot + 'b').html(_petBonus + '</p>');                
-                
-                //console.log(_petBonus);
-                console.log(window[selected_slot]);
-                
-                //5. Re-calcular Todas las Stats
-                CalcularBeltStats();
-            }
-        }
-        hidePopBossCard();
     });
 
-    
     $(document).on("click", "#BeltSlot_1", function (evt) {
         selected_slot = 'BeltSlot_1';
-        showPopUp();
+        showPopUp(false, true);
     });
     $(document).on("click", "#BeltSlot_2", function (evt) {
         selected_slot = 'BeltSlot_2';
-        showPopUp();
+        showPopUp(false, false);
     });
     $(document).on("click", "#BeltSlot_3", function (evt) {
         selected_slot = 'BeltSlot_3';
-        showPopUp();
+        showPopUp(false, false);
     });
     $(document).on("click", "#BeltSlot_4", function (evt) {
         selected_slot = 'BeltSlot_4';
-        showPopUp();
+        showPopUp(false, false);
     });
     $(document).on("click", "#BeltSlot_5", function (evt) {
         selected_slot = 'BeltSlot_5';
-        showPopUp();
+        showPopUp(false, true);
     });
     $(document).on("click", "#BeltSlot_6", function (evt) {
         selected_slot = 'BeltSlot_6';
-        showPopUp();
+        showPopUp(false, true);
     });
 
     $(document).on("click", "#BeltSlot_7", function (evt) {
         selected_slot = 'BeltSlot_7';
-        showPopBossCard();
+        showPopUp(true, false);
     });
     $(document).on("click", "#BeltSlot_8", function (evt) {
         selected_slot = 'BeltSlot_8';
-        showPopBossCard();
+        showPopUp(true, false);
     });
 
-    $(document).on("click", "#cmdIniciarSesion", function (evt) {        
+    $(document).on("click", "#cmdIniciarSesion", function (evt) {
         window.location.reload(); //<- Fuerza la recarga de la pagina.
     });
+
 }
 
+function SetPetCard() {
+    var _pet = $('#cboPetChoose').val();
+    var _SlotId = selected_slot.substring(selected_slot.length - 1, selected_slot.length);
 
+    if (typeof _pet !== "undefined" && _pet !== null && _pet !== '') {
+
+        var _stage = $('#cboPetStage').val();
+
+        //1.Cambiar la Imagen de la Pet Seleccionada:     
+        var img_name = 'img/pets/' + _pet + '.jpg';
+        $('#' + selected_slot).attr("src", img_name);
+
+        //2.Obtener los datos de la Pet:
+        var _petData = jsonPet_abilities.filter(function (item) {
+            return item.pet_name === _pet;
+        });
+        if (typeof _petData !== "undefined" && _petData !== null) {
+            //console.log(_petData);
+            //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
+            window[selected_slot] = new BeltSlot(_pet, parseInt(_stage), null, null);
+            window[selected_slot].stats = [];
+
+            //Texto Sobre la Imagen del Pet:
+            var _petBonus = '<p style="font-size:8px">' + _pet + '<br>Stage: ' + _stage;
+
+            //3.Establecer las Abilidades que ofrece el Pet:               
+            _petData.forEach(function (_petInfo) {
+                //console.log(_petInfo);
+                var stat_value = parseFloat(_petInfo['s' + _stage]);
+                window[selected_slot].stats.push(new Stat(_petInfo.ability, stat_value, 0, 0, 0));
+
+                //4. Mostrar sobre la imagen del Pet sus Datos:
+                _petBonus += '<br>' + _petInfo.ability + ': ' + stat_value + '%';
+                $('#' + selected_slot + 'b').html(_petBonus + '</p>');
+            });
+
+            console.log(window[selected_slot]);
+
+            //5. Re-calcular Todas las Stats
+            CalcularBeltStats();
+        }
+    } else {
+        var img_id = '';
+        switch (_SlotId) {
+            case '1':
+                img_id = 'img/card_any.jpg';
+                break;
+            case '2':
+                img_id = 'img/card_pet_0.jpg';
+                break;
+            case '3':
+                img_id = 'img/card_pet_1.jpg';
+                break;
+            case '4':
+                img_id = 'img/card_pet_2.jpg';
+                break;
+            case '5':
+                img_id = 'img/card_any.jpg';
+                break;
+            case '6':
+                img_id = 'img/card_any.jpg';
+                break;
+            case '7':
+                img_id = 'img/card_boss.jpg';
+                break;
+            case '8':
+                img_id = 'img/card_boss.jpg';
+                break;
+
+            default:
+                break;
+        }
+        console.log(img_id);
+        $('#' + selected_slot).attr("src", img_id);
+        $('#' + selected_slot + 'b').html('');
+    }
+    hidePopUp()
+}
+
+function SetBossCard() {
+    var _cardName = $('#cboBossChoose').val();
+    if (typeof _cardName !== "undefined" && _cardName !== null && _cardName !== '') {
+
+        //1.Cambiar la Imagen de la BossCard Seleccionada:     
+        var img_name = 'img/boss_cards/' + _cardName + '.png';
+        $('#' + selected_slot).attr("src", img_name);
+
+        //2.Obtener los datos de la BossCard:
+        var _BossData = jsonBossCardsData.filter(function (item) {
+            return item.short_name === _cardName;
+        });
+
+        if (typeof _BossData !== "undefined" && _BossData !== null) {
+            //console.log(_BossData);
+
+            //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
+            window[selected_slot] = new BeltSlot(_cardName, 0, null, null);
+            window[selected_slot].stats = [];
+            window[selected_slot].info = _BossData[0].extra;
+
+            //Texto Sobre la Imagen del Pet:
+            var _petBonus = '<p style="font-size:8px">' + _cardName;
+
+            //3.Establecer las Abilidades que ofrece el Pet:               
+            _BossData.forEach(function (_CardInfo) {
+
+                var stat_value = parseFloat(_CardInfo.value);
+                var stat_perce = parseFloat(_CardInfo.percentage);
+                var stat_extra = parseFloat(_CardInfo.extra);
+
+                window[selected_slot].stats.push(new Stat(_CardInfo.ability, stat_value, stat_perce, stat_extra, 0));
+
+                //4. Mostrar sobre la imagen del Pet sus Datos:
+                _petBonus += '<br>' + _CardInfo.ability + ': +' + stat_value;
+            });
+
+            $('#' + selected_slot + 'b').html(_petBonus + '</p>');
+
+            //console.log(_petBonus);
+            console.log(window[selected_slot]);
+
+            //5. Re-calcular Todas las Stats
+            CalcularBeltStats();
+        }
+    } else {
+        $('#' + selected_slot).attr("src", 'img/card_boss.jpg');
+        $('#' + selected_slot + 'b').html('');
+    }
+    hidePopUp();
+}
 
 function CalcularBeltStats() {
     try {
@@ -308,7 +367,7 @@ function CalcularBeltStats() {
         MPIERCE = new Stat('MPIERCE', 0, 0, 0, 0);
         PIGNORE = new Stat('PIGNORE', 0, 0, 0, 0);
         MIGNORE = new Stat('MIGNORE', 0, 0, 0, 0);
-        
+
         $('#text-EXTRA').val('');
 
 
@@ -345,7 +404,7 @@ function CalcularBeltStats() {
 function ProcesarPet(pBeltSlot) {
     if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
 
-        pBeltSlot.stats.forEach(function (_petStat) {            
+        pBeltSlot.stats.forEach(function (_petStat) {
             CalcularStat(_petStat, true);
         });
     };
@@ -355,7 +414,7 @@ function ProcesarBossCard(pBeltSlot) {
     if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
 
         //Bonus Extra que la la BossCard:
-        var _infoExtra = $('#text-EXTRA').val();                
+        var _infoExtra = $('#text-EXTRA').val();
         if (typeof _infoExtra !== "undefined" && _infoExtra !== null && _infoExtra !== '') {
             _infoExtra += '\n';
         }
@@ -363,8 +422,8 @@ function ProcesarBossCard(pBeltSlot) {
             _infoExtra += pBeltSlot.info;
         }
         $('#text-EXTRA').val(_infoExtra);
-        
-        pBeltSlot.stats.forEach(function (_BossStat) {            
+
+        pBeltSlot.stats.forEach(function (_BossStat) {
             CalcularBossStats(_BossStat, true);
         });
     };
@@ -373,213 +432,268 @@ function ProcesarBossCard(pBeltSlot) {
 function CalcularStat(_petStat, pCalcular) {
     if (typeof _petStat !== "undefined" && _petStat !== null) {
         var _Stat = window[_petStat.name];
-            if (typeof _Stat !== "undefined" && _Stat !== null) {
-                
-                if (pCalcular == true) {  
-                    
-                    var old_val = parseFloat(_Stat.percentage); //console.log('old_val:' + old_val);
-                    var new_val = parseFloat(_petStat.value); //console.log('new_val:' + new_val);
-                    var times = 0;
-                    var _extra = 0;
+        if (typeof _Stat !== "undefined" && _Stat !== null) {
 
-                    _Stat.extra += new_val;
-                    _Stat.setTimes++; 
+            if (pCalcular == true) {
 
-                    // Bono hasta 3 pets (la primera no cuenta):
+                var old_val = parseFloat(_Stat.percentage); //console.log('old_val:' + old_val);
+                var new_val = parseFloat(_petStat.value); //console.log('new_val:' + new_val);
+                var times = 0;
+                var _extra = 0;
+
+                _Stat.extra += new_val;
+                _Stat.setTimes++;
+
+                // Bono hasta 3 pets (la primera no cuenta):
+                var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
+                if (_IsYushivaBelt == false){
                     if (_Stat.setTimes > 1) {
-                        if (_Stat.setTimes < 4) {    
+                        if (_Stat.setTimes < 4) {
                             times = _Stat.setTimes;
-                        } else { times = 3; }
+                        } else {
+                            times = 3;
+                        }
                     } else {
                         times = 0;
                     };
-                    
-                    //console.log(times);
+                } 
 
-                    /*  +1% x cada pet que aporte la misma stat
-                     *  Max % = 33%
-                     *  30% + 1% x Pet  */
-                    var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
-                    if (_setval > 30) {    
-                        if (times > 1) {
-                            _Stat.percentage = 30 + times;
-                            _extra = _Stat.extra - _Stat.percentage;
+                /*  +1% x cada pet que aporte la misma stat
+                 *  Max % = 33%
+                 *  30% + 1% x Pet  */
+                var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
+                if (_setval > 30) {
+                    if (times > 1) {
+                        if (_IsYushivaBelt == false) {
+                            _Stat.percentage = 30 + times;                            
                         } else {
-                            _Stat.percentage = 30 ;
-                            _extra = _Stat.extra - _Stat.percentage;
+                            _Stat.percentage = 30;
                         }
+                        _extra = _Stat.extra - _Stat.percentage;
                     } else {
-                        _Stat.percentage = _setval;
-                        _extra = 0;
-                    };
-                }
-                
-                //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-                var set_html = '';
-                if (parseFloat(_Stat.percentage) > 0) {  set_html = parseFloat(_Stat.percentage).toFixed(1) + '%'; }
-
-                if (_extra > 0) {
-                    set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
+                        _Stat.percentage = 30;
+                        _extra = _Stat.extra - _Stat.percentage;
+                    }
+                } else {
+                    _Stat.percentage = _setval;
+                    _extra = 0;
                 };
-                if (_Stat.value > 0) {
-                    set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
-                };
+            }
 
-                //Mostar el bonus para la Stat en su Control correspondiente:
-                $('#text-' + _petStat.name).html(set_html);
-               // console.log(_Stat);
+            //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
+            var set_html = '';
+            if (parseFloat(_Stat.percentage) > 0) {
+                set_html = parseFloat(_Stat.percentage).toFixed(1) + '%';
+            }
 
-                //console.log(_petStat.name);
-                if (_petStat.name == 'VIT') {
-                    /* 1 Vit = 1,6 P.Def and 33 Max HP */
-                    window['PDEF'].value += 1.6 * _Stat.percentage; CalcularStat(window['PDEF'], false);
-                    window['MAXHP'].value += 33 * _Stat.percentage; CalcularStat(window['MAXHP'], false);
-                }
-                if (_petStat.name == 'STR') {
-                    /* 1 Str = 2,8 P.Atk, 10 Max.Weight */
-                    window['PATK'].value += 2.8 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['WEIGHT'].value += 10 * _Stat.percentage; CalcularStat(window['WEIGHT'], false);
-                }
-                if (_petStat.name == 'AGI') {
-                    /* 1 Agi = 0.5 Evasion, 1.2 P.Atk (Ranged), 0.1 Atk.Spd */
-                    window['EVA'].value += 0.5 * _Stat.percentage; CalcularStat(window['EVA'], false);
-                    window['PATK'].value += 1.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['ATKSPD'].value += 0.1 * _Stat.percentage; CalcularStat(window['ATKSPD'], false);
-                }
-                if (_petStat.name == 'INT') {
-                    /* 1 Int = 2 M.Atk and 30 Max MP */
-                    window['MATK'].value += 2 * _Stat.percentage; CalcularStat(window['MATK'], false);
-                    window['MAXMP'].value += 30 * _Stat.percentage; CalcularStat(window['MAXMP'], false);
-                }                
-                if (_petStat.name == 'WIS') {
-                    /* 1 Wis = 2 M.Def, 0.5 M.Acc, 0.5 M.Res and 4.1 MP Recov. */
-                    window['MDEF'].value += 2 * _Stat.percentage; CalcularStat(window['MDEF'], false);
-                    window['MACC'].value += 0.5 * _Stat.percentage; CalcularStat(window['MACC'], false);
-                    window['MPREGEN'].value += 4.1 * _Stat.percentage; CalcularStat(window['MPREGEN'], false);
-                    window['MRESIST'].value += 0.5 * _Stat.percentage; CalcularStat(window['MRESIST'], false);
-                }
-                if (_petStat.name == 'DEX') {
-                    /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
-                    window['PATK'].value += 2.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['ACCU'].value += 0.5 * _Stat.percentage; CalcularStat(window['ACCU'], false);
-                } 
-                if (_petStat.name == 'DEX') {
-                    /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
-                    window['PATK'].value += 2.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['ACCU'].value += 0.5 * _Stat.percentage; CalcularStat(window['ACCU'], false);
-                } 
-                if (_petStat.name == 'LUCK') {
-                    /* 1 Luck = 0.2% Critical Ratio and Drop Rate. */
-                    window['CRIT'].value += 0.2 * _Stat.percentage; CalcularStat(window['CRIT'], false);
-                }                 
-                
+            if (_extra > 0) {
+                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
             };
+            if (_Stat.value > 0) {
+                set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
+            };
+
+            //Mostar el bonus para la Stat en su Control correspondiente:
+            $('#text-' + _petStat.name).html(set_html);
+            // console.log(_Stat);
+
+            //console.log(_petStat.name);
+            if (_petStat.name == 'VIT') {
+                /* 1 Vit = 1,6 P.Def and 33 Max HP */
+                window['PDEF'].value += 1.6 * _Stat.percentage;
+                CalcularStat(window['PDEF'], false);
+                window['MAXHP'].value += 33 * _Stat.percentage;
+                CalcularStat(window['MAXHP'], false);
+            }
+            if (_petStat.name == 'STR') {
+                /* 1 Str = 2,8 P.Atk, 10 Max.Weight */
+                window['PATK'].value += 2.8 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['WEIGHT'].value += 10 * _Stat.percentage;
+                CalcularStat(window['WEIGHT'], false);
+            }
+            if (_petStat.name == 'AGI') {
+                /* 1 Agi = 0.5 Evasion, 1.2 P.Atk (Ranged), 0.1 Atk.Spd */
+                window['EVA'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['EVA'], false);
+                window['PATK'].value += 1.2 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['ATKSPD'].value += 0.1 * _Stat.percentage;
+                CalcularStat(window['ATKSPD'], false);
+            }
+            if (_petStat.name == 'INT') {
+                /* 1 Int = 2 M.Atk and 30 Max MP */
+                window['MATK'].value += 2 * _Stat.percentage;
+                CalcularStat(window['MATK'], false);
+                window['MAXMP'].value += 30 * _Stat.percentage;
+                CalcularStat(window['MAXMP'], false);
+            }
+            if (_petStat.name == 'WIS') {
+                /* 1 Wis = 2 M.Def, 0.5 M.Acc, 0.5 M.Res and 4.1 MP Recov. */
+                window['MDEF'].value += 2 * _Stat.percentage;
+                CalcularStat(window['MDEF'], false);
+                window['MACC'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['MACC'], false);
+                window['MPREGEN'].value += 4.1 * _Stat.percentage;
+                CalcularStat(window['MPREGEN'], false);
+                window['MRESIST'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['MRESIST'], false);
+            }
+            if (_petStat.name == 'DEX') {
+                /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
+                window['PATK'].value += 2.2 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['ACCU'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['ACCU'], false);
+            }
+            if (_petStat.name == 'DEX') {
+                /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
+                window['PATK'].value += 2.2 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['ACCU'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['ACCU'], false);
+            }
+            if (_petStat.name == 'LUCK') {
+                /* 1 Luck = 0.2% Critical Ratio and Drop Rate. */
+                window['CRIT'].value += 0.2 * _Stat.percentage;
+                CalcularStat(window['CRIT'], false);
+            }
+
+        };
     };
 }
 
-function CalcularBossStats(_BossStat, pCalcular){
-     if (typeof _BossStat !== "undefined" && _BossStat !== null) {
-        
+function CalcularBossStats(_BossStat, pCalcular) {
+    if (typeof _BossStat !== "undefined" && _BossStat !== null) {
+
         var _Stat = window[_BossStat.name];
         if (typeof _Stat !== "undefined" && _Stat !== null) {
-                
-                var _extra = 0;
-            
-                if (pCalcular == true) {  
-                    
-                    var old_val = parseFloat(_Stat.value);
-                    var new_val = parseFloat(_BossStat.value);
-                    
-                    var old_per = parseFloat(_Stat.percentage); 
-                    var new_per = parseFloat(_BossStat.percentage); 
-                    
-                    _Stat.value = old_val + new_val;
-                    _Stat.percentage = old_per + new_per;                 
-                }
-                
-                //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-                var set_html = '';
-                if (parseFloat(_Stat.percentage) > 0) {  set_html = parseFloat(_Stat.percentage).toFixed(1) + '%'; }
 
-                if (_extra > 0) {
-                    set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
-                };
-                if (_Stat.value > 0) {
-                    set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
-                };
+            var _extra = 0;
 
-                //Mostar el bonus para la Stat en su Control correspondiente:
-                $('#text-' + _BossStat.name).html(set_html);
+            if (pCalcular == true) {
 
-                if (_BossStat.name == 'VIT') {
-                    /* 1 Vit = 1,6 P.Def and 33 Max HP */
-                    window['PDEF'].value += 1.6 * _Stat.percentage; CalcularStat(window['PDEF'], false);
-                    window['MAXHP'].value += 33 * _Stat.percentage; CalcularStat(window['MAXHP'], false);
-                }
-                if (_BossStat.name == 'STR') {
-                    /* 1 Str = 2,8 P.Atk, 10 Max.Weight */
-                    window['PATK'].value += 2.8 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['WEIGHT'].value += 10 * _Stat.percentage; CalcularStat(window['WEIGHT'], false);
-                }
-                if (_BossStat.name == 'AGI') {
-                    /* 1 Agi = 0.5 Evasion, 1.2 P.Atk (Ranged), 0.1 Atk.Spd */
-                    window['EVA'].value += 0.5 * _Stat.percentage; CalcularStat(window['EVA'], false);
-                    window['PATK'].value += 1.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['ATKSPD'].value += 0.1 * _Stat.percentage; CalcularStat(window['ATKSPD'], false);
-                }
-                if (_BossStat.name == 'INT') {
-                    /* 1 Int = 2 M.Atk and 30 Max MP */
-                    window['MATK'].value += 2 * _Stat.percentage; CalcularStat(window['MATK'], false);
-                    window['MAXMP'].value += 30 * _Stat.percentage; CalcularStat(window['MAXMP'], false);
-                }
-                if (_BossStat.name == 'WIS') {
-                    /* 1 Wis = 2 M.Def, 0.5 M.Acc, 0.5 M.Res and 4.1 MP Recov. */
-                    window['MDEF'].value += 2 * _Stat.percentage; CalcularStat(window['MDEF'], false);
-                    window['MACC'].value += 0.5 * _Stat.percentage; CalcularStat(window['MACC'], false);
-                    window['MPREGEN'].value += 4.1 * _Stat.percentage; CalcularStat(window['MPREGEN'], false);
-                    window['MRESIST'].value += 0.5 * _Stat.percentage; CalcularStat(window['MRESIST'], false);
-                }
-                if (_BossStat.name == 'DEX') {
-                    /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
-                    window['PATK'].value += 2.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['ACCU'].value += 0.5 * _Stat.percentage; CalcularStat(window['ACCU'], false);
-                }
-                if (_BossStat.name == 'DEX') {
-                    /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
-                    window['PATK'].value += 2.2 * _Stat.percentage; CalcularStat(window['PATK'], false);
-                    window['ACCU'].value += 0.5 * _Stat.percentage; CalcularStat(window['ACCU'], false);
-                }
-                if (_BossStat.name == 'LUCK') {
-                    /* 1 Luck = 0.2% Critical Ratio and Drop Rate. */
-                    window['CRIT'].value += 0.2 * _Stat.percentage; CalcularStat(window['CRIT'], false);
-                }                 
-                
+                var old_val = parseFloat(_Stat.value);
+                var new_val = parseFloat(_BossStat.value);
+
+                var old_per = parseFloat(_Stat.percentage);
+                var new_per = parseFloat(_BossStat.percentage);
+
+                _Stat.value = old_val + new_val;
+                _Stat.percentage = old_per + new_per;
+            }
+
+            //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
+            var set_html = '';
+            if (parseFloat(_Stat.percentage) > 0) {
+                set_html = parseFloat(_Stat.percentage).toFixed(1) + '%';
+            }
+
+            if (_extra > 0) {
+                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
             };
+            if (_Stat.value > 0) {
+                set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
+            };
+
+            //Mostar el bonus para la Stat en su Control correspondiente:
+            $('#text-' + _BossStat.name).html(set_html);
+
+            if (_BossStat.name == 'VIT') {
+                /* 1 Vit = 1,6 P.Def and 33 Max HP */
+                window['PDEF'].value += 1.6 * _Stat.percentage;
+                CalcularStat(window['PDEF'], false);
+                window['MAXHP'].value += 33 * _Stat.percentage;
+                CalcularStat(window['MAXHP'], false);
+            }
+            if (_BossStat.name == 'STR') {
+                /* 1 Str = 2,8 P.Atk, 10 Max.Weight */
+                window['PATK'].value += 2.8 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['WEIGHT'].value += 10 * _Stat.percentage;
+                CalcularStat(window['WEIGHT'], false);
+            }
+            if (_BossStat.name == 'AGI') {
+                /* 1 Agi = 0.5 Evasion, 1.2 P.Atk (Ranged), 0.1 Atk.Spd */
+                window['EVA'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['EVA'], false);
+                window['PATK'].value += 1.2 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['ATKSPD'].value += 0.1 * _Stat.percentage;
+                CalcularStat(window['ATKSPD'], false);
+            }
+            if (_BossStat.name == 'INT') {
+                /* 1 Int = 2 M.Atk and 30 Max MP */
+                window['MATK'].value += 2 * _Stat.percentage;
+                CalcularStat(window['MATK'], false);
+                window['MAXMP'].value += 30 * _Stat.percentage;
+                CalcularStat(window['MAXMP'], false);
+            }
+            if (_BossStat.name == 'WIS') {
+                /* 1 Wis = 2 M.Def, 0.5 M.Acc, 0.5 M.Res and 4.1 MP Recov. */
+                window['MDEF'].value += 2 * _Stat.percentage;
+                CalcularStat(window['MDEF'], false);
+                window['MACC'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['MACC'], false);
+                window['MPREGEN'].value += 4.1 * _Stat.percentage;
+                CalcularStat(window['MPREGEN'], false);
+                window['MRESIST'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['MRESIST'], false);
+            }
+            if (_BossStat.name == 'DEX') {
+                /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
+                window['PATK'].value += 2.2 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['ACCU'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['ACCU'], false);
+            }
+            if (_BossStat.name == 'DEX') {
+                /* 1 Dex = 2.2 P.Atk (Ranged), 0.5 Accuracy */
+                window['PATK'].value += 2.2 * _Stat.percentage;
+                CalcularStat(window['PATK'], false);
+                window['ACCU'].value += 0.5 * _Stat.percentage;
+                CalcularStat(window['ACCU'], false);
+            }
+            if (_BossStat.name == 'LUCK') {
+                /* 1 Luck = 0.2% Critical Ratio and Drop Rate. */
+                window['CRIT'].value += 0.2 * _Stat.percentage;
+                CalcularStat(window['CRIT'], false);
+            }
+
+        };
     };
 }
 
 /******* AQUI VAN OTRAS FUNCIONES COMPLEMENTARIAS ***************/
-function showPopUp() {
+function showPopUp(ShowBoss, CanChoose) {
+    _state = ShowBoss;
+    //console.log(CanChoose);
+    if (CanChoose == true){
+        $('#BeggersArentChoosers').show();
+    } else {
+        $('#BeggersArentChoosers').hide(); 
+    }
+    
+    if (ShowBoss == true) {
+        $('#grpPet').hide();
+        $('#grpBoss').show();
+
+        $('#flipPetBossGrps').prop( "checked", true ).flipswitch( "refresh" );
+    } else {
+        $('#grpPet').show();
+        $('#grpBoss').hide();
+
+        $('#flipPetBossGrps').prop( "checked", false ).flipswitch( "refresh" );
+    }
     $("#myPopup").popup("open", {
         positionTo: 'window',
         transition: "flip"
     });
     $('#cboPetChoose').focus();
 }
+
 function hidePopUp() {
     $("#myPopup").popup("close");
-    $("#contenido").show();
-}
-
-function showPopBossCard() {
-    $("#popBossCard").popup("open", {
-        positionTo: 'window',
-        transition: "flip"
-    });
-    $('#cboBossChoose').focus();
-}
-function hidePopBossCard() {
-    $("#popBossCard").popup("close");
     $("#contenido").show();
 }
 
@@ -601,19 +715,6 @@ function HideLoading() {
         $.mobile.loading('hide');
         clearInterval(interval);
     }, 1);
-}
-
-function FindMyPet(obj, key, val) {
-    var objects = [];
-    for (var i in obj) {
-        if (!obj.hasOwnProperty(i)) continue;
-        if (typeof obj[i] == 'object') {
-            objects = objects.concat(FindMyPet(obj[i], key, val));
-        } else if (i == key && obj[key] == val) {
-            objects.push(obj);
-        }
-    }
-    return objects;
 }
 
 function supports_html5_storage() {
