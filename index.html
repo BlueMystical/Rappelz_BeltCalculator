@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <title>Cutcsa - Nombre del Sitio</title>
+    <title>Rappelz - Belt Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Ing. Jhollman Chacon R. Cutcsa - 2019">
+    <meta name="author" content="BlueMystic - 2019">
     <meta name="copyright" content="BlueMystic">
     <meta name='description' content='Belt Stats Calculator for Rappelz'>
 
@@ -156,6 +156,28 @@
             margin:1px; padding:0.5em;
             font-size: small;
         }
+        
+        .custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
+            text-indent: -5.9em;
+        }
+        .custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
+            text-indent: 0.5em;
+        }
+        /* Custom widths are needed because the length of custom labels differs from
+           the length of the standard labels */
+        .custom-size-flipswitch.ui-flipswitch {
+            width: 8.875em;
+        }
+        .custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
+            padding-left: 7em;
+            width: 1.875em;
+        }
+        @media (min-width: 28em) {
+            // Repeated from rule .ui-flipswitch above
+            .ui-field-contain > label + .custom-size-flipswitch.ui-flipswitch {
+                width: 1.875em;
+            }
+        }
 
     </style>
 
@@ -204,8 +226,11 @@
 
         <!-- Ventana Flotante para Elejir un Pet -->
         <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
-            <div class="ui-field-contain">
-                <div style="vertical-align: middle;text-align: center;"><img src="img/ergo-proxy-circled.png" alt="login" height="60" style="vertical-align: middle" /></div>
+            
+            <div class="ui-field-contain" id='grpPet'>
+                <div style="vertical-align: middle;text-align: center;">
+                    <img src="img/ergo-proxy-circled.png" alt="login" height="60" style="vertical-align: middle" />
+                </div>
 
                 <label for="cboPetChoose">Pet:</label>
                 <select name="cboPetChoose" id="cboPetChoose">
@@ -222,30 +247,33 @@
                     <option value="5">Stage 5</option>
                 </select>
             </div>
-            <button type="submit" id="cmdSetPetInBelt" class="ui-btn-a ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
-            <label id="lblLogin" style="font-size: small">Choose a Pet.</label>
-        </div>
-
-         <!-- Ventana Flotante para Elejir una Boss Card -->
-        <div data-role="popup" id="popBossCard" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
-            <div class="ui-field-contain">
-                <div style="vertical-align: middle;text-align: center;"><img src="img/ergo-proxy-circled.png" alt="login" height="60" style="vertical-align: middle" /></div>
+            
+            <div class="ui-field-contain" id='grpBoss'>
+                <div style="vertical-align: middle;text-align: center;">
+                    <img src="img/ergo-proxy-circled.png" alt="login" height="60" style="vertical-align: middle" />
+                </div>
 
                 <label for="cboBossChoose">Boss Card:</label>
                 <select name="cboBossChoose" id="cboBossChoose">
                     <option></option>
                 </select>
             </div>
-            <button type="submit" id="cmdSetBossInBelt" class="ui-btn-a ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
-            <label id="lblLogin" style="font-size: small">Choose a Boss Card.</label>
-        </div>
 
+            <button type="submit" id="cmdSetPetInBelt"  data-inline="true" class="ui-btn-a ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
+            <div id="BeggersArentChoosers">
+                <input data-role="flipswitch" id="flipPetBossGrps" 
+                   data-on-text="Boss Card" 
+                   data-off-text="Pet Card" 
+                   data-wrapper-class="custom-size-flipswitch" type="checkbox" />
+            </div>
+        </div>
         
         <!-- Encabezado -->
         <div data-role="header" data-theme="b" data-position="fixed">
             <a href="#viewMain" data-rel="back" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-home">Back</a>
-            <h2 id='lblTituloP2'>Belt Calculator</h2>
-            <a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right" id="cmdIniciarSesion">Reset</a>
+            <h2 id='lblTituloP2'>Belt Calculator</h2>            
+            
+            <a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right  ui-btn-inline" data-inline="true" id="cmdIniciarSesion">Reset</a>
         </div><!-- /header -->
 
         <!-- Cuerpo -->
@@ -283,8 +311,8 @@
                             <label for="text-LUCK" style='color:gray; font-size:small;'>LUCK:</label>
                             <div id='text-LUCK' class='div-box'></div>  
                             
-                            <label for="text-XXX" style='color:gray; font-size:small;'> </label>
-                            <div id='text-XXX' class='div-box'></div> 
+                            <label for="checkYushivaBelt" style='color:gray; font-size:small;'>Yushiva Belt?:</label>
+                            <input type="checkbox" id="checkYushivaBelt"  data-role="flipswitch" data-on-text="True" data-off-text="False" data-mini="true">
                         </div>
                     </div>
                 </div>
@@ -368,7 +396,8 @@
 
             </div><!-- /grid-a -->
 
-            <textarea id="text-EXTRA" style="font-size: small"></textarea>
+            
+            <textarea id="text-EXTRA" style="font-size: small"></textarea>       
 
         </div><!-- /main -->
 
@@ -377,49 +406,49 @@
             <div class="row">
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_1a"><img id="BeltSlot_1" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_1a"><img id="BeltSlot_1" src="img/card_any.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_1b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_2a"><img id="BeltSlot_2" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_2a"><img id="BeltSlot_2" src="img/card_pet_0.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_2b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_3a"><img id="BeltSlot_3" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_3a"><img id="BeltSlot_3" src="img/card_pet_1.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_3b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_4a"><img id="BeltSlot_4" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_4a"><img id="BeltSlot_4" src="img/card_pet_2.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_4b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_5a"><img id="BeltSlot_5" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_5a"><img id="BeltSlot_5" src="img/card_any.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_5b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_6a"><img id="BeltSlot_6" src="img/pets/UnknownCard.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_6a"><img id="BeltSlot_6" src="img/card_any.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_6b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_7a"><img id="BeltSlot_7" src="img/pets/card_empty.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_7a"><img id="BeltSlot_7" src="img/card_boss.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_7b"></div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_8a"><img id="BeltSlot_8" src="img/pets/card_empty.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_8a"><img id="BeltSlot_8" src="img/card_boss.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_8b"></div>
                     </div>
                 </div>
