@@ -268,9 +268,29 @@
             </div>
         </div>
         
+        <div data-role="popup" id="popINFO" data-theme="a" class="ui-content">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <p><h3>Features:</h3></p>
+            <ul>
+                <li>Can Select Any Pet or Soul Pet.</li>
+                <li>Can Select Any Boss Card.</li>
+                <li>Some belt slots lets you choose only pets, some only boss cards, and some lets you select anything.</li>
+                <li>There is an option to switch between selecting a Pet or a Boss card (if allowed).</li>
+                <li>Red Numbers are the % in excess a certain stat has, so you can use that excess in some other stat.</li>
+                <li>Green Numbers show flat values granted by Boss cards or indirect stat bonus gained from other stats,<br>
+                 for example:   1 Str = 2,8 P.Atk and 10 Max.Weight. (flat values are not Percentages).</li>
+                <li>Yushiva Belt option removes the 1% bonus extra gained for having more than 1 of the same pet stat equiped.</li>
+                <li>Death Gladiator can be belted.</li>
+                <li>All cards are illustrated.</li>
+                <li>Responsive design, fully tested in Chrome, Firefox and Android Mobile devices.</li>
+            </ul>
+            <p>You can contact me anytime: <a href="https://rappelz.fandom.com/wiki/User:BlueMystical" target="_blank" title="Start">BlueMystical</a></p>
+            <p>Check out our <a href="https://rappelz.fandom.com/wiki/Rappelz_Wiki" target="_blank" title="Start">Rappelz Wiki</a> website!</p>
+        </div>
+    
         <!-- Encabezado -->
         <div data-role="header" data-theme="b" data-position="fixed">
-            <a href="#viewMain" data-rel="back" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-home">Back</a>
+            <a href="#popINFO" id="cmdInfo" data-rel="popup" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-info" data-transition="pop">Info</a>
             <h2 id='lblTituloP2'>Belt Calculator</h2>            
             
             <a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right  ui-btn-inline" data-inline="true" id="cmdIniciarSesion">Reset</a>
