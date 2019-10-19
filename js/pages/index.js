@@ -164,7 +164,11 @@ function Iniciar() {
         } else {
             SetBossCard();
         }
-    });
+    }); 
+    
+    $(document).on("click", "#cmdInfo", function (evt) {
+        console.log('info');
+    }); 
 
     $(document).on("click", "#BeltSlot_1", function (evt) {
         selected_slot = 'BeltSlot_1';
@@ -206,12 +210,12 @@ function Iniciar() {
 }
 
 function SetPetCard() {
-    var _pet = $('#cboPetChoose').val();
+    var _pet = $('#cboPetChoose').val().trim();
     var _SlotId = selected_slot.substring(selected_slot.length - 1, selected_slot.length);
 
     if (typeof _pet !== "undefined" && _pet !== null && _pet !== '') {
 
-        var _stage = $('#cboPetStage').val();
+        var _stage = $('#cboPetStage').val().trim();
 
         //1.Cambiar la Imagen de la Pet Seleccionada:     
         var img_name = 'img/pets/' + _pet + '.jpg';
@@ -219,7 +223,7 @@ function SetPetCard() {
 
         //2.Obtener los datos de la Pet:
         var _petData = jsonPet_abilities.filter(function (item) {
-            return item.pet_name === _pet;
+            return item.pet_name.trim() === _pet;
         });
         if (typeof _petData !== "undefined" && _petData !== null) {
             //console.log(_petData);
@@ -234,10 +238,10 @@ function SetPetCard() {
             _petData.forEach(function (_petInfo) {
                 //console.log(_petInfo);
                 var stat_value = parseFloat(_petInfo['s' + _stage]);
-                window[selected_slot].stats.push(new Stat(_petInfo.ability, stat_value, 0, 0, 0));
+                window[selected_slot].stats.push(new Stat(_petInfo.ability.trim(), stat_value, 0, 0, 0));
 
                 //4. Mostrar sobre la imagen del Pet sus Datos:
-                _petBonus += '<br>' + _petInfo.ability + ': ' + stat_value + '%';
+                _petBonus += '<br>' + _petInfo.ability.trim() + ': ' + stat_value + '%';
                 $('#' + selected_slot + 'b').html(_petBonus + '</p>');
             });
 
@@ -285,7 +289,8 @@ function SetPetCard() {
 }
 
 function SetBossCard() {
-    var _cardName = $('#cboBossChoose').val();
+    var _cardName = $('#cboBossChoose').val().trim();
+    
     if (typeof _cardName !== "undefined" && _cardName !== null && _cardName !== '') {
 
         //1.Cambiar la Imagen de la BossCard Seleccionada:     
@@ -294,7 +299,7 @@ function SetBossCard() {
 
         //2.Obtener los datos de la BossCard:
         var _BossData = jsonBossCardsData.filter(function (item) {
-            return item.short_name === _cardName;
+            return item.short_name.trim() === _cardName;
         });
 
         if (typeof _BossData !== "undefined" && _BossData !== null) {
@@ -315,10 +320,12 @@ function SetBossCard() {
                 var stat_perce = parseFloat(_CardInfo.percentage);
                 var stat_extra = parseFloat(_CardInfo.extra);
 
-                window[selected_slot].stats.push(new Stat(_CardInfo.ability, stat_value, stat_perce, stat_extra, 0));
+                window[selected_slot].stats.push(new Stat(_CardInfo.ability.trim(), stat_value, stat_perce, stat_extra, 0));
 
                 //4. Mostrar sobre la imagen del Pet sus Datos:
-                _petBonus += '<br>' + _CardInfo.ability + ': +' + stat_value;
+                if (stat_value == 0 && stat_perce !== 0) { stat_value = stat_perce + '%'; }
+                
+                _petBonus += '<br>' + _CardInfo.ability.trim() + ': +' + stat_value;
             });
 
             $('#' + selected_slot + 'b').html(_petBonus + '</p>');
@@ -434,7 +441,9 @@ function ProcesarBossCard(pBeltSlot) {
 
 function CalcularStat(_petStat, pCalcular) {
     if (typeof _petStat !== "undefined" && _petStat !== null) {
-        var _Stat = window[_petStat.name];
+        
+        var _Stat = window[_petStat.name.trim()];
+        
         if (typeof _Stat !== "undefined" && _Stat !== null) {
 
             if (pCalcular == true) {
@@ -569,10 +578,11 @@ function CalcularStat(_petStat, pCalcular) {
 function CalcularBossStats(_BossStat, pCalcular) {
     if (typeof _BossStat !== "undefined" && _BossStat !== null) {
 
-        var _Stat = window[_BossStat.name];
+        var _Stat = window[_BossStat.name.trim()];
         if (typeof _Stat !== "undefined" && _Stat !== null) {
 
             var _extra = 0;
+            //console.log(_Stat);
 
             if (pCalcular == true) {
 
@@ -581,21 +591,27 @@ function CalcularBossStats(_BossStat, pCalcular) {
 
                 var old_per = parseFloat(_Stat.percentage);
                 var new_per = parseFloat(_BossStat.percentage);
-
+                
+                _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
                 _Stat.percentage = old_per + new_per;
-            }
+                
 
-            //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-            var set_html = '';
+                if(_Stat.percentage > 30){
+                    _extra = _Stat.extra - _Stat.percentage;
+                }
+            }
+            
+            var set_html = '&nbsp;'; //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
+            
             if (parseFloat(_Stat.percentage) > 0) {
-                set_html = parseFloat(_Stat.percentage).toFixed(1) + '%';
+                set_html += parseFloat(_Stat.percentage).toFixed(1) + '%';
             }
 
             if (_extra > 0) {
                 set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
             };
-            if (_Stat.value > 0) {
+            if (parseFloat(_Stat.value) > 0) {
                 set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
             };
 
