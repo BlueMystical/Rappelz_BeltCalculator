@@ -383,6 +383,7 @@ function CalcularBeltStats() {
 
         if (typeof BeltSlot_1 !== "undefined" && BeltSlot_1 !== null) {
             ProcesarPet(BeltSlot_1);
+            ProcesarBossCard(BeltSlot_1);
         };
         if (typeof BeltSlot_2 !== "undefined" && BeltSlot_2 !== null) {
             ProcesarPet(BeltSlot_2);
@@ -395,9 +396,11 @@ function CalcularBeltStats() {
         };
         if (typeof BeltSlot_5 !== "undefined" && BeltSlot_5 !== null) {
             ProcesarPet(BeltSlot_5);
+            ProcesarBossCard(BeltSlot_5);
         };
         if (typeof BeltSlot_6 !== "undefined" && BeltSlot_6 !== null) {
             ProcesarPet(BeltSlot_6);
+            ProcesarBossCard(BeltSlot_6);
         };
         if (typeof BeltSlot_7 !== "undefined" && BeltSlot_7 !== null) {
             ProcesarBossCard(BeltSlot_7);
