@@ -257,10 +257,13 @@
                 <select name="cboBossChoose" id="cboBossChoose">
                     <option></option>
                 </select>
-            </div>
-
-            <button type="submit" id="cmdSetPetInBelt"  data-inline="true" class="ui-btn-a ui-shadow ui-btn ui-corner-all ui-mini">OK</button>
-            <div id="BeggersArentChoosers">
+            </div>  
+            
+            <!--<button type="submit" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</button>-->
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Cancel</a>
+            <a href="#" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</a>
+            
+            <div id="BeggersArentChoosers" class="ui-btn-inline">
                 <input data-role="flipswitch" id="flipPetBossGrps" 
                    data-on-text="Boss Card" 
                    data-off-text="Pet Card" 
@@ -291,7 +294,7 @@
         <!-- Encabezado -->
         <div data-role="header" data-theme="b" data-position="fixed">
             <a href="#popINFO" id="cmdInfo" data-rel="popup" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-info" data-transition="pop">Info</a>
-            <h2 id='lblTituloP2'>Belt Calculator</h2>            
+            <h2 id='lblTituloP2'>Rappelz Belt Calculator</h2>            
             
             <a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right  ui-btn-inline" data-inline="true" id="cmdIniciarSesion">Reset</a>
         </div><!-- /header -->
@@ -484,7 +487,6 @@
             //$( "body>[data-role='panel']" ).panel(); //<-Precarga el Panel MainMenu           
             Iniciar();		 
         });
-
     </script>
 
 </body>
