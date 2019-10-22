@@ -455,13 +455,16 @@ function CalcularStat(_petStat, pCalcular) {
                 var new_val = parseFloat(_petStat.value); //console.log('new_val:' + new_val);
                 var times = 0;
                 var _extra = 0;
+                var _Limit = 30;
 
                 _Stat.extra += new_val;
                 _Stat.setTimes++;
 
-                // Bono hasta 3 pets (la primera no cuenta):
+                //Yshiva Belt No tiene Bono ni limite:
                 var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
+                
                 if (_IsYushivaBelt == false){
+                    // Bono de 1% hasta 3 pets (la primera no cuenta):
                     if (_Stat.setTimes > 1) {
                         if (_Stat.setTimes < 4) {
                             times = _Stat.setTimes;
@@ -471,22 +474,25 @@ function CalcularStat(_petStat, pCalcular) {
                     } else {
                         times = 0;
                     };
-                } 
+                } else {
+                    _Limit = 33;
+                }
 
                 /*  +1% x cada pet que aporte la misma stat
                  *  Max % = 33%
-                 *  30% + 1% x Pet  */
+                 *  30% + 1% x Pet  
+                 *  Yushiva Belt No tiene Bono ni limite    */
                 var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
-                if (_setval > 30) {
+                if (_setval > _Limit) {
                     if (times > 1) {
                         if (_IsYushivaBelt == false) {
-                            _Stat.percentage = 30 + times;                            
+                            _Stat.percentage = _Limit + times;                            
                         } else {
-                            _Stat.percentage = 30;
+                            _Stat.percentage = _Limit;
                         }
                         _extra = _Stat.extra - _Stat.percentage;
                     } else {
-                        _Stat.percentage = 30;
+                        _Stat.percentage = _Limit;
                         _extra = _Stat.extra - _Stat.percentage;
                     }
                 } else {
