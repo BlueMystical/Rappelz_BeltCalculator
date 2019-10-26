@@ -167,7 +167,7 @@ function Iniciar() {
     }); 
     
     $(document).on("click", "#cmdInfo", function (evt) {
-        console.log('info');
+        //console.log('info');
     }); 
 
     $(document).on("click", "#BeltSlot_1", function (evt) {
@@ -425,7 +425,7 @@ function ProcesarPet(pBeltSlot) {
 
 function ProcesarBossCard(pBeltSlot) {
     if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
-
+        
         //Bonus Extra que la la BossCard:
         var _infoExtra = $('#text-EXTRA').val();
         if (typeof _infoExtra !== "undefined" && _infoExtra !== null && _infoExtra !== '') {
@@ -436,6 +436,7 @@ function ProcesarBossCard(pBeltSlot) {
         }
         $('#text-EXTRA').val(_infoExtra);
 
+        //console.log(pBeltSlot.stats);
         pBeltSlot.stats.forEach(function (_BossStat) {
             CalcularBossStats(_BossStat, true);
         });
@@ -516,7 +517,7 @@ function CalcularStat(_petStat, pCalcular) {
 
             //Mostar el bonus para la Stat en su Control correspondiente:
             $('#text-' + _petStat.name).html(set_html);
-            // console.log(_Stat);
+             console.log(set_html);
 
             //console.log(_petStat.name);
             if (_petStat.name == 'VIT') {
@@ -604,17 +605,19 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
                 _Stat.percentage = old_per + new_per;
-                
+
+               
 
                 if(_Stat.percentage > 30){
-                    _extra = _Stat.extra - _Stat.percentage;
+                    _extra = _Stat.extra - _Stat.percentage;                    
                 }
             }
             
             var set_html = '&nbsp;'; //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
             
             if (parseFloat(_Stat.percentage) > 0) {
-                set_html += parseFloat(_Stat.percentage).toFixed(1) + '%';
+                set_html += parseFloat(_Stat.percentage).toFixed(1) + '%'; 
+                //console.log(set_html);
             }
 
             if (_extra > 0) {
@@ -625,7 +628,10 @@ function CalcularBossStats(_BossStat, pCalcular) {
             };
 
             //Mostar el bonus para la Stat en su Control correspondiente:
+            //console.log(_BossStat.name + ': ' + set_html);
             $('#text-' + _BossStat.name).html(set_html);
+            
+            //CalcularStat(window[_BossStat.name], true);
 
             if (_BossStat.name == 'VIT') {
                 /* 1 Vit = 1,6 P.Def and 33 Max HP */
