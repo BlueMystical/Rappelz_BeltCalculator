@@ -89,6 +89,28 @@
             overflow: auto;
             -webkit-overflow-scrolling: touch;
         }
+        
+        .right-panel.ui-panel {
+            width: 22em;
+        }
+        .right-panel.ui-panel-closed {
+            width: 0;
+        }
+        .ui-panel-position-right.ui-panel-display-reveal {
+            left: 0;
+        }
+        .ui-panel-content-wrap-position-right.ui-panel-content-wrap-open,
+        .ui-panel-dismiss-position-right.ui-panel-dismiss-open {
+            left: 22em;
+            right: -22em;
+        }
+        .ui-panel-animate.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal {
+            left: 0;
+            right: 0;
+            -webkit-transform: translate3d(20em,0,0);
+            -moz-transform: translate3d(20em,0,0);
+            transform: translate3d(20em,0,0);
+        }
 
 
         .ui-grid-a.align-widgets {
@@ -291,12 +313,61 @@
             <p>Check out our <a href="https://rappelz.fandom.com/wiki/Rappelz_Wiki" target="_blank" title="Start">Rappelz Wiki</a> website!</p>
         </div>
     
+        <div data-role="panel" id="SearchPanel" data-swipe-close="true" data-position="right" data-display="overlay" data-dismissible="false">
+            <!-- panel content goes here -->
+            <div id="custom-border-radius" style="text-align: right;">
+                <a href="#Page2Header" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all ui-btn-inline" data-rel="close">Cerrar</a>
+            </div>
+            <label for="cboSearchStat">If you want to enhance your:</label>
+            <select name="cboSearchStat" id="cboSearchStat">
+                <option></option>
+                <option value="ACCU">ACCU</option>
+                <option value="AGI">AGI</option>
+                <option value="ATKSPD">ATKSPD</option>
+                <option value="BLOCK">BLOCK</option>
+                <option value="CAST">CASTSPD</option>
+                <option value="CRIT">CRIT</option>
+                <option value="CRITPOW">CRITPOW</option>
+                <option value="DEX">DEX</option>
+                <option value="EVA">EVA</option>
+                <option value="HPREGEN">HPREGEN</option>
+                <option value="INT">INT</option>
+                <option value="LUCK">LUCK</option>
+                <option value="MATK">MATK</option>
+                <option value="MACC">MACC</option>
+                <option value="MAXHP">MAXHP</option>
+                <option value="MAXMP">MAXMP</option>
+                <option value="MDEF">MDEF</option>
+                <option value="MIGNORE">MIGNORE</option>  
+                <option value="MPREGEN">MPREGEN</option>
+                <option value="MRESIST">MRESIST</option>
+                <option value="MPIERCE">MPIERCE</option>
+                <option value="PATK">PATK</option>
+                <option value="PDEF">PDEF</option>
+                <option value="PPIERCE">PPIERCE</option>
+                <option value="PIGNORE">PIGNORE</option>
+                <option value="STR">STR</option>
+                <option value="VIT">VIT</option>
+                <option value="WIS">WIS</option>
+                <option value="WEIGHT">WEIGHT</option>         
+            </select>
+            
+            <label for="listSearchPets">This pets/cards will help:</label>
+            <ul data-role="listview" data-inset="true" id="listSearchPets">
+            </ul>
+        </div><!-- /panel -->
+    
         <!-- Encabezado -->
-        <div data-role="header" data-theme="b" data-position="fixed">
+        <div data-role="header" id="Page2Header" data-theme="b" data-position="fixed">
             <a href="#popINFO" id="cmdInfo" data-rel="popup" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-info" data-transition="pop">Info</a>
             <h2 id='lblTituloP2'>Rappelz Belt Calculator</h2>            
             
-            <a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right  ui-btn-inline" data-inline="true" id="cmdIniciarSesion">Reset</a>
+            <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">  
+                <input type="button" data-icon="search" id="cmdSearchPets" data-theme="a" value="Search..">
+                <input type="button" data-icon="home" id="cmdBackHome" value="Reset">
+            </div>
+            
+            <!--<a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right  ui-btn-inline" data-inline="true" id="cmdIniciarSesion">Reset</a>-->
         </div><!-- /header -->
 
         <!-- Cuerpo -->
