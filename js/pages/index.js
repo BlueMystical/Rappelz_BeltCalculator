@@ -76,6 +76,7 @@ var fs = null;
 // https://craftpip.github.io/jquery-confirm
 
 function Iniciar() {
+    //Cargar Datos de los JSON
     try {
         $('#grpBoss').hide();
 
@@ -203,8 +204,20 @@ function Iniciar() {
         showPopUp(true, false);
     });
 
-    $(document).on("click", "#cmdIniciarSesion", function (evt) {
-        window.location.reload(); //<- Fuerza la recarga de la pagina.
+    $(document).on("click", "#cmdBackHome", function (evt) {
+        //window.location.reload(); //<- Fuerza la recarga de la pagina.
+        window.location = './';  
+    });
+    
+    $(document).on("click", "#cmdSearchPets", function (evt) {
+        //Abre el Panel Lateral para Buscar Pets:
+        $( "#SearchPanel" ).panel( "open" );
+    });
+    
+    $('#cboSearchStat').on('change', function() {
+        var mSeleccionado = $(this).val();
+        console.log(mSeleccionado);
+        SearchPetsCards(mSeleccionado);
     });
 
 }
@@ -517,7 +530,7 @@ function CalcularStat(_petStat, pCalcular) {
 
             //Mostar el bonus para la Stat en su Control correspondiente:
             $('#text-' + _petStat.name).html(set_html);
-             console.log(set_html);
+            //console.log(set_html);
 
             //console.log(_petStat.name);
             if (_petStat.name == 'VIT') {
@@ -604,21 +617,21 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 
                 _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
-                _Stat.percentage = old_per + new_per;
-
-               
+                _Stat.percentage = old_per + new_per;               
 
                 if(_Stat.percentage > 30){
                     _extra = _Stat.extra - _Stat.percentage;                    
                 }
+                
+                //TODO:  Agregar el Bonus x Yushiva Belt +35%
             }
             
             var set_html = '&nbsp;'; //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
             
-            if (parseFloat(_Stat.percentage) > 0) {
+            //if (parseFloat(_Stat.percentage) > 0) {
                 set_html += parseFloat(_Stat.percentage).toFixed(1) + '%'; 
                 //console.log(set_html);
-            }
+            //}
 
             if (_extra > 0) {
                 set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
@@ -696,6 +709,51 @@ function CalcularBossStats(_BossStat, pCalcular) {
 
         };
     };
+}
+
+function SearchPetsCards(_petStat){
+    //BUSCA LAS PETS Y BOSS QUE TENGAN EL ATRIBUTO INDICADO
+    var _petData = jsonPet_abilities.filter(function (item) {
+        return item.ability.trim() === _petStat;
+    });
+    //Buscar Tambien en las Boss Cards:
+    var _BossData = jsonBossCardsData.filter(function (item) {
+        return item.ability.trim() === _petStat;
+    });
+    console.log(_petData);
+    console.log(_BossData);
+    
+    var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
+    $("#listSearchPets").empty(); //<- Borra todos los elementos presentes en el ListView
+    
+    if (typeof _petData !== "undefined" && _petData !== null && _petData.length > 0) {
+        HTML += '<li data-role="list-divider">Pet Cards</li>';
+        //Por cada dato en el conjunto de datos:
+        _petData.forEach(function (Dato) {
+            //El dato particular se almacena en el atributo 'data-datos' de cada elelmento de la lista
+            HTML += "<li data-datos='" + JSON.stringify(Dato) + "'><a href='#'><img src='./img/pets/" + Dato.pet_name + ".jpg'>" +
+                "<h2>" + Dato.pet_name + "</h2><p>" + Dato.ability + ' ' + Dato.s5 + "% S5</p></a></li>";
+        });
+    }
+    
+    if (typeof _BossData !== "undefined" && _BossData !== null && _BossData.length > 0) {
+        //Por cada dato en el conjunto de datos:
+        HTML += '<li data-role="list-divider">Boss Cards</li>';
+        
+        _BossData.forEach(function (Dato) {
+            var hayValor = ""; if (Dato.value !== 0) { hayValor = ' +' + Dato.value; }
+            var hayPorciento = ""; if (Dato.percentage !== 0) { hayPorciento = ' ' + Dato.percentage + '%'; }
+            
+            //El dato particular se almacena en el atributo 'data-datos' de cada elelmento de la lista
+            HTML += "<li data-datos='" + JSON.stringify(Dato) + "'><a href='#'><img src='./img/boss_cards/" + Dato.short_name + ".png'>" +
+                "<h2>" + Dato.boss_name + "</h2><p>" + Dato.ability + hayValor + hayPorciento + "</p></a></li>";
+        });
+    }
+    
+    if (typeof HTML !== "undefined" && HTML !== null && HTML !== "") {
+        $("#listSearchPets").append( HTML ).listview( "refresh" ); //<- Agrega los nuevos elementos y actualiza el control
+        $("#listSearchPets").listview().trigger('create');
+    }
 }
 
 /******* AQUI VAN OTRAS FUNCIONES COMPLEMENTARIAS ***************/
