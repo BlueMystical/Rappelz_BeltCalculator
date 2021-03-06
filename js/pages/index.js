@@ -7,6 +7,8 @@ var jsonBossCardsData = null;
 var selected_slot = null;
 var selected_pets = null;
 
+var maxStatPercentage = 30;
+
 class BeltSlot {
     constructor(pet_name, stage, stats, info) {
         this.pet_name = pet_name;
@@ -157,6 +159,11 @@ function Iniciar() {
         var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
         CalcularBeltStats();
     });
+    $("#cboYushivaBelt").change(function () {   
+        var _Limit = $('#cboYushivaBelt').val(); 
+        $("#lblYushivaBelt").text('Stats Cap: ' + _Limit + '%');
+        CalcularBeltStats();
+    });
 
     $(document).on("click", "#cmdSetPetInBelt", function (evt) {
         //console.log(_state.toString());
@@ -215,6 +222,7 @@ function Iniciar() {
     });
     
     $('#cboSearchStat').on('change', function() {
+        //Busca la pet seleccionada:
         var mSeleccionado = $(this).val();
         console.log(mSeleccionado);
         SearchPetsCards(mSeleccionado);
@@ -517,13 +525,16 @@ function CalcularStat(_petStat, pCalcular) {
                 var new_val = parseFloat(_petStat.value); //console.log('new_val:' + new_val);
                 var times = 0;
                 var _extra = 0;
-                var _Limit = 30;
+                var _Limit = $('#cboYushivaBelt').val(); //<- 30 es el maximo sin Yushiva encantado
+                console.log(_Limit);
 
                 _Stat.extra += new_val;
                 _Stat.setTimes++;
 
                 //Yshiva Belt No tiene Bono ni limite:
-                var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
+                //var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');   
+                var _IsYushivaBelt = false;
+                if (_Limit > 30 ) { _IsYushivaBelt = true; }
                 
                 if (_IsYushivaBelt == false){
                     // Bono de 1% hasta 3 pets (la primera no cuenta):
@@ -537,14 +548,14 @@ function CalcularStat(_petStat, pCalcular) {
                         times = 0;
                     };
                 } else {
-                    _Limit = 33;
+                    //_Limit = 33;
                 }
 
                 /*  +1% x cada pet que aporte la misma stat
                  *  Max % = 33%
                  *  30% + 1% x Pet  
                  *  Yushiva Belt No tiene Bono ni limite    */
-                var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
+                var _setval = (old_val + new_val + times); console.log('_setval:' + _setval);
                 if (_setval > _Limit) {
                     if (times > 1) {
                         if (_IsYushivaBelt == false) {
@@ -570,7 +581,7 @@ function CalcularStat(_petStat, pCalcular) {
             }
 
             if (_extra > 0) {
-                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
+                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Wasted)</spam>';
             };
             if (_Stat.value > 0) {
                 set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
