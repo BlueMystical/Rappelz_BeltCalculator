@@ -263,6 +263,7 @@ function SetPetCard() {
             //5. Re-calcular Todas las Stats
             CalcularBeltStats();
         }
+    
     } else {
         var img_id = '';
         switch (_SlotId) {
@@ -294,9 +295,15 @@ function SetPetCard() {
             default:
                 break;
         }
-        console.log(img_id);
+        //console.log(img_id);      
+        //console.log(selected_slot);
+        
+        //Clear the Pet Slot;
+        window[selected_slot] = null;
         $('#' + selected_slot).attr("src", img_id);
         $('#' + selected_slot + 'b').html('');
+        
+        CalcularBeltStats();
     }
     hidePopUp()
 }
@@ -350,15 +357,20 @@ function SetBossCard() {
             CalcularBeltStats();
         }
     } else {
+        //Clear the Pet Slot;
+        window[selected_slot] = null;
         $('#' + selected_slot).attr("src", 'img/card_boss.jpg');
         $('#' + selected_slot + 'b').html('');
+        
+        //5. Re-calcular Todas las Stats
+        CalcularBeltStats();
     }
     hidePopUp();
 }
 
 function CalcularBeltStats() {
     try {
-
+        //1. Re-setear todas las stats a Cero:
         STR = new Stat('STR', 0, 0, 0, 0);
         VIT = new Stat('VIT', 0, 0, 0, 0);
         INT = new Stat('INT', 0, 0, 0, 0);
@@ -391,8 +403,44 @@ function CalcularBeltStats() {
         PIGNORE = new Stat('PIGNORE', 0, 0, 0, 0);
         MIGNORE = new Stat('MIGNORE', 0, 0, 0, 0);
 
+        //2. Limpiar todos los Cuadros:
         $('#text-EXTRA').val('');
-
+        
+        $('#text-VIT').empty();
+        $('#text-STR').empty();
+        $('#text-AGI').empty();
+        $('#text-DEX').empty();
+        
+        $('#text-INT').empty();
+        $('#text-WIS').empty();
+        $('#text-LUCK').empty();
+        
+        $('#text-MAXHP').empty();
+        $('#text-PATK').empty();
+        $('#text-PDEF').empty();
+        $('#text-ATKSPD').empty();
+        $('#text-ACCU').empty();
+        $('#text-CRIT').empty();
+        $('#text-BLOCK').empty();
+        $('#text-HPREGEN').empty();
+        $('#text-MRES').empty();
+        $('#text-PPIERCE').empty();
+        $('#text-PIGNORE').empty();
+        
+        $('#text-MAXMP').empty();
+        $('#text-MATK').empty();
+        $('#text-MDEF').empty();
+        $('#text-CAST').empty();
+        $('#text-MACC').empty();
+        $('#text-CRITPOW').empty();
+        $('#text-EVA').empty();
+        $('#text-MPREGEN').empty();
+        $('#text-WEIGHT').empty();
+        $('#text-MPIERCE').empty();
+        $('#text-MIGNORE').empty();
+        
+        //console.log('Cuadros limpios!');
+       console.log(BeltSlot_1);
 
         if (typeof BeltSlot_1 !== "undefined" && BeltSlot_1 !== null) {
             ProcesarPet(BeltSlot_1);
