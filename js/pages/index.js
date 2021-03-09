@@ -227,6 +227,14 @@ function Iniciar() {
         console.log(mSeleccionado);
         SearchPetsCards(mSeleccionado);
     });
+    
+       //- Evento al seleccionar un elemento del ListView:
+    $(document).on("click", "#listSearchPets li", function(evt)
+    {
+        var _Pet = $(this).data("datos"); //<- Obtiene los datos del elemento seleccionado
+        console.log(_Pet);        
+        ShowPetInfo(_Pet);   
+    });
 
 }
 
@@ -254,6 +262,7 @@ function SetPetCard() {
 
             //Texto Sobre la Imagen del Pet:
             var _petBonus = '<p style="font-size:8px">' + _pet + '<br>Stage: ' + _stage;
+            var _petTitle = _pet + ' (Stage ' + _stage + '): ';
 
             //3.Establecer las Abilidades que ofrece el Pet:               
             _petData.forEach(function (_petInfo) {
@@ -263,7 +272,12 @@ function SetPetCard() {
 
                 //4. Mostrar sobre la imagen del Pet sus Datos:
                 _petBonus += '<br>' + _petInfo.ability.trim() + ': ' + stat_value + '%';
+                _petTitle += ', ' + _petInfo.ability.trim() + ': ' + stat_value + '%';
+                
+                $('#' + selected_slot).attr("alt", _petTitle);
+                $('#' + selected_slot + 'a').attr("title", _petTitle);
                 $('#' + selected_slot + 'b').html(_petBonus + '</p>');
+                
             });
 
             console.log(window[selected_slot]);
@@ -340,6 +354,7 @@ function SetBossCard() {
 
             //Texto Sobre la Imagen del Pet:
             var _petBonus = '<p style="font-size:8px">' + _cardName;
+            var _petTitle = _cardName + ': ';
 
             //3.Establecer las Abilidades que ofrece el Pet:               
             _BossData.forEach(function (_CardInfo) {
@@ -354,8 +369,11 @@ function SetBossCard() {
                 if (stat_value == 0 && stat_perce !== 0) { stat_value = stat_perce + '%'; }
                 
                 _petBonus += '<br>' + _CardInfo.ability.trim() + ': +' + stat_value;
-            });
-
+                _petTitle += ', ' + _CardInfo.ability.trim() + ': +' + stat_value;
+            });            
+                
+            $('#' + selected_slot).attr("alt", _petTitle);
+            $('#' + selected_slot + 'a').attr("title", _petTitle);            
             $('#' + selected_slot + 'b').html(_petBonus + '</p>');
 
             //console.log(_petBonus);
@@ -526,7 +544,7 @@ function CalcularStat(_petStat, pCalcular) {
                 var times = 0;
                 var _extra = 0;
                 var _Limit = $('#cboYushivaBelt').val(); //<- 30 es el maximo sin Yushiva encantado
-                console.log(_Limit);
+                //console.log(_Limit);
 
                 _Stat.extra += new_val;
                 _Stat.setTimes++;
@@ -555,7 +573,7 @@ function CalcularStat(_petStat, pCalcular) {
                  *  Max % = 33%
                  *  30% + 1% x Pet  
                  *  Yushiva Belt No tiene Bono ni limite    */
-                var _setval = (old_val + new_val + times); console.log('_setval:' + _setval);
+                var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
                 if (_setval > _Limit) {
                     if (times > 1) {
                         if (_IsYushivaBelt == false) {
@@ -693,7 +711,7 @@ function CalcularBossStats(_BossStat, pCalcular) {
             //}
 
             if (_extra > 0) {
-                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Extra)</spam>';
+                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Wasted)</spam>';
             };
             if (parseFloat(_Stat.value) > 0) {
                 set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
@@ -813,6 +831,61 @@ function SearchPetsCards(_petStat){
         $("#listSearchPets").append( HTML ).listview( "refresh" ); //<- Agrega los nuevos elementos y actualiza el control
         $("#listSearchPets").listview().trigger('create');
     }
+}
+
+function ShowPetInfo(_Pet){
+    //BUSCA LOS DATOS DE LA PET INDICADA
+    if (typeof _Pet !== "undefined" && _Pet !== null) {
+        
+        
+        var pDatos = jsonPet_abilities.filter(function (item) {
+            return item.pet_name.trim() === _Pet.pet_name;
+        });
+        console.log(pDatos);
+        if (typeof pDatos !== "undefined" && pDatos !== null && pDatos.length > 0) {
+           
+            //Carga la Imagen de la Pet:
+            var img_name = 'img/pets/' + _Pet.pet_name + '.jpg';
+            $('#popPetInfo_Imagen').attr("src", img_name);
+            $('#popPetInfo_Title').html("<h2>" + _Pet.pet_name + " (s0)</h2>");
+            //console.log(img_name);
+            
+           //Carga los datos en un ListView
+           try {
+              if (pDatos != null) {
+                 var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
+                 $("#popPetInfo_List").empty(); //<- Borra todos los elementos presentes en el ListView
+                 pDatos.forEach(function (Dato) {
+                    HTML += "<li>" + Dato.ability + ": " + Dato.s0 + "%</li>";
+                 });
+
+                 $("#popPetInfo_List").append( HTML ).listview( "refresh" ); //<- Agrega los nuevos elementos y actualiza el control
+                 $("#popPetInfo_List").listview().trigger('create');
+              }
+           } catch(e) {
+             alert(e.stack);	
+           }
+        }
+        else {
+            console.log('Es una Boss Card!');
+            //BUSCAR EN LAS BOSS CARDS:
+            pDatos = jsonBossCardsData.filter(function (item) {
+                return item.short_name.trim() === _Pet.short_name;
+            });
+            console.log(pDatos);
+            if (typeof pDatos !== "undefined" && pDatos !== null && pDatos.length > 0) {
+               //Carga la Imagen de la Pet:
+                var img_name = 'img/boss_cards/' + _Pet.short_name + '.png';
+                $('#popPetInfo_Imagen').attr("src", img_name);
+                $('#popPetInfo_Title').html("<h2>" + _Pet.boss_name + " (s0)</h2>");
+                console.log(img_name);
+                
+                //Carga los datos en un ListView:
+            }
+        }
+    }
+    
+    $( "#popPetInfo" ).popup( "open", { positionTo: 'window', transition: "flip" } );
 }
 
 /******* AQUI VAN OTRAS FUNCIONES COMPLEMENTARIAS ***************/
