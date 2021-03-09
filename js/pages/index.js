@@ -159,8 +159,8 @@ function Iniciar() {
         var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
         CalcularBeltStats();
     });
-    $("#cboYushivaBelt").change(function () {   
-        var _Limit = $('#cboYushivaBelt').val(); 
+    $("#cboYushivaBelt").change(function () {
+        var _Limit = $('#cboYushivaBelt').val();
         $("#lblYushivaBelt").text('Stats Cap: ' + _Limit + '%');
         CalcularBeltStats();
     });
@@ -172,11 +172,11 @@ function Iniciar() {
         } else {
             SetBossCard();
         }
-    }); 
-    
+    });
+
     $(document).on("click", "#cmdInfo", function (evt) {
         //console.log('info');
-    }); 
+    });
 
     $(document).on("click", "#BeltSlot_1", function (evt) {
         selected_slot = 'BeltSlot_1';
@@ -213,27 +213,26 @@ function Iniciar() {
 
     $(document).on("click", "#cmdBackHome", function (evt) {
         //window.location.reload(); //<- Fuerza la recarga de la pagina.
-        window.location = './';  
+        window.location = './';
     });
-    
+
     $(document).on("click", "#cmdSearchPets", function (evt) {
         //Abre el Panel Lateral para Buscar Pets:
-        $( "#SearchPanel" ).panel( "open" );
+        $("#SearchPanel").panel("open");
     });
-    
-    $('#cboSearchStat').on('change', function() {
+
+    $('#cboSearchStat').on('change', function () {
         //Busca la pet seleccionada:
         var mSeleccionado = $(this).val();
         console.log(mSeleccionado);
         SearchPetsCards(mSeleccionado);
     });
-    
-       //- Evento al seleccionar un elemento del ListView:
-    $(document).on("click", "#listSearchPets li", function(evt)
-    {
+
+    //- Evento al seleccionar un elemento del ListView:
+    $(document).on("click", "#listSearchPets li", function (evt) {
         var _Pet = $(this).data("datos"); //<- Obtiene los datos del elemento seleccionado
-        console.log(_Pet);        
-        ShowPetInfo(_Pet);   
+        console.log(_Pet);
+        ShowPetInfo(_Pet);
     });
 
 }
@@ -273,11 +272,11 @@ function SetPetCard() {
                 //4. Mostrar sobre la imagen del Pet sus Datos:
                 _petBonus += '<br>' + _petInfo.ability.trim() + ': ' + stat_value + '%';
                 _petTitle += ', ' + _petInfo.ability.trim() + ': ' + stat_value + '%';
-                
+
                 $('#' + selected_slot).attr("alt", _petTitle);
                 $('#' + selected_slot + 'a').attr("title", _petTitle);
                 $('#' + selected_slot + 'b').html(_petBonus + '</p>');
-                
+
             });
 
             console.log(window[selected_slot]);
@@ -285,7 +284,7 @@ function SetPetCard() {
             //5. Re-calcular Todas las Stats
             CalcularBeltStats();
         }
-    
+
     } else {
         var img_id = '';
         switch (_SlotId) {
@@ -319,12 +318,12 @@ function SetPetCard() {
         }
         //console.log(img_id);      
         //console.log(selected_slot);
-        
+
         //Clear the Pet Slot;
         window[selected_slot] = null;
         $('#' + selected_slot).attr("src", img_id);
         $('#' + selected_slot + 'b').html('');
-        
+
         CalcularBeltStats();
     }
     hidePopUp()
@@ -332,7 +331,7 @@ function SetPetCard() {
 
 function SetBossCard() {
     var _cardName = $('#cboBossChoose').val().trim();
-    
+
     if (typeof _cardName !== "undefined" && _cardName !== null && _cardName !== '') {
 
         //1.Cambiar la Imagen de la BossCard Seleccionada:     
@@ -366,14 +365,16 @@ function SetBossCard() {
                 window[selected_slot].stats.push(new Stat(_CardInfo.ability.trim(), stat_value, stat_perce, stat_extra, 0));
 
                 //4. Mostrar sobre la imagen del Pet sus Datos:
-                if (stat_value == 0 && stat_perce !== 0) { stat_value = stat_perce + '%'; }
-                
+                if (stat_value == 0 && stat_perce !== 0) {
+                    stat_value = stat_perce + '%';
+                }
+
                 _petBonus += '<br>' + _CardInfo.ability.trim() + ': +' + stat_value;
                 _petTitle += ', ' + _CardInfo.ability.trim() + ': +' + stat_value;
-            });            
-                
+            });
+
             $('#' + selected_slot).attr("alt", _petTitle);
-            $('#' + selected_slot + 'a').attr("title", _petTitle);            
+            $('#' + selected_slot + 'a').attr("title", _petTitle);
             $('#' + selected_slot + 'b').html(_petBonus + '</p>');
 
             //console.log(_petBonus);
@@ -387,7 +388,7 @@ function SetBossCard() {
         window[selected_slot] = null;
         $('#' + selected_slot).attr("src", 'img/card_boss.jpg');
         $('#' + selected_slot + 'b').html('');
-        
+
         //5. Re-calcular Todas las Stats
         CalcularBeltStats();
     }
@@ -431,16 +432,16 @@ function CalcularBeltStats() {
 
         //2. Limpiar todos los Cuadros:
         $('#text-EXTRA').val('');
-        
+
         $('#text-VIT').empty();
         $('#text-STR').empty();
         $('#text-AGI').empty();
         $('#text-DEX').empty();
-        
+
         $('#text-INT').empty();
         $('#text-WIS').empty();
         $('#text-LUCK').empty();
-        
+
         $('#text-MAXHP').empty();
         $('#text-PATK').empty();
         $('#text-PDEF').empty();
@@ -452,7 +453,7 @@ function CalcularBeltStats() {
         $('#text-MRES').empty();
         $('#text-PPIERCE').empty();
         $('#text-PIGNORE').empty();
-        
+
         $('#text-MAXMP').empty();
         $('#text-MATK').empty();
         $('#text-MDEF').empty();
@@ -464,9 +465,9 @@ function CalcularBeltStats() {
         $('#text-WEIGHT').empty();
         $('#text-MPIERCE').empty();
         $('#text-MIGNORE').empty();
-        
+
         //console.log('Cuadros limpios!');
-       console.log(BeltSlot_1);
+        console.log(BeltSlot_1);
 
         if (typeof BeltSlot_1 !== "undefined" && BeltSlot_1 !== null) {
             ProcesarPet(BeltSlot_1);
@@ -512,7 +513,7 @@ function ProcesarPet(pBeltSlot) {
 
 function ProcesarBossCard(pBeltSlot) {
     if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
-        
+
         //Bonus Extra que la la BossCard:
         var _infoExtra = $('#text-EXTRA').val();
         if (typeof _infoExtra !== "undefined" && _infoExtra !== null && _infoExtra !== '') {
@@ -532,9 +533,9 @@ function ProcesarBossCard(pBeltSlot) {
 
 function CalcularStat(_petStat, pCalcular) {
     if (typeof _petStat !== "undefined" && _petStat !== null) {
-        
+
         var _Stat = window[_petStat.name.trim()];
-        
+
         if (typeof _Stat !== "undefined" && _Stat !== null) {
 
             if (pCalcular == true) {
@@ -552,9 +553,11 @@ function CalcularStat(_petStat, pCalcular) {
                 //Yshiva Belt No tiene Bono ni limite:
                 //var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');   
                 var _IsYushivaBelt = false;
-                if (_Limit > 30 ) { _IsYushivaBelt = true; }
-                
-                if (_IsYushivaBelt == false){
+                if (_Limit > 30) {
+                    _IsYushivaBelt = true;
+                }
+
+                if (_IsYushivaBelt == false) {
                     // Bono de 1% hasta 3 pets (la primera no cuenta):
                     if (_Stat.setTimes > 1) {
                         if (_Stat.setTimes < 4) {
@@ -577,7 +580,7 @@ function CalcularStat(_petStat, pCalcular) {
                 if (_setval > _Limit) {
                     if (times > 1) {
                         if (_IsYushivaBelt == false) {
-                            _Stat.percentage = _Limit + times;                            
+                            _Stat.percentage = _Limit + times;
                         } else {
                             _Stat.percentage = _Limit;
                         }
@@ -691,23 +694,23 @@ function CalcularBossStats(_BossStat, pCalcular) {
 
                 var old_per = parseFloat(_Stat.percentage);
                 var new_per = parseFloat(_BossStat.percentage);
-                
+
                 _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
-                _Stat.percentage = old_per + new_per;               
+                _Stat.percentage = old_per + new_per;
 
-                if(_Stat.percentage > 30){
-                    _extra = _Stat.extra - _Stat.percentage;                    
+                if (_Stat.percentage > 30) {
+                    _extra = _Stat.extra - _Stat.percentage;
                 }
-                
+
                 //TODO:  Agregar el Bonus x Yushiva Belt +35%
             }
-            
+
             var set_html = '&nbsp;'; //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-            
+
             //if (parseFloat(_Stat.percentage) > 0) {
-                set_html += parseFloat(_Stat.percentage).toFixed(1) + '%'; 
-                //console.log(set_html);
+            set_html += parseFloat(_Stat.percentage).toFixed(1) + '%';
+            //console.log(set_html);
             //}
 
             if (_extra > 0) {
@@ -720,7 +723,7 @@ function CalcularBossStats(_BossStat, pCalcular) {
             //Mostar el bonus para la Stat en su Control correspondiente:
             //console.log(_BossStat.name + ': ' + set_html);
             $('#text-' + _BossStat.name).html(set_html);
-            
+
             //CalcularStat(window[_BossStat.name], true);
 
             if (_BossStat.name == 'VIT') {
@@ -788,7 +791,7 @@ function CalcularBossStats(_BossStat, pCalcular) {
     };
 }
 
-function SearchPetsCards(_petStat){
+function SearchPetsCards(_petStat) {
     //BUSCA LAS PETS Y BOSS QUE TENGAN EL ATRIBUTO INDICADO
     var _petData = jsonPet_abilities.filter(function (item) {
         return item.ability.trim() === _petStat;
@@ -799,10 +802,10 @@ function SearchPetsCards(_petStat){
     });
     console.log(_petData);
     console.log(_BossData);
-    
+
     var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
     $("#listSearchPets").empty(); //<- Borra todos los elementos presentes en el ListView
-    
+
     if (typeof _petData !== "undefined" && _petData !== null && _petData.length > 0) {
         HTML += '<li data-role="list-divider">Pet Cards</li>';
         //Por cada dato en el conjunto de datos:
@@ -812,102 +815,140 @@ function SearchPetsCards(_petStat){
                 "<h2>" + Dato.pet_name + "</h2><p>" + Dato.ability + ' ' + Dato.s5 + "% S5</p></a></li>";
         });
     }
-    
+
     if (typeof _BossData !== "undefined" && _BossData !== null && _BossData.length > 0) {
         //Por cada dato en el conjunto de datos:
         HTML += '<li data-role="list-divider">Boss Cards</li>';
-        
+
         _BossData.forEach(function (Dato) {
-            var hayValor = ""; if (Dato.value !== 0) { hayValor = ' +' + Dato.value; }
-            var hayPorciento = ""; if (Dato.percentage !== 0) { hayPorciento = ' ' + Dato.percentage + '%'; }
-            
+            var hayValor = "";
+            if (Dato.value !== 0) {
+                hayValor = ' +' + Dato.value;
+            }
+            var hayPorciento = "";
+            if (Dato.percentage !== 0) {
+                hayPorciento = ' ' + Dato.percentage + '%';
+            }
+
             //El dato particular se almacena en el atributo 'data-datos' de cada elelmento de la lista
             HTML += "<li data-datos='" + JSON.stringify(Dato) + "'><a href='#'><img src='./img/boss_cards/" + Dato.short_name + ".png'>" +
                 "<h2>" + Dato.boss_name + "</h2><p>" + Dato.ability + hayValor + hayPorciento + "</p></a></li>";
         });
     }
-    
+
     if (typeof HTML !== "undefined" && HTML !== null && HTML !== "") {
-        $("#listSearchPets").append( HTML ).listview( "refresh" ); //<- Agrega los nuevos elementos y actualiza el control
+        $("#listSearchPets").append(HTML).listview("refresh"); //<- Agrega los nuevos elementos y actualiza el control
         $("#listSearchPets").listview().trigger('create');
     }
 }
 
-function ShowPetInfo(_Pet){
+function ShowPetInfo(_Pet) {
     //BUSCA LOS DATOS DE LA PET INDICADA
     if (typeof _Pet !== "undefined" && _Pet !== null) {
-        
-        
+
+
         var pDatos = jsonPet_abilities.filter(function (item) {
             return item.pet_name.trim() === _Pet.pet_name;
         });
-        console.log(pDatos);
+        //console.log(pDatos);
         if (typeof pDatos !== "undefined" && pDatos !== null && pDatos.length > 0) {
-           
+
             //Carga la Imagen de la Pet:
             var img_name = 'img/pets/' + _Pet.pet_name + '.jpg';
             $('#popPetInfo_Imagen').attr("src", img_name);
             $('#popPetInfo_Title').html("<h2>" + _Pet.pet_name + " (s0)</h2>");
             //console.log(img_name);
-            
-           //Carga los datos en un ListView
-           try {
-              if (pDatos != null) {
-                 var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
-                 $("#popPetInfo_List").empty(); //<- Borra todos los elementos presentes en el ListView
-                 pDatos.forEach(function (Dato) {
-                    HTML += "<li>" + Dato.ability + ": " + Dato.s0 + "%</li>";
-                 });
 
-                 $("#popPetInfo_List").append( HTML ).listview( "refresh" ); //<- Agrega los nuevos elementos y actualiza el control
-                 $("#popPetInfo_List").listview().trigger('create');
-              }
-           } catch(e) {
-             alert(e.stack);	
-           }
-        }
-        else {
-            console.log('Es una Boss Card!');
+            //Carga los datos en un ListView
+            try {
+                if (pDatos != null) {
+                    var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
+                    $("#popPetInfo_List").empty(); //<- Borra todos los elementos presentes en el ListView
+                    pDatos.forEach(function (Dato) {
+                        HTML += "<li>" + Dato.ability + ": " + Dato.s0 + "%</li>";
+                    });
+
+                    $("#popPetInfo_List").append(HTML).listview("refresh"); //<- Agrega los nuevos elementos y actualiza el control
+                    $("#popPetInfo_List").listview().trigger('create');
+                }
+            } catch (e) {
+                alert(e.stack);
+            }
+        } else {
+            console.log('Es una Boss Card!' + _Pet.short_name);
+            console.log(_Pet);
+
             //BUSCAR EN LAS BOSS CARDS:
             pDatos = jsonBossCardsData.filter(function (item) {
                 return item.short_name.trim() === _Pet.short_name;
             });
             console.log(pDatos);
             if (typeof pDatos !== "undefined" && pDatos !== null && pDatos.length > 0) {
-               //Carga la Imagen de la Pet:
+                //Carga la Imagen de la Pet:
                 var img_name = 'img/boss_cards/' + _Pet.short_name + '.png';
                 $('#popPetInfo_Imagen').attr("src", img_name);
-                $('#popPetInfo_Title').html("<h2>" + _Pet.boss_name + " (s0)</h2>");
-                console.log(img_name);
-                
-                //Carga los datos en un ListView:
+                $('#popPetInfo_Title').html("<h2>" + _Pet.boss_name + "</h2>");
+                //console.log(img_name);
+
+                //Carga los datos en un ListView
+                try {
+                    if (pDatos != null) {
+                        var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
+                        $("#popPetInfo_List").empty(); //<- Borra todos los elementos presentes en el ListView
+
+                        pDatos.forEach(function (_CardInfo) {
+                            var stat_value = parseFloat(_CardInfo.value);
+                            var stat_perce = parseFloat(_CardInfo.percentage);
+                            var stat_extra = _CardInfo.extra;
+
+                            if (stat_value == 0 && stat_perce !== 0) {
+                                stat_value = stat_perce + '%';
+                            }
+
+                            HTML += "<li>" + _CardInfo.ability + ": +" + stat_value + "</li>";
+
+                            //console.log(stat_extra);
+                            if (typeof stat_extra !== "undefined" && stat_extra !== null && stat_extra !== "") {
+                                HTML += "<li>" + stat_extra + "</li>";
+                            }
+                        });
+
+                        $("#popPetInfo_List").append(HTML).listview("refresh"); //<- Agrega los nuevos elementos y actualiza el control
+                        $("#popPetInfo_List").listview().trigger('create');
+                    }
+                } catch (e) {
+                    alert(e.stack);
+                }
             }
         }
     }
-    
-    $( "#popPetInfo" ).popup( "open", { positionTo: 'window', transition: "flip" } );
+
+    $("#popPetInfo").popup("open", {
+        positionTo: 'window',
+        transition: "flip"
+    });
 }
 
 /******* AQUI VAN OTRAS FUNCIONES COMPLEMENTARIAS ***************/
 function showPopUp(ShowBoss, CanChoose) {
     _state = ShowBoss;
     //console.log(CanChoose);
-    if (CanChoose == true){
+    if (CanChoose == true) {
         $('#BeggersArentChoosers').show();
     } else {
-        $('#BeggersArentChoosers').hide(); 
+        $('#BeggersArentChoosers').hide();
     }
-    
+
     if (ShowBoss == true) {
         $('#grpPet').hide();
         $('#grpBoss').show();
 
-        $('#flipPetBossGrps').prop( "checked", true ).flipswitch( "refresh" );
+        $('#flipPetBossGrps').prop("checked", true).flipswitch("refresh");
     } else {
         $('#grpPet').show();
         $('#grpBoss').hide();
 
-        $('#flipPetBossGrps').prop( "checked", false ).flipswitch( "refresh" );
+        $('#flipPetBossGrps').prop("checked", false).flipswitch("refresh");
     }
     $("#myPopup").popup("open", {
         positionTo: 'window',
