@@ -293,6 +293,28 @@
             </div>
         </div>
         
+        <div data-role="popup" id="popPetInfo" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
+            <label id="popPetInfo_Title"></label>
+            <fieldset class="ui-grid-a" data-theme="b">
+                <div class="ui-block-a">
+                        <img id="popPetInfo_Imagen" src="" alt="Pet Image" style="width:70%" />
+                </div>
+                <div class="ui-block-b">
+                    
+                    <ul data-role="listview" id="popPetInfo_List">
+                        <li>INT: 11%</li>
+                        <li>WIS: 11%</li>
+                        <li>STR: 24%</li>
+                        <li>PATK: 24%</li>
+                        <li>MATK: 15%</li>
+                    </ul>
+                </div>
+            </fieldset>
+            
+            <!--<button type="submit" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</button>-->
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Close</a>
+        </div>        
+        
         <div data-role="popup" id="popINFO" data-theme="a" class="ui-content">
             <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
             <p><h3>Features:</h3></p>
@@ -500,7 +522,7 @@
             <div class="row">
                 <div class="column">
                     <div class="container">
-                        <a href="#" id="BeltSlot_1a"><img id="BeltSlot_1" src="img/card_any.jpg" alt="Belt Slot 1" style="width:100%" /></a>
+                        <a href="#" id="BeltSlot_1a" title="Something"><img id="BeltSlot_1" src="img/card_any.jpg" alt="Belt Slot 1" style="width:100%" /></a>
                         <div class="bottom-right" id="BeltSlot_1b"></div>
                     </div>
                 </div>
@@ -564,7 +586,7 @@
 
     </div><!-- /page -->
 
-    <script type="application/javascript" src="js/pages/index.js"></script>
+    <script type="application/javascript" src="js/pages/index.js?v=1"></script>
     <script type="application/javascript">
         //Evento al cargar la pagina
         $(document).on("pagecreate", "#viewMain", function() {
