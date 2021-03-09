@@ -221,7 +221,7 @@
       "ability":"-",
       "value":0.0,
       "percentage":0.0,
-      "extra":"+3 Breeder's Synergy, +5 Creature Mastery"
+      "extra":"+3 Breeders Synergy, +5 Creature Mastery"
    },
    {
       "short_name":"DOMINATUS",
@@ -305,7 +305,7 @@
    },
    {
       "short_name":"HECTOR_P",
-      "boss_name":"Grand Master Hector's Card Of Courage ",
+      "boss_name":"Grand Master Hector Card Of Courage ",
       "ability":"PATK",
       "value":0.0,
       "percentage":15.0,
@@ -313,7 +313,7 @@
    },
    {
       "short_name":"HECTOR_M",
-      "boss_name":"Grand Master Hector's Card Of Knowledge ",
+      "boss_name":"Grand Master Hectors Card Of Knowledge ",
       "ability":"MATK",
       "value":0.0,
       "percentage":15.0,
