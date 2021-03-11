@@ -1,185 +1,246 @@
 [
    {
-      "pet_name":"Angel"
+      "pet_name":"Angel",
+      "tier":"Rare"
    },
    {
-      "pet_name":"Baphomet"
+      "pet_name":"Baphomet",
+      "tier":"Unique"
    },
    {
-      "pet_name":"BlightOgre"
-   },
-    {
-      "pet_name":"BloodthirstySlaughterer"
+      "pet_name":"BlightOgre",
+      "tier":"Unique"
    },
    {
-      "pet_name":"BluePixie"
+      "pet_name":"BloodthirstySlaughterer",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Cerberus"
-   },
-    {
-      "pet_name":"CrystalSpider"
-   },
-    {
-      "pet_name":"CrystalGolem"
+      "pet_name":"BluePixie",
+      "tier":"Normal"
    },
    {
-      "pet_name":"DeathGladiator"
+      "pet_name":"Cerberus",
+      "tier":"Special"
    },
    {
-      "pet_name":"DeathTyrant"
+      "pet_name":"CrystalSpider",
+      "tier":"Special"
    },
    {
-      "pet_name":"Drillbot"
-   },
-    {
-      "pet_name":"EtherealPixie"
+      "pet_name":"CrystalGolem",
+      "tier":"Unique"
    },
    {
-      "pet_name":"ForestPixie"
+      "pet_name":"DeathGladiator",
+      "tier":"Epic"
    },
    {
-      "pet_name":"Genie"
+      "pet_name":"DeathTyrant",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Gnoll"
-   },
-    {
-      "pet_name":"GrandmasterHector"
+      "pet_name":"Drillbot",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Harpy"
+      "pet_name":"EtherealPixie",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Hawkman"
+      "pet_name":"ForestPixie",
+      "tier":"Normal"
    },
    {
-      "pet_name":"IceMaiden"
+      "pet_name":"Genie",
+      "tier":"Special"
    },
    {
-      "pet_name":"Ifrit"
+      "pet_name":"Gnoll",
+      "tier":"Rare"
    },
    {
-      "pet_name":"Kentauros"
+      "pet_name":"GrandmasterHector",
+      "tier":"Epic"
    },
    {
-      "pet_name":"Lydian"
+      "pet_name":"Harpy",
+      "tier":"Basic"
    },
    {
-      "pet_name":"Minotaurus"
+      "pet_name":"Hawkman",
+      "tier":"Basic"
    },
    {
-      "pet_name":"MysticKoala"
+      "pet_name":"IceMaiden",
+      "tier":"Rare"
    },
    {
-      "pet_name":"Naga"
+      "pet_name":"Ifrit",
+      "tier":"Special"
    },
    {
-      "pet_name":"Nightmare"
+      "pet_name":"Kentauros",
+      "tier":"Rare"
    },
    {
-      "pet_name":"Octopus"
+      "pet_name":"Lydian",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Orc"
+      "pet_name":"Minotaurus",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Pantera"
+      "pet_name":"MysticKoala",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Poultry"
+      "pet_name":"Naga",
+      "tier":"Rare"
    },
    {
-      "pet_name":"RedPixie"
+      "pet_name":"Nightmare",
+      "tier":"Basic"
    },
    {
-      "pet_name":"Salamander"
+      "pet_name":"Octopus",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Siren"
+      "pet_name":"Orc",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Skeleton"
+      "pet_name":"Pantera",
+      "tier":"Normal"
    },
    {
-      "pet_name":"SnowMan"
+      "pet_name":"Poultry",
+      "tier":"Normal"
    },
    {
-      "pet_name":"StoneGolem"
+      "pet_name":"RedPixie",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Tortus"
+      "pet_name":"Salamander",
+      "tier":"Basic"
    },
    {
-      "pet_name":"Undine"
+      "pet_name":"Siren",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Unicorn"
+      "pet_name":"Skeleton",
+      "tier":"Normal"
    },
    {
-      "pet_name":"WhiteDragon"
+      "pet_name":"SnowMan",
+      "tier":"Unique"
    },
    {
-      "pet_name":"WindPixie"
+      "pet_name":"StoneGolem",
+      "tier":"Special"
    },
    {
-      "pet_name":"Wolf"
+      "pet_name":"Tortus",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Yeti"
+      "pet_name":"Undine",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_STR"
+      "pet_name":"Unicorn",
+      "tier":"Basic"
    },
    {
-      "pet_name":"Soul_INT"
+      "pet_name":"WhiteDragon",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_AGI"
+      "pet_name":"WindPixie",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_DEX"
+      "pet_name":"Wolf",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Soul_VIT"
+      "pet_name":"Yeti",
+      "tier":"Normal"
    },
    {
-      "pet_name":"Soul_PDef"
+      "pet_name":"Soul_STR",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_Accu"
+      "pet_name":"Soul_INT",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_Evasion"
+      "pet_name":"Soul_AGI",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_AtkSpd"
+      "pet_name":"Soul_DEX",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_Patk"
+      "pet_name":"Soul_VIT",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_CritRate"
+      "pet_name":"Soul_PDef",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_Matk"
+      "pet_name":"Soul_Accu",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_CastSpd"
+      "pet_name":"Soul_Evasion",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_Macc"
+      "pet_name":"Soul_AtkSpd",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_MPrecov"
+      "pet_name":"Soul_Patk",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_Mdef"
+      "pet_name":"Soul_CritRate",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_VIT_WIS"
+      "pet_name":"Soul_Matk",
+      "tier":"Unique"
    },
    {
-      "pet_name":"Soul_VIT_WIS"
+      "pet_name":"Soul_CastSpd",
+      "tier":"Unique"
+   },
+   {
+      "pet_name":"Soul_Macc",
+      "tier":"Unique"
+   },
+   {
+      "pet_name":"Soul_MPrecov",
+      "tier":"Unique"
+   },
+   {
+      "pet_name":"Soul_Mdef",
+      "tier":"Unique"
+   },
+   {
+      "pet_name":"Soul_VIT_WIS",
+      "tier":"Unique"
+   },
+   {
+      "pet_name":"Soul_VIT_WIS",
+      "tier":"Unique"
    }
 ]
