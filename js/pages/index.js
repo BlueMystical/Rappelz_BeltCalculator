@@ -85,12 +85,12 @@ function Iniciar() {
     try {
         $('#grpBoss').hide();
         CargarDatosJSON();
-        
-        var Param = urlParam('deck'); //?deck={"short_name":"MB","long_name":"Master Breeder","race":"Deva","type":"Summoner"}
-        if(typeof Param !== "undefined" && Param !== null && Param !== ''){
-           var uri_dec = decodeURIComponent(Param);
+
+        //Revisa si hay parametros en la URL:
+        var Param = urlParam('deck');
+        if (typeof Param !== "undefined" && Param !== null && Param !== '') {
+            var uri_dec = decodeURIComponent(Param);
             LoadDeck(JSON.parse(uri_dec));
-            //console.log(jsonURI);
         }
     } catch (e) {
         console.log(e.message);
@@ -128,7 +128,7 @@ function Iniciar() {
         if (_state == false) {
             var _pet = $('#cboPetChoose').val().trim();
             var _stage = $('#cboPetStage').val().trim();
-            
+
             SetPetCard(selected_slot, _pet, _stage);
         } else {
             var _cardName = $('#cboBossChoose').val().trim();
@@ -182,46 +182,46 @@ function Iniciar() {
         //Abre el Panel Lateral para Buscar Pets:
         $("#SearchPanel").panel("open");
     });
-    
+
     $(document).on("click", "#cmdInfo", function (evt) {
         //Muestra el Cuadro de Informacion
-        $('#popINFO').popup( "open" );
+        $('#popINFO').popup("open");
     });
-    
+
     $(document).on("click", "#cmdShareDeck", function (evt) {
         console.log('Sharing Your Deck..');
         ShareDeck();
     });
-    
+
     $(document).on("click", "#cmdShareDeck", function (evt) {
-        
+
         if (typeof ShareDeckToCopy !== "undefined" && ShareDeckToCopy !== null) {
-           // console.log(ShareDeckToCopy);
-            ShareDeckToCopy.player = $( "#txtPlayer_Name" ).val();            
-            $('#txtShareDeck').text( 'https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify( ShareDeckToCopy ) );  
-            
+            // console.log(ShareDeckToCopy);
+            ShareDeckToCopy.player = $("#txtPlayer_Name").val();
+            $('#txtShareDeck').text('https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify(ShareDeckToCopy));
+
             var copyTextarea = $('#txtShareDeck');
             copyTextarea.focus();
             copyTextarea.select();
 
-          try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copying text command was ' + msg);
-          } catch (err) {
-            console.log('Oops, unable to copy');
-          }
-            
-        } 
-    }); 
-    
-    
-    $( "#txtPlayer_Name" ).bind( "change", function(event, ui) {
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copying text command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+
+        }
+    });
+
+
+    $("#txtPlayer_Name").bind("change", function (event, ui) {
         if (typeof ShareDeckToCopy !== "undefined" && ShareDeckToCopy !== null) {
             //console.log(ShareDeckToCopy);
-            ShareDeckToCopy.player = $( "#txtPlayer_Name" ).val();
-            
-            $('#txtShareDeck').text( 'https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify( ShareDeckToCopy ) );  
+            ShareDeckToCopy.player = $("#txtPlayer_Name").val();
+
+            $('#txtShareDeck').text('https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify(ShareDeckToCopy));
         }
     });
 
@@ -241,60 +241,60 @@ function Iniciar() {
 
 }
 
-function CargarDatosJSON(){
+function CargarDatosJSON() {
     //Cargar los Datos de las Abilidades de los Pets:
-        /*$.getJSON('data/pet_card_abilities.json', function (data) {
-            jsonPet_abilities = data;
-        });*/  // <- Quitado xQ la carga es Asyncronica, 
+    /*$.getJSON('data/pet_card_abilities.json', function (data) {
+        jsonPet_abilities = data;
+    });*/ // <- Quitado xQ la carga es Asyncronica, 
     $.ajax({ //<- este modo espera a que termine la tarea
         url: 'data/pet_card_abilities.json',
         dataType: 'json',
         async: false,
         data: null,
-        success: function(data) {
+        success: function (data) {
             jsonPet_abilities = data;
         }
-    });    
-    
+    });
+
     //Cargar los Datos de las BossCards:
     $.ajax({ //<- este modo espera a que termine la tarea
-            url: 'data/boss_cards.json',
-            dataType: 'json',
-            async: false,
-            data: null,
-            success: function(data) {
-                jsonBossCardsData = data;
-            }
-        });
+        url: 'data/boss_cards.json',
+        dataType: 'json',
+        async: false,
+        data: null,
+        success: function (data) {
+            jsonBossCardsData = data;
+        }
+    });
     /*$.getJSON('data/boss_cards.json', function (data) {
             jsonBossCardsData = data;
         });*/
-    
-    
+
+
     //Cargar la lista de BossCards:
     $.ajax({ //<- este modo espera a que termine la tarea
-            url: 'data/boss_list.json',
-            dataType: 'json',
-            async: false,
-            data: null,
-            success: function(data) {
-                jsonBossCardsList = data;
+        url: 'data/boss_list.json',
+        dataType: 'json',
+        async: false,
+        data: null,
+        success: function (data) {
+            jsonBossCardsList = data;
 
-                if (typeof jsonBossCardsList !== "undefined" && jsonBossCardsList !== null) {
-                    //Carga la Lista de Pets en un Combo:
-                    var ListVar = $("#cboBossChoose");
-                    ListVar.empty();
-                    ListVar.append('<option></option>'); //<- Primera Opcion del Menu Vacia
+            if (typeof jsonBossCardsList !== "undefined" && jsonBossCardsList !== null) {
+                //Carga la Lista de Pets en un Combo:
+                var ListVar = $("#cboBossChoose");
+                ListVar.empty();
+                ListVar.append('<option></option>'); //<- Primera Opcion del Menu Vacia
 
-                    jsonBossCardsList.forEach(function (_card) {
-                        //console.log(_pet); // short_name, boss_name
-                        var opt = $("<option>" + _card.boss_name + "</option>").attr("value", _card.short_name);
-                        ListVar.append(opt);
-                    });
-                    ListVar.selectmenu().selectmenu('refresh', true);
-                }
+                jsonBossCardsList.forEach(function (_card) {
+                    //console.log(_pet); // short_name, boss_name
+                    var opt = $("<option>" + _card.boss_name + "</option>").attr("value", _card.short_name);
+                    ListVar.append(opt);
+                });
+                ListVar.selectmenu().selectmenu('refresh', true);
             }
-        });    
+        }
+    });
     /*$.getJSON('data/boss_list.json', function (data) {
             jsonBossCardsList = data;
 
@@ -313,32 +313,14 @@ function CargarDatosJSON(){
             }
         });*/
 
-        //Carga los Nombres de los Pets:
+    //Carga los Nombres de los Pets:
     $.ajax({ //<- este modo espera a que termine la tarea
-            url: 'data/pet_list.json',
-            dataType: 'json',
-            async: false,
-            data: null,
-            success: function(data) {
-                jsonPet_list = data;
-                if (typeof jsonPet_list !== "undefined" && jsonPet_list !== null) {
-                    //Carga la Lista de Pets en un Combo:
-                    var ListVar = $("#cboPetChoose");
-                    ListVar.empty();
-                    ListVar.append('<option></option>'); //<- Primera Opcion del Menu Vacia
-
-                    jsonPet_list.forEach(function (_pet) {
-                        //console.log(_pet);
-                        var opt = $("<option>" + _pet.pet_name + "</option>").attr("value", _pet.pet_name);
-                        ListVar.append(opt);
-                    });
-                    ListVar.selectmenu().selectmenu('refresh', true);
-                }
-            }
-        });
-       /* $.getJSON('data/pet_list.json', function (data) {
+        url: 'data/pet_list.json',
+        dataType: 'json',
+        async: false,
+        data: null,
+        success: function (data) {
             jsonPet_list = data;
-
             if (typeof jsonPet_list !== "undefined" && jsonPet_list !== null) {
                 //Carga la Lista de Pets en un Combo:
                 var ListVar = $("#cboPetChoose");
@@ -352,21 +334,39 @@ function CargarDatosJSON(){
                 });
                 ListVar.selectmenu().selectmenu('refresh', true);
             }
-        });*/ 
+        }
+    });
+    /* $.getJSON('data/pet_list.json', function (data) {
+         jsonPet_list = data;
+
+         if (typeof jsonPet_list !== "undefined" && jsonPet_list !== null) {
+             //Carga la Lista de Pets en un Combo:
+             var ListVar = $("#cboPetChoose");
+             ListVar.empty();
+             ListVar.append('<option></option>'); //<- Primera Opcion del Menu Vacia
+
+             jsonPet_list.forEach(function (_pet) {
+                 //console.log(_pet);
+                 var opt = $("<option>" + _pet.pet_name + "</option>").attr("value", _pet.pet_name);
+                 ListVar.append(opt);
+             });
+             ListVar.selectmenu().selectmenu('refresh', true);
+         }
+     });*/
 }
 
 function SetPetCard(_SlotId, _pet, _stage) {
     /*  ESTABLECE LA PET SELECCIONADA **/
-    
+
     /*var _pet = $('#cboPetChoose').val().trim();
     var _SlotId = selected_slot.substring(selected_slot.length - 1, selected_slot.length);
     var _stage = $('#cboPetStage').val().trim(); */
-    
+
     /*console.log(_SlotId);
     console.log(_pet);
     console.log(_stage);*/
-    
-    try {    
+
+    try {
         _SlotId = selected_slot.substring(selected_slot.length - 1, selected_slot.length);
 
         if (typeof _pet !== "undefined" && _pet !== null && _pet !== '') {
@@ -457,11 +457,11 @@ function SetPetCard(_SlotId, _pet, _stage) {
         hidePopUp();
     } catch (e) {
         console.log(e.message);
-    } 
+    }
 }
 
 function SetBossCard(_cardName) {
-    try {  
+    try {
         //var _cardName = $('#cboBossChoose').val().trim();
 
         if (typeof _cardName !== "undefined" && _cardName !== null && _cardName !== '') {
@@ -529,7 +529,7 @@ function SetBossCard(_cardName) {
         hidePopUp();
     } catch (e) {
         console.log(e.message);
-    } 
+    }
 }
 
 function CalcularBeltStats() {
@@ -1068,80 +1068,81 @@ function ShowPetInfo(_Pet) {
 }
 
 
-function LoadDeck(pDeckData){
+function LoadDeck(pDeckData) {
     //Abre la Pagina con la Deck:
     try {
-        if (typeof pDeckData !== "undefined" && pDeckData !== null && pDeckData !== ''){
+        if (typeof pDeckData !== "undefined" && pDeckData !== null && pDeckData !== '') {
             console.log(pDeckData);
 
+            //1. Carga la 2ª Pagina:
             event.preventDefault();
             location.hash = "#page2";
 
+            //2. Muestra el Nombre del Autor de la Deck:
             $('#lblTituloP2').html("Belt Deck By <b style='color:Gold;'>" + pDeckData.player + '</b>');
             $('#cboYushivaBelt').val(pDeckData.belt_enchant);
 
-            if(typeof pDeckData.belt_slots !== "undefined" && pDeckData.belt_slots !== null && pDeckData.belt_slots.length > 0){
+            //3. Carga las 'Cards' indicadas en la DEck:
+            if (typeof pDeckData.belt_slots !== "undefined" && pDeckData.belt_slots !== null && pDeckData.belt_slots.length > 0) {
                 pDeckData.belt_slots.forEach(function (_BeltSlot) {
                     selected_slot = _BeltSlot.id;
 
                     if (_BeltSlot.type == 'pet') {
-                        $('#cboPetChoose').val(_BeltSlot.card);//.selectmenu('refresh');
-                        $('#cboPetStage').val(_BeltSlot.stage);//.selectmenu('refresh');
-                        
+                        $('#cboPetChoose').val(_BeltSlot.card); //.selectmenu('refresh');
+                        $('#cboPetStage').val(_BeltSlot.stage); //.selectmenu('refresh');
+
                         SetPetCard(_BeltSlot.id, _BeltSlot.card, _BeltSlot.stage);
                     } else {
                         $('#cboBossChoose').val(_BeltSlot.card);
                         SetBossCard(_BeltSlot.card);
                     }
                 });
-            } 
+            }
         }
     } catch (e) {
         console.log(e.message);
-    }    
+    }
 }
 
-function ShareDeck(){
-    
-    var BeltDeck = { 
-        player:"BlueMystic", 
+function ShareDeck() {
+
+    var BeltDeck = {
+        player: "Unknown",
         belt_enchant: $('#cboYushivaBelt').val(),
-        belt_slots:[]         
+        belt_slots: []
     };
-    
+
     var i;
     for (i = 1; i <= 8; i++) {
         var _Slut = window['BeltSlot_' + i];
-        if(_Slut !== "undefined" && _Slut != null) {
-            var BeltSlotX = { 
-                id : _Slut.slot_id,
-                type : _Slut.card_type,
-                card : _Slut.pet_name,
-                stage : _Slut.stage   
+        if (_Slut !== "undefined" && _Slut != null) {
+            var BeltSlotX = {
+                id: _Slut.slot_id,
+                type: _Slut.card_type,
+                card: _Slut.pet_name,
+                stage: _Slut.stage
             };
             BeltDeck.belt_slots.push(BeltSlotX);
         }
     }
-    console.log(BeltDeck);
+    //console.log(BeltDeck);
 
     ShareDeckToCopy = BeltDeck;
-    
-    console.log(BeltDeck);
-    var uri_enc = 'https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify( BeltDeck ).trim();
+    var uri_enc = 'https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify(BeltDeck).trim();
 
-    $('#txtShareDeck').text( uri_enc );    
-    $('#popShareDeck').popup( "open" );
+    $('#txtShareDeck').text(uri_enc);
+    $('#popShareDeck').popup("open");
 }
 
 /******* AQUI VAN OTRAS FUNCIONES COMPLEMENTARIAS ***************/
 //Esta funcion devuelve el valor del parametro especificado si existe
 function urlParam(pNombreParametro) {
-   var results = new RegExp('[\\?&]' + pNombreParametro + '=([^&#]*)').exec(window.location.href);
-   if (results == null) {
-	  return null;
-   } else {
-	  return results[1] || 0;
-   }
+    var results = new RegExp('[\\?&]' + pNombreParametro + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    } else {
+        return results[1] || 0;
+    }
 }
 
 function showPopUp(ShowBoss, CanChoose) {
