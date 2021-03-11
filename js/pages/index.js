@@ -89,7 +89,6 @@ function Iniciar() {
         var Param = urlParam('deck'); //?deck={"short_name":"MB","long_name":"Master Breeder","race":"Deva","type":"Summoner"}
         if(typeof Param !== "undefined" && Param !== null && Param !== ''){
            var uri_dec = decodeURIComponent(Param);
-            //var uri_enc = encodeURIComponent(uri);
             LoadDeck(JSON.parse(uri_dec));
             //console.log(jsonURI);
         }
@@ -1083,18 +1082,16 @@ function LoadDeck(pDeckData){
 
             if(typeof pDeckData.belt_slots !== "undefined" && pDeckData.belt_slots !== null && pDeckData.belt_slots.length > 0){
                 pDeckData.belt_slots.forEach(function (_BeltSlot) {
-                    selected_slot = _BeltSlot.slot_id;
-                    console.log(_BeltSlot);
-                    //console.log($('#cboPetChoose').val());
+                    selected_slot = _BeltSlot.id;
 
-                    if (_BeltSlot.card_type == 'pet') {
-                        $('#cboPetChoose').val(_BeltSlot.pet_name);//.selectmenu('refresh');
+                    if (_BeltSlot.type == 'pet') {
+                        $('#cboPetChoose').val(_BeltSlot.card);//.selectmenu('refresh');
                         $('#cboPetStage').val(_BeltSlot.stage);//.selectmenu('refresh');
                         
-                        SetPetCard(_BeltSlot.slot_id, _BeltSlot.pet_name, _BeltSlot.stage);
+                        SetPetCard(_BeltSlot.id, _BeltSlot.card, _BeltSlot.stage);
                     } else {
-                        $('#cboBossChoose').val(_BeltSlot.pet_name);
-                        SetBossCard(_BeltSlot.pet_name);
+                        $('#cboBossChoose').val(_BeltSlot.card);
+                        SetBossCard(_BeltSlot.card);
                     }
                 });
             } 
@@ -1112,54 +1109,27 @@ function ShareDeck(){
         belt_slots:[]         
     };
     
-    if (typeof BeltSlot_1 !== "undefined" && BeltSlot_1 !== null) {
-        //console.log(BeltSlot_1); 
-        BeltSlot_1.info = 1; //<-Guarda el Nº del Slot
-        BeltSlot_1.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_1);
-    };
-    if (typeof BeltSlot_2 !== "undefined" && BeltSlot_2 !== null) {
-        BeltSlot_2.info = 2;
-        BeltSlot_2.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_2);
-    };
-    if (typeof BeltSlot_3 !== "undefined" && BeltSlot_3 !== null) {
-        BeltSlot_3.info = 3;
-        BeltSlot_3.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_3);
-    };
-    if (typeof BeltSlot_4 !== "undefined" && BeltSlot_4 !== null) {
-        BeltSlot_4.info = 4;
-        BeltSlot_4.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_4);
-    };
-    if (typeof BeltSlot_5 !== "undefined" && BeltSlot_5 !== null) {
-        BeltSlot_5.info = 5;
-        BeltSlot_5.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_5);
-    };
-    if (typeof BeltSlot_6 !== "undefined" && BeltSlot_6 !== null) {
-        BeltSlot_6.info = 6;
-        BeltSlot_6.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_6);
-    };
-    if (typeof BeltSlot_7 !== "undefined" && BeltSlot_7 !== null) {
-        BeltSlot_7.info = 7;
-        BeltSlot_7.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_7);
-    };
-    if (typeof BeltSlot_8 !== "undefined" && BeltSlot_8 !== null) {
-        BeltSlot_8.info = 8;
-        BeltSlot_8.stats = null;
-        BeltDeck.belt_slots.push(BeltSlot_8);
-    };
-    
+    var i;
+    for (i = 1; i <= 8; i++) {
+        var _Slut = window['BeltSlot_' + i];
+        if(_Slut !== "undefined" && _Slut != null) {
+            var BeltSlotX = { 
+                id : _Slut.slot_id,
+                type : _Slut.card_type,
+                card : _Slut.pet_name,
+                stage : _Slut.stage   
+            };
+            BeltDeck.belt_slots.push(BeltSlotX);
+        }
+    }
+    console.log(BeltDeck);
+
     ShareDeckToCopy = BeltDeck;
     
     console.log(BeltDeck);
-    var serial = JSON.stringify( BeltDeck );
+    var uri_enc = 'https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify( BeltDeck ).trim();
 
-    $('#txtShareDeck').text( 'https://bluemystical.github.io/Rappelz_BeltCalculator/?deck=' + JSON.stringify( BeltDeck ) );    
+    $('#txtShareDeck').text( uri_enc );    
     $('#popShareDeck').popup( "open" );
 }
 
