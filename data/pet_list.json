@@ -1,246 +1,246 @@
 [
    {
       "pet_name":"Angel",
-      "tier":"Rare"
+      "tier":"4-Rare"
    },
    {
       "pet_name":"Baphomet",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"BlightOgre",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"BloodthirstySlaughterer",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"BluePixie",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Cerberus",
-      "tier":"Special"
+      "tier":"5-Special"
    },
    {
       "pet_name":"CrystalSpider",
-      "tier":"Special"
+      "tier":"5-Special"
    },
    {
       "pet_name":"CrystalGolem",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"DeathGladiator",
-      "tier":"Epic"
+      "tier":"7-Epic"
    },
    {
       "pet_name":"DeathTyrant",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Drillbot",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"EtherealPixie",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"ForestPixie",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Genie",
-      "tier":"Special"
+      "tier":"5-Special"
    },
    {
       "pet_name":"Gnoll",
-      "tier":"Rare"
+      "tier":"4-Rare"
    },
    {
       "pet_name":"GrandmasterHector",
-      "tier":"Epic"
+      "tier":"7-Epic"
    },
    {
       "pet_name":"Harpy",
-      "tier":"Basic"
+      "tier":"2-Basic"
    },
    {
       "pet_name":"Hawkman",
-      "tier":"Basic"
+      "tier":"2-Basic"
    },
    {
       "pet_name":"IceMaiden",
-      "tier":"Rare"
+      "tier":"4-Rare"
    },
    {
       "pet_name":"Ifrit",
-      "tier":"Special"
+      "tier":"5-Special"
    },
    {
       "pet_name":"Kentauros",
-      "tier":"Rare"
+      "tier":"4-Rare"
    },
    {
       "pet_name":"Lydian",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Minotaurus",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"MysticKoala",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Naga",
-      "tier":"Rare"
+      "tier":"4-Rare"
    },
    {
       "pet_name":"Nightmare",
-      "tier":"Basic"
+      "tier":"2-Basic"
    },
    {
       "pet_name":"Octopus",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Orc",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Pantera",
-      "tier":"Normal"
+      "tier":"0-Normal"
    },
    {
       "pet_name":"Poultry",
-      "tier":"Normal"
+      "tier":"0-Normal"
    },
    {
       "pet_name":"RedPixie",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Salamander",
-      "tier":"Basic"
+      "tier":"2-Basic"
    },
    {
       "pet_name":"Siren",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Skeleton",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"SnowMan",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"StoneGolem",
-      "tier":"Special"
+      "tier":"5-Special"
    },
    {
       "pet_name":"Tortus",
-      "tier":"Normal"
+      "tier":"0-Normal"
    },
    {
       "pet_name":"Undine",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Unicorn",
-      "tier":"Basic"
+      "tier":"2-Basic"
    },
    {
       "pet_name":"WhiteDragon",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"WindPixie",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Wolf",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Yeti",
-      "tier":"Normal"
+      "tier":"1-Normal"
    },
    {
       "pet_name":"Soul_STR",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_INT",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_AGI",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_DEX",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_VIT",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_PDef",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_Accu",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_Evasion",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_AtkSpd",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_Patk",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_CritRate",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_Matk",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_CastSpd",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_Macc",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_MPrecov",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_Mdef",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_VIT_WIS",
-      "tier":"Unique"
+      "tier":"6-Unique"
    },
    {
       "pet_name":"Soul_VIT_WIS",
-      "tier":"Unique"
+      "tier":"6-Unique"
    }
 ]
