@@ -255,12 +255,12 @@
                 </div>
 
                 <label for="cboPetChoose">Pet:</label>
-                <select name="cboPetChoose" id="cboPetChoose">
+                <select name="cboPetChoose" id="cboPetChoose" data-native-menu="false">
                     <option></option>
                 </select>
 
                 <label for="cboPetStage">Stage:</label>
-                <select name="cboPetStage" id="cboPetStage">
+                <select name="cboPetStage" id="cboPetStage" data-native-menu="false">
                     <option value="0">Stage 0</option>
                     <option value="1">Stage 1</option>
                     <option value="2">Stage 2</option>
@@ -276,12 +276,11 @@
                 </div>
 
                 <label for="cboBossChoose">Boss Card:</label>
-                <select name="cboBossChoose" id="cboBossChoose">
+                <select name="cboBossChoose" id="cboBossChoose" data-native-menu="false">
                     <option></option>
                 </select>
             </div>  
             
-            <!--<button type="submit" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</button>-->
             <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Cancel</a>
             <a href="#" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</a>
             
@@ -290,6 +289,11 @@
                    data-on-text="Boss Card" 
                    data-off-text="Pet Card" 
                    data-wrapper-class="custom-size-flipswitch" type="checkbox" />
+                <a href = "#popup_tooltip" data-rel = "popup" 
+                       data-transition = "pop"  class = "ui-btn ui-alt-icon ui-nodisc-icon 
+                       ui-btn-inline ui-icon-info ui-btn-icon-notext" title = "Flip this if you are equiping a Boss Card">
+                       More Info
+                    </a>
             </div>
         </div>
         
@@ -397,7 +401,7 @@
         <!-- Encabezado -->
         <div data-role="header" id="Page2Header" data-theme="b" data-position="fixed">
             <div data-type="horizontal" data-role="controlgroup" class="ui-btn-left">  
-                <input type="button" data-icon="search" id="cmdShareDeck" data-theme="a" value="Share Your Deck">
+                <input type="button" data-icon="star" id="cmdShareDeck" data-theme="a" value="Share Your Deck">
                 <input type="button" data-icon="info" id="cmdInfo" value="Info">
                 <!--<input type="button" data-icon="home" id="cmdViewSharedDecks" value="View Shared Decks">-->
             </div>
@@ -405,8 +409,7 @@
             
             <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">  
                 <input type="button" data-icon="search" id="cmdSearchPets" data-theme="a" value="Search..">
-                <input type="button" data-icon="home" id="cmdBackHome" value="Reset">
-                
+                <input type="button" data-icon="home" id="cmdBackHome" value="Reset">                
             </div>
             
             <!--<a href="index.html" data-ajax="false" data-icon="lock" class="ui-btn-right  ui-btn-inline" data-inline="true" id="cmdIniciarSesion">Reset</a>-->
@@ -447,8 +450,9 @@
                             <label for="text-LUCK" style='color:gray; font-size:small;'>LUCK:</label>
                             <div id='text-LUCK' class='div-box'></div>  
                             
-                            <!--<label for="checkYushivaBelt" style='color:gray; font-size:small;'>Yushiva Belt?:</label>
-                            <input type="checkbox" id="checkYushivaBelt"  data-role="flipswitch" data-on-text="On" data-off-text="Off" data-mini="true">-->
+                            <label for="text-Extra" style='color:gray; font-size:small;'>.</label>
+                            <div id='text-Extra' class='div-box'></div> 
+                            <!--<input type="checkbox" id="checkYushivaBelt"  data-role="flipswitch" data-on-text="On" data-off-text="Off" data-mini="true">-->
                         </div>
                     </div>
                 </div>
@@ -532,7 +536,9 @@
 
             </div><!-- /grid-a -->
 
-            <textarea id="text-EXTRA" style="font-size: small"></textarea>       
+            <select id="cboEXTRABonus" data-native-menu="false">
+            </select> 
+            <!--<textarea id="text-EXTRA" style="font-size: small"></textarea> -->      
 
         </div><!-- /main -->
 
@@ -587,18 +593,33 @@
                         <div class="bottom-right" id="BeltSlot_8b"></div>
                     </div>
                 </div>
-               
-                <label for="cboYushivaBelt">Belt Enchant:</label>
-                <select name="cboYushivaBelt" id="cboYushivaBelt">
-                    <option value=30.0>-</option>
-                    <option value=31.0>+20</option>
-                    <option value=31.5>+21</option>
-                    <option value=32.0>+22</option>
-                    <option value=32.5>+23</option>
-                    <option value=33.0>+24</option>
-                    <option value=33.5>+25</option>
-                </select>
-                <label id="lblYushivaBelt">Stats Cap: 30.0%</label>
+                
+                <div data-role="controlgroup">
+                    <legend>Enchantment / Awakening:</legend>
+                    <select id="cboBeltEnchantment" data-native-menu="false">
+                        <option value=30.0>-</option>
+                        <option value=31.0>+20</option>
+                        <option value=31.5>+21</option>
+                        <option value=32.0>+22</option>
+                        <option value=32.5>+23</option>
+                        <option value=33.0>+24</option>
+                        <option value=33.5>+25</option>
+                    </select>                    
+
+                    <input type="checkbox" id="checkAwakenedBelt" data-role="flipswitch" 
+                           data-on-text="On" 
+                           data-off-text="Off" >
+                    <a href = "#popup_tooltip" data-rel = "popup" 
+                       data-transition = "pop"  class = "ui-btn ui-alt-icon ui-nodisc-icon 
+                       ui-btn-inline ui-icon-info ui-btn-icon-notext" title = "Belt Awakened?">
+                       More Info
+                    </a>
+                    <div data-role = "popup" id = "popup_tooltip" class = "ui-content" data-theme = "b">
+                       <p>Flip that switch if you have an Awakened Belt.</p>
+                    </div>
+                </div>
+               <label id="lblYushivaBelt">Stats Cap: 30.0%</label>
+                
                 
             </div>
             
