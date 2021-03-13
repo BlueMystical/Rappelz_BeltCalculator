@@ -77,6 +77,7 @@ var files;
 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 var fs = null;
 var ShareDeckToCopy = null;
+var AwakeningBonusShown = false;
 
 // https://craftpip.github.io/jquery-confirm
 
@@ -113,12 +114,12 @@ function Iniciar() {
             $('#grpBoss').hide();
         }
     });
-    $("#checkYushivaBelt").change(function () {
-        var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');
+    $("#checkAwakenedBelt").change(function () {
+        var _IsAwakened = $('#checkAwakenedBelt').is(':checked');
         CalcularBeltStats();
     });
-    $("#cboYushivaBelt").change(function () {
-        var _Limit = $('#cboYushivaBelt').val();
+    $("#cboBeltEnchantment").change(function () {
+        var _Limit = $('#cboBeltEnchantment').val();
         $("#lblYushivaBelt").text('Stats Cap: ' + _Limit + '%');
         CalcularBeltStats();
     });
@@ -278,16 +279,16 @@ function CargarDatosJSON() {
         async: false,
         data: null,
         success: function (data) {
-            jsonBossCardsList = data;
+            jsonBossCardsList = data; //<- Se guarda en memoria para otros usos.
 
             if (typeof jsonBossCardsList !== "undefined" && jsonBossCardsList !== null) {
-                //Carga la Lista de Pets en un Combo:
+                //Carga la Lista de Boss en un Combo:
                 var ListVar = $("#cboBossChoose");
                 ListVar.empty();
                 ListVar.append('<option></option>'); //<- Primera Opcion del Menu Vacia
 
                 jsonBossCardsList.forEach(function (_card) {
-                    //console.log(_pet); // short_name, boss_name
+                    //console.log(_pet); 
                     var opt = $("<option>" + _card.boss_name + "</option>").attr("value", _card.short_name);
                     ListVar.append(opt);
                 });
@@ -320,18 +321,34 @@ function CargarDatosJSON() {
         async: false,
         data: null,
         success: function (data) {
-            jsonPet_list = data;
+            jsonPet_list = data; //<- Se guarda en memoria para otros usos.
             if (typeof jsonPet_list !== "undefined" && jsonPet_list !== null) {
+                
+                //Ordena la lista de Pets x Tier:
+                jsonPet_list.sort(function(a,b) { return (a.tier > b.tier) ? 1 : ((b.tier > a.tier) ? -1 : 0); } );
+                //console.log(jsonPet_list);
+                
                 //Carga la Lista de Pets en un Combo:
                 var ListVar = $("#cboPetChoose");
                 ListVar.empty();
                 ListVar.append('<option></option>'); //<- Primera Opcion del Menu Vacia
 
+                var _Tier = '';
                 jsonPet_list.forEach(function (_pet) {
                     //console.log(_pet);
+                    if (_pet.tier !== _Tier) {
+                        //Cuando cambia de Tier, se cierra el grupo:
+                        if (_Tier !== '') { ListVar.append('</optgroup>'); }
+                        
+                        _Tier = _pet.tier; //Y se abre un nuevo grupo:
+                        ListVar.append("<optgroup label='" + _Tier + "'>");
+                    }
+                    
+                    //Aqui se agrega a cada Pet:
                     var opt = $("<option>" + _pet.pet_name + "</option>").attr("value", _pet.pet_name);
                     ListVar.append(opt);
                 });
+                //Y se refresca la lista:
                 ListVar.selectmenu().selectmenu('refresh', true);
             }
         }
@@ -602,6 +619,9 @@ function CalcularBeltStats() {
         $('#text-WEIGHT').empty();
         $('#text-MPIERCE').empty();
         $('#text-MIGNORE').empty();
+        
+        $("#cboEXTRABonus").empty();
+        AwakeningBonusShown = false;
 
         //console.log('Cuadros limpios!');
         //console.log(BeltSlot_1);
@@ -641,7 +661,7 @@ function CalcularBeltStats() {
 
 function ProcesarPet(pBeltSlot) {
     if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
-
+        //Procesa cada una de las Stats cargadas en el Slot:
         pBeltSlot.stats.forEach(function (_petStat) {
             CalcularStat(_petStat, true);
         });
@@ -652,14 +672,38 @@ function ProcesarBossCard(pBeltSlot) {
     if (typeof pBeltSlot !== "undefined" && pBeltSlot !== null) {
 
         //Bonus Extra que la la BossCard:
-        var _infoExtra = $('#text-EXTRA').val();
-        if (typeof _infoExtra !== "undefined" && _infoExtra !== null && _infoExtra !== '') {
-            _infoExtra += '\n';
+        var _Bonus = 0;
+        var _Limit = $('#cboBeltEnchantment').val();
+        var _IsAwakened = $('#checkAwakenedBelt').is(':checked');        
+        
+        if (_IsAwakened == true) {
+            switch(_Limit) {
+                case '30.0': _Bonus = 0; break;
+                case '31.0': _Bonus = 10; break;
+                case '31.5': _Bonus = 15; break;
+                case '32.0': _Bonus = 20; break;
+                case '32.5': _Bonus = 25; break;
+                case '33.0': _Bonus = 30; break;
+                case '33.5': _Bonus = 35; break;
+                default: _Bonus = 0; 
+            }
         }
+        
+        var ListVar = $("#cboEXTRABonus");
+
+        //Agrega el bonus de la BossCard:
         if (typeof pBeltSlot.info !== "undefined" && pBeltSlot.info !== null && pBeltSlot.info !== '') {
-            _infoExtra += pBeltSlot.info;
+            var opt = $("<option>" + pBeltSlot.info + "</option>").attr("value", pBeltSlot.info);
+            ListVar.append(opt);
         }
-        $('#text-EXTRA').val(_infoExtra);
+        //Agrega el bonus x Awakening del Belt:        
+        if (_IsAwakened == true && AwakeningBonusShown == false) {
+            AwakeningBonusShown = true;
+            var opt = $("<option>" + '[Awakened Bonuses] Amplify Ability of Equiped Boss Card: ' + _Bonus + '%' + "</option>")
+                .attr("value", 'Awakened');
+            ListVar.append(opt);
+        }
+        ListVar.selectmenu().selectmenu('refresh', true);
 
         //console.log(pBeltSlot.stats);
         pBeltSlot.stats.forEach(function (_BossStat) {
@@ -677,21 +721,20 @@ function CalcularStat(_petStat, pCalcular) {
 
             if (pCalcular == true) {
 
-                var old_val = parseFloat(_Stat.percentage); //console.log('old_val:' + old_val);
-                var new_val = parseFloat(_petStat.value); //console.log('new_val:' + new_val);
+                var old_val = parseFloat(_Stat.percentage); 
+                var new_val = parseFloat(_petStat.value);
                 var times = 0;
                 var _extra = 0;
-                var _Limit = $('#cboYushivaBelt').val(); //<- 30 es el maximo sin Yushiva encantado
+                var _Limit = $('#cboBeltEnchantment').val(); //<- 30 es el maximo sin Yushiva encantado
+                var _IsAwakened = $('#checkAwakenedBelt').is(':checked');
                 //console.log(_Limit);
 
                 _Stat.extra += new_val;
                 _Stat.setTimes++;
-
-                //Yshiva Belt No tiene Bono ni limite:
-                //var _IsYushivaBelt = $('#checkYushivaBelt').is(':checked');   
+ 
                 var _IsYushivaBelt = false;
                 if (_Limit > 30) {
-                    _IsYushivaBelt = true;
+                    //_IsYushivaBelt = true;
                 }
 
                 if (_IsYushivaBelt == false) {
@@ -822,7 +865,26 @@ function CalcularBossStats(_BossStat, pCalcular) {
         if (typeof _Stat !== "undefined" && _Stat !== null) {
 
             var _extra = 0;
-            //console.log(_Stat);
+            var _Bonus = 0;
+            var _IsAwakened = $('#checkAwakenedBelt').is(':checked');
+            var _Limit = $('#cboBeltEnchantment').val();
+            
+            //console.log('Awake:' + _IsAwakened);
+            //console.log('Limit:' + _Limit);
+            
+            if (_IsAwakened == true) {
+                switch(_Limit) {
+                    case '30.0': _Bonus = 0; break;
+                    case '31.0': _Bonus = 10; break;
+                    case '31.5': _Bonus = 15; break;
+                    case '32.0': _Bonus = 20; break;
+                    case '32.5': _Bonus = 25; break;
+                    case '33.0': _Bonus = 30; break;
+                    case '33.5': _Bonus = 35; break;
+                    default: _Bonus = 0; 
+                }
+            }
+            //console.log('Bonus:' + _Bonus);
 
             if (pCalcular == true) {
 
@@ -834,21 +896,18 @@ function CalcularBossStats(_BossStat, pCalcular) {
 
                 _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
-                _Stat.percentage = old_per + new_per;
+                _Stat.percentage = old_per + new_per + _Bonus;
+                
+                //console.log('%:' + _Stat.percentage);
 
-                if (_Stat.percentage > 30) {
+                if (_Stat.percentage > _Limit) {
                     _extra = _Stat.extra - _Stat.percentage;
                 }
-
-                //TODO:  Agregar el Bonus x Yushiva Belt +35%
+                //console.log('extra:' + _extra);
             }
 
-            var set_html = '&nbsp;'; //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
-
-            //if (parseFloat(_Stat.percentage) > 0) {
+            var set_html = '&nbsp;'; 
             set_html += parseFloat(_Stat.percentage).toFixed(1) + '%';
-            //console.log(set_html);
-            //}
 
             if (_extra > 0) {
                 set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Wasted)</spam>';
@@ -857,8 +916,7 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
             };
 
-            //Mostar el bonus para la Stat en su Control correspondiente:
-            //console.log(_BossStat.name + ': ' + set_html);
+            //Mostar el bonus para la Stat en su Control correspondiente:            
             $('#text-' + _BossStat.name).html(set_html);
 
             //CalcularStat(window[_BossStat.name], true);
@@ -1080,7 +1138,7 @@ function LoadDeck(pDeckData) {
 
             //2. Muestra el Nombre del Autor de la Deck:
             $('#lblTituloP2').html("Belt Deck By <b style='color:Gold;'>" + pDeckData.player + '</b>');
-            $('#cboYushivaBelt').val(pDeckData.belt_enchant);
+            $('#cboBeltEnchantment').val(pDeckData.belt_enchant);
 
             //3. Carga las 'Cards' indicadas en la DEck:
             if (typeof pDeckData.belt_slots !== "undefined" && pDeckData.belt_slots !== null && pDeckData.belt_slots.length > 0) {
@@ -1108,7 +1166,7 @@ function ShareDeck() {
 
     var BeltDeck = {
         player: "Unknown",
-        belt_enchant: $('#cboYushivaBelt').val(),
+        belt_enchant: $('#cboBeltEnchantment').val(),
         belt_slots: []
     };
 
