@@ -772,7 +772,9 @@ function CalcularStat(_petStat, pCalcular) {
                  *  Max % = 33%
                  *  30% + 1% x Pet  
                  *  Yushiva Belt No tiene Bono ni limite    */
-                var _setval = (old_val + new_val + times); //console.log('_setval:' + _setval);
+                
+                //var _setval = (old_val + new_val + times); //+1% x cada pet que aporte la misma stat
+                var _setval = (old_val + new_val); //Sin Stacking
                 if (_setval > _Limit) {
                     if (times > 1) {
                         if (_IsYushivaBelt == false) {
@@ -791,9 +793,9 @@ function CalcularStat(_petStat, pCalcular) {
                 };
             }
 
-            console.log(_Stat.name + ' %:' + _Stat.percentage);
-            console.log(_Stat.name + ' Val:' + _Stat.value);
-            console.log(_Stat.name + ' Ex:' + _extra);
+            //console.log(_Stat.name + ' %:' + _Stat.percentage);
+            //console.log(_Stat.name + ' Val:' + _Stat.value);
+           // console.log(_Stat.name + ' Ex:' + _extra);
 
             //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
             var set_html = '';
@@ -930,15 +932,18 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 var new_val = parseFloat(_BossStat.value);
 
                 var old_per = parseFloat(_Stat.percentage);
-                var new_per =  parseFloat(_BossStat.percentage);
+                var new_per = parseFloat(_BossStat.percentage);
+                
+                console.log(_Stat.name + ' OLD %:' + old_per);
+                console.log(_Stat.name + ' NEW %:' + new_per);
                 
                 //if(parseFloat(_BossStat.percentage) < 0){ isNegative = true; }
 
                 _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
-                _Stat.percentage = old_per + new_per + _Bonus;
+                _Stat.percentage = old_per + (new_per + (new_per * _Bonus / 100));
 
-                //console.log(_Stat.name + ' %:' + _Stat.percentage);
+                console.log(_Stat.name + ' POST %:' + _Stat.percentage);
 
                 //Establece el Limite para las BossCards:  (*no hay limite*)
                 //if (_Stat.percentage > _Limit) {
