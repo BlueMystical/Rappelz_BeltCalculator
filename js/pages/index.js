@@ -888,7 +888,7 @@ function CalcularBossStats(_BossStat, pCalcular) {
             var _Bonus = 0;
             var _IsAwakened = $('#checkAwakenedBelt').is(':checked');
             var _Limit = $('#cboBeltEnchantment').val();
-            var isNegative = false;
+            //var isNegative = false;
 
             //console.log('Awake:' + _IsAwakened);
             //console.log('Limit:' + _Limit);
@@ -929,16 +929,16 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 var old_val = parseFloat(_Stat.value);
                 var new_val = parseFloat(_BossStat.value);
 
-                var old_per = Math.abs(parseFloat(_Stat.percentage));
-                var new_per = Math.abs(parseFloat(_BossStat.percentage));
+                var old_per = parseFloat(_Stat.percentage);
+                var new_per =  parseFloat(_BossStat.percentage);
                 
-                if(parseFloat(_BossStat.percentage) < 0){ isNegative = true; }
+                //if(parseFloat(_BossStat.percentage) < 0){ isNegative = true; }
 
                 _Stat.extra += new_per;
                 _Stat.value = old_val + new_val;
                 _Stat.percentage = old_per + new_per + _Bonus;
 
-                console.log(_Stat.name + ' %:' + _Stat.percentage);
+                //console.log(_Stat.name + ' %:' + _Stat.percentage);
 
                 //Establece el Limite para las BossCards:  (*no hay limite*)
                 //if (_Stat.percentage > _Limit) {
@@ -950,7 +950,7 @@ function CalcularBossStats(_BossStat, pCalcular) {
             }
 
             var set_html = '&nbsp;';
-            if (isNegative == true) { set_html += '-'; }
+            //if (isNegative == true) { set_html += '-'; }
             set_html += parseFloat(_Stat.percentage).toFixed(1) + '%';
 
             if (Math.abs(_extra) > 0) {
