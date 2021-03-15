@@ -934,16 +934,17 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 var old_per = parseFloat(_Stat.percentage);
                 var new_per = parseFloat(_BossStat.percentage);
                 
-                console.log(_Stat.name + ' OLD %:' + old_per);
-                console.log(_Stat.name + ' NEW %:' + new_per);
+                //console.log(_Stat.name + ' OLD %:' + old_per);
+                //console.log(_Stat.name + ' NEW %:' + new_per);
                 
                 //if(parseFloat(_BossStat.percentage) < 0){ isNegative = true; }
 
                 _Stat.extra += new_per;
-                _Stat.value = old_val + new_val;
-                _Stat.percentage = old_per + (new_per + (new_per * _Bonus / 100));
+                //_Stat.value = old_val + new_val;
+                _Stat.value =       old_val + (new_val + (new_val * _Bonus / 100));
+                _Stat.percentage =  old_per + (new_per + (new_per * _Bonus / 100));
 
-                console.log(_Stat.name + ' POST %:' + _Stat.percentage);
+                //console.log(_Stat.name + ' POST %:' + _Stat.percentage);
 
                 //Establece el Limite para las BossCards:  (*no hay limite*)
                 //if (_Stat.percentage > _Limit) {
