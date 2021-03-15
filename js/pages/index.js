@@ -705,7 +705,7 @@ function ProcesarBossCard(pBeltSlot) {
         }
         ListVar.selectmenu().selectmenu('refresh', true);
 
-        //console.log(pBeltSlot.stats);
+        //Muestra las Stats ganadas por la Carta:
         pBeltSlot.stats.forEach(function (_BossStat) {
             CalcularBossStats(_BossStat, true);
         });
@@ -901,7 +901,10 @@ function CalcularBossStats(_BossStat, pCalcular) {
                 //console.log('%:' + _Stat.percentage);
 
                 if (_Stat.percentage > _Limit) {
-                    _extra = _Stat.extra - _Stat.percentage;
+                    _Stat.extra = _Stat.percentage - _Limit;
+                    _Stat.percentage = _Limit;
+                    
+                    _extra = _Stat.extra;
                 }
                 //console.log('extra:' + _extra);
             }
@@ -909,8 +912,8 @@ function CalcularBossStats(_BossStat, pCalcular) {
             var set_html = '&nbsp;'; 
             set_html += parseFloat(_Stat.percentage).toFixed(1) + '%';
 
-            if (_extra > 0) {
-                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(_extra).toFixed(1) + '% Wasted)</spam>';
+            if (Math.abs(_extra) > 0) {
+                set_html += "&nbsp;<spam style='color:red'>(" + parseFloat(Math.abs(_extra)).toFixed(1) + '% Wasted)</spam>';
             };
             if (parseFloat(_Stat.value) > 0) {
                 set_html += "&nbsp;<spam style='color:greenyellow'>+" + parseFloat(_Stat.value).toFixed(1) + "</spam>";
