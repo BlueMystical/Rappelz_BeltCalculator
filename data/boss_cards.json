@@ -1,674 +1,690 @@
 [
-   {
-      "short_name":"ABHUVA",
-      "boss_name":"Abhuva",
-      "ability":"DEX",
-      "value":15.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Fear on target"
-   },
-   {
-      "short_name":"ABHUVA",
-      "boss_name":"Abhuva",
-      "ability":"AGI",
-      "value":15.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"ASHMAW",
-      "boss_name":"Ashmaw The Devourer ",
-      "ability":"INT",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Debuff P.Def, M.Def -30%"
-   },
-   {
-      "short_name":"ASHMAW",
-      "boss_name":"Ashmaw The Devourer ",
-      "ability":"AGI",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"AURUMIS",
-      "boss_name":"Aurumis ",
-      "ability":"STR",
-      "value":70.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Bloodthirst heal, drain HP from enemies when using basic attacks."
-   },
-   {
-      "short_name":"BARGA",
-      "boss_name":"Barga ",
-      "ability":"EVA",
-      "value":0.0,
-      "percentage":20.0,
-      "extra":null
-   },
-   {
-      "short_name":"BARGA",
-      "boss_name":"Barga ",
-      "ability":"MRESIST",
-      "value":0.0,
-      "percentage":20.0,
-      "extra":null
-   },
-   {
-      "short_name":"BARON",
-      "boss_name":"Baron Madius ",
-      "ability":"STR",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Poison on target."
-   },
-   {
-      "short_name":"BEARMOTHER",
-      "boss_name":"Bear Mother ",
-      "ability":"LUCK",
-      "value":20.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Buff Drop Rate."
-   },
-   {
-      "short_name":"BETRAYAL",
-      "boss_name":"Betrayal ",
-      "ability":"VIT",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":"Dual Summoning +1"
-   },
-   {
-      "short_name":"BETRAYAL",
-      "boss_name":"Betrayal ",
-      "ability":"WIS",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"BLACKWIDOW",
-      "boss_name":"Black Widow ",
-      "ability":"PDEF",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":"Aura of Defense (+100 P.Def, M.Def)"
-   },
-   {
-      "short_name":"BLACKWIDOW",
-      "boss_name":"Black Widow ",
-      "ability":"MDEF",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"BLOODTHIRSTY",
-      "boss_name":"Bloodthirsty Slaughterer ",
-      "ability":"MDEF",
-      "value":1500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"BLOODTHIRSTY",
-      "boss_name":"Bloodthirsty Slaughterer ",
-      "ability":"MAXMP",
-      "value":0.0,
-      "percentage":10.0,
-      "extra":null
-   },
-   {
-      "short_name":"BLOODTHIRSTY",
-      "boss_name":"Bloodthirsty Slaughterer ",
-      "ability":"MIGNORE",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"BONEDRAGON",
-      "boss_name":"Bone Dragon ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"10% Damage transferred to MP "
-   },
-   {
-      "short_name":"BUTKADAH",
-      "boss_name":"Butkadah ",
-      "ability":"DEX",
-      "value":80.0,
-      "percentage":0.0,
-      "extra":"Grace +2, Debuff: P.Def, M.Def -30%, P.Atk, Mov.Spd -15%"
-   },
-   {
-      "short_name":"BUTKADAH",
-      "boss_name":"Butkadah ",
-      "ability":"WIS",
-      "value":80.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRAZYHAGEN",
-      "boss_name":"Crazy Hagen ",
-      "ability":"PDEF",
-      "value":1000.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRAZYHAGEN",
-      "boss_name":"Crazy Hagen ",
-      "ability":"MDEF",
-      "value":1000.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRAZYHAGEN",
-      "boss_name":"Crazy Hagen ",
-      "ability":"BLOCK",
-      "value":1500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRUSTALINO",
-      "boss_name":"Crustalino ",
-      "ability":"AGI",
-      "value":40.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRUSTALINO",
-      "boss_name":"Crustalino ",
-      "ability":"CRITPOW",
-      "value":20.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRYSTALGOLEM",
-      "boss_name":"Crystal Golem ",
-      "ability":"PDEF",
-      "value":1500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRYSTALGOLEM",
-      "boss_name":"Crystal Golem ",
-      "ability":"MAXHP",
-      "value":0.0,
-      "percentage":10.0,
-      "extra":null
-   },
-   {
-      "short_name":"CRYSTALGOLEM",
-      "boss_name":"Crystal Golem ",
-      "ability":"PIGNORE",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"DEVILSLAUGH",
-      "boss_name":"Devil Slaughterer ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"+3 Breeders Synergy, +5 Creature Mastery"
-   },
-   {
-      "short_name":"DOMINATUS",
-      "boss_name":"Dominatus The Mad ",
-      "ability":"INT",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Petrify on Target"
-   },
-   {
-      "short_name":"DOMINATUS",
-      "boss_name":"Dominatus The Mad ",
-      "ability":"WIS",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"DRAKA",
-      "boss_name":"Draka ",
-      "ability":"AGI",
-      "value":70.0,
-      "percentage":0.0,
-      "extra":"Max.HP +15%"
-   },
-   {
-      "short_name":"EMMANUEL",
-      "boss_name":"Emmanuel Raymond ",
-      "ability":"WIS",
-      "value":10.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Silence on target"
-   },
-   {
-      "short_name":"ENT",
-      "boss_name":"Ent",
-      "ability":"PATK",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"ENT",
-      "boss_name":"Ent",
-      "ability":"ACCU",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"ERATIA",
-      "boss_name":"Queen Eratia ",
-      "ability":"WIS",
-      "value":70.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Healing: Restoration"
-   },
-   {
-      "short_name":"EVA",
-      "boss_name":"Queen Eva ",
-      "ability":"DEX",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":"MP.Regen"
-   },
-   {
-      "short_name":"EVA",
-      "boss_name":"Queen Eva ",
-      "ability":"AGI",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"GARGOYLE",
-      "boss_name":"Stone Gargoyle ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"+3 Domestication, +5 Creature Mastery"
-   },
-   {
-      "short_name":"HECTOR_P",
-      "boss_name":"Grand Master Hector Card Of Courage ",
-      "ability":"PATK",
-      "value":0.0,
-      "percentage":15.0,
-      "extra":"+1 Creature Control, Healing: Absorbs 3% of damage as HP with normal attacks. "
-   },
-   {
-      "short_name":"HECTOR_M",
-      "boss_name":"Grand Master Hectors Card Of Knowledge ",
-      "ability":"MATK",
-      "value":0.0,
-      "percentage":15.0,
-      "extra":"+1 Creature Control , Reduce MP for all spells by 30% "
-   },
-   {
-      "short_name":"ILRIOS",
-      "boss_name":"Ilrios ",
-      "ability":"STR",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Reflective Shield 30% damage absorb."
-   },
-   {
-      "short_name":"ILRIOS",
-      "boss_name":"Ilrios ",
-      "ability":"DEX",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"KISCIA",
-      "boss_name":"Kiscia The Beautiful ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"+1 Divine Cluster, +1 Concentration, +2 Archery Training, +2 Dual Axe Training +2 Two-Handed Axe Training"
-   },
-   {
-      "short_name":"KRAKEN",
-      "boss_name":"Kraken ",
-      "ability":"PDEF",
-      "value":750.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"KRAKEN",
-      "boss_name":"Kraken ",
-      "ability":"VIT",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"KYNISH",
-      "boss_name":"Sand Lord Kynish ",
-      "ability":"VIT",
-      "value":70.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Gigantic +20% P.Atk, M.Atk"
-   },
-   {
-      "short_name":"LIKIRUS",
-      "boss_name":"Likirus ",
-      "ability":"INT",
-      "value":40.0,
-      "percentage":0.0,
-      "extra":"Healing, Lightning Bolt, and Force of Sacred Fire +1. "
-   },
-   {
-      "short_name":"LILITH",
-      "boss_name":"Lilith ",
-      "ability":"PATK",
-      "value":600.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Provoke Buff. +11% P.Atk, -12% P.Def."
-   },
-   {
-      "short_name":"LILITH",
-      "boss_name":"Lilith ",
-      "ability":"MATK",
-      "value":600.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"LION",
-      "boss_name":"Lion ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"+5 Creature HP Expansion  +5 Creature MP Expansion "
-   },
-   {
-      "short_name":"LUCIUS",
-      "boss_name":"Stormbringer Lucius ",
-      "ability":"INT",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Haste of Conjuror selfbuff"
-   },
-   {
-      "short_name":"LUCIUS",
-      "boss_name":"Stormbringer Lucius ",
-      "ability":"DEX",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"LUNACY",
-      "boss_name":"Soul Of Lunacy ",
-      "ability":"VIT",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Healing: Restores 25% of HP."
-   },
-   {
-      "short_name":"LUNACY",
-      "boss_name":"Soul Of Lunacy ",
-      "ability":"PDEF",
-      "value":800.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"MAGMAGOLEM",
-      "boss_name":"Magma Golem ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"+3 Unholy Synergy, +5 Creature Mastery "
-   },
-   {
-      "short_name":"MEDUSA",
-      "boss_name":"Medusa ",
-      "ability":"PDEF",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":"+2 Provoke"
-   },
-   {
-      "short_name":"MEDUSA",
-      "boss_name":"Medusa ",
-      "ability":"BLOCK",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"MEPHISTO",
-      "boss_name":"Mephisto ",
-      "ability":"CRITPOW",
-      "value":50.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"MEPHISTO",
-      "boss_name":"Mephisto ",
-      "ability":"CRIT",
-      "value":0.0,
-      "percentage":10.0,
-      "extra":null
-   },
-   {
-      "short_name":"MICRORAPTOR",
-      "boss_name":"Microraptor ",
-      "ability":"PATK",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":"Aura of Atack (+100 P.Atk, M.Atk)"
-   },
-   {
-      "short_name":"MICRORAPTOR",
-      "boss_name":"Microraptor ",
-      "ability":"MATK",
-      "value":500.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"OBSIDIKAR",
-      "boss_name":"Obsidikar ",
-      "ability":"INT",
-      "value":90.0,
-      "percentage":0.0,
-      "extra":"Essence of Invulnerability"
-   },
-   {
-      "short_name":"OFORIA",
-      "boss_name":"Oforia ",
-      "ability":"VIT",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Burn on target"
-   },
-   {
-      "short_name":"PRIMAL",
-      "boss_name":"Primal Scream ",
-      "ability":"INT",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Stunt on target"
-   },
-   {
-      "short_name":"REVIAC",
-      "boss_name":"Reviac (Devil)",
-      "ability":"CRIT",
-      "value":0.0,
-      "percentage":-100.0,
-      "extra":null
-   },
-   {
-      "short_name":"REVIAC",
-      "boss_name":"Reviac (Devil)",
-      "ability":"CRITPOW",
-      "value":0.0,
-      "percentage":100.0,
-      "extra":null
-   },
-   {
-      "short_name":"RUINA",
-      "boss_name":"Lady Ruina ",
-      "ability":"DEX",
-      "value":70.0,
-      "percentage":0.0,
-      "extra":"Mov.Spd -25%"
-   },
-   {
-      "short_name":"RUINA",
-      "boss_name":"Lady Ruina ",
-      "ability":"ACCU",
-      "value":130.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"RUINA",
-      "boss_name":"Lady Ruina ",
-      "ability":"CRITPOW",
-      "value":9.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"SILEX",
-      "boss_name":"Silex ",
-      "ability":"VIT",
-      "value":40.0,
-      "percentage":0.0,
-      "extra":"+2 Deep Evasion, +2 Mental Concentration,  +2 Minor Healing "
-   },
-   {
-      "short_name":"SOULSEEKER",
-      "boss_name":"Soulseeker ",
-      "ability":"DEX",
-      "value":40.0,
-      "percentage":0.0,
-      "extra":"+300 Mov Speed "
-   },
-   {
-      "short_name":"TAKIN",
-      "boss_name":"Takin ",
-      "ability":"STR",
-      "value":40.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Atk.Spd Buff"
-   },
-   {
-      "short_name":"TARANIDA",
-      "boss_name":"Taranida ",
-      "ability":"STR",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":"Chance of cast Hold on target"
-   },
-   {
-      "short_name":"TARANIDA",
-      "boss_name":"Taranida ",
-      "ability":"AGI",
-      "value":30.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"TULA",
-      "boss_name":"Cruel Tula ",
-      "ability":"-",
-      "value":0.0,
-      "percentage":0.0,
-      "extra":"+3 Creature Breeding, +5 Creature Regeneration"
-   },
-   {
-      "short_name":"ULTIWITCH",
-      "boss_name":"Ultimate Witch ",
-      "ability":"WIS",
-      "value":40.0,
-      "percentage":0.0,
-      "extra":"Max.MP +15%"
-   },
-   {
-      "short_name":"VULCANUS",
-      "boss_name":"Vulcanus ",
-      "ability":"STR",
-      "value":7.0,
-      "percentage":0.0,
-      "extra":"+15% Ccreature EXP. "
-   },
-   {
-      "short_name":"VULCANUS",
-      "boss_name":"Vulcanus ",
-      "ability":"INT",
-      "value":7.0,
-      "percentage":0.0,
-      "extra":null
-   },
-   {
-      "short_name":"WOODEN",
-      "boss_name":"Wooden Devil ",
-      "ability":"PPIERCE",
-      "value":0.0,
-      "percentage":30.0,
-      "extra":null
-   },
-   {
-      "short_name":"WOODEN",
-      "boss_name":"Wooden Devil ",
-      "ability":"MPIERCE",
-      "value":0.0,
-      "percentage":30.0,
-      "extra":null
-   },
-   {
-      "short_name":"YUSHIVA",
-      "boss_name":"Yushiva ",
-      "ability":"MAXHP",
-      "value":0.0,
-      "percentage":100.0,
-      "extra":null
-   },
-   {
-      "short_name":"YUSHIVA",
-      "boss_name":"Yushiva ",
-      "ability":"MAX MP",
-      "value":0.0,
-      "percentage":100.0,
-      "extra":null
-   },
-   {
-      "short_name":"YUSHIVA",
-      "boss_name":"Yushiva ",
-      "ability":"PATK",
-      "value":0.0,
-      "percentage":-50.0,
-      "extra":null
-   },
-   {
-      "short_name":"YUSHIVA",
-      "boss_name":"Yushiva ",
-      "ability":"MATK",
-      "value":0.0,
-      "percentage":-50.0,
-      "extra":null
+    {
+        "short_name": "ABHUVA",
+        "boss_name": "Abhuva",
+        "ability": "DEX",
+        "value": 15.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Fear on target"
+   },
+    {
+        "short_name": "ABHUVA",
+        "boss_name": "Abhuva",
+        "ability": "AGI",
+        "value": 15.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "ASHMAW",
+        "boss_name": "Ashmaw The Devourer ",
+        "ability": "INT",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Debuff P.Def, M.Def -30%"
+   },
+    {
+        "short_name": "ASHMAW",
+        "boss_name": "Ashmaw The Devourer ",
+        "ability": "AGI",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "AURUMIS",
+        "boss_name": "Aurumis ",
+        "ability": "STR",
+        "value": 70.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Bloodthirst heal, drain HP from enemies when using basic attacks."
+   },
+    {
+        "short_name": "BARGA",
+        "boss_name": "Barga ",
+        "ability": "EVA",
+        "value": 0.0,
+        "percentage": 20.0,
+        "extra": null
+   },
+    {
+        "short_name": "BARGA",
+        "boss_name": "Barga ",
+        "ability": "MRESIST",
+        "value": 0.0,
+        "percentage": 20.0,
+        "extra": null
+   },
+    {
+        "short_name": "BARON",
+        "boss_name": "Baron Madius ",
+        "ability": "STR",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Poison on target."
+   },
+    {
+        "short_name": "BEARMOTHER",
+        "boss_name": "Bear Mother ",
+        "ability": "LUCK",
+        "value": 20.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Buff Drop Rate."
+   },
+    {
+        "short_name": "BETRAYAL",
+        "boss_name": "Betrayal ",
+        "ability": "VIT",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": "Dual Summoning +1"
+   },
+    {
+        "short_name": "BETRAYAL",
+        "boss_name": "Betrayal ",
+        "ability": "WIS",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "BLACKWIDOW",
+        "boss_name": "Black Widow ",
+        "ability": "PDEF",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": "Aura of Defense (+100 P.Def, M.Def)"
+   },
+    {
+        "short_name": "BLACKWIDOW",
+        "boss_name": "Black Widow ",
+        "ability": "MDEF",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "BLOODTHIRSTY",
+        "boss_name": "Bloodthirsty Slaughterer ",
+        "ability": "MDEF",
+        "value": 1500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "BLOODTHIRSTY",
+        "boss_name": "Bloodthirsty Slaughterer ",
+        "ability": "MAXMP",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": null
+   },
+    {
+        "short_name": "BLOODTHIRSTY",
+        "boss_name": "Bloodthirsty Slaughterer ",
+        "ability": "MIGNORE",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "BONEDRAGON",
+        "boss_name": "Bone Dragon ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "10% Damage transferred to MP "
+   },
+    {
+        "short_name": "BUTKADAH",
+        "boss_name": "Butkadah ",
+        "ability": "DEX",
+        "value": 80.0,
+        "percentage": 0.0,
+        "extra": "Grace +2, Debuff: P.Def, M.Def -30%, P.Atk, Mov.Spd -15%"
+   },
+    {
+        "short_name": "BUTKADAH",
+        "boss_name": "Butkadah ",
+        "ability": "WIS",
+        "value": 80.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "KRAKEN",
+        "boss_name": "Kraken ",
+        "ability": "PDEF",
+        "value": 750.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "KRAKEN",
+        "boss_name": "Kraken ",
+        "ability": "VIT",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRAZYHAGEN",
+        "boss_name": "Crazy Hagen ",
+        "ability": "PDEF",
+        "value": 1000.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRAZYHAGEN",
+        "boss_name": "Crazy Hagen ",
+        "ability": "MDEF",
+        "value": 1000.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRAZYHAGEN",
+        "boss_name": "Crazy Hagen ",
+        "ability": "BLOCK",
+        "value": 1500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRUSTALINO",
+        "boss_name": "Crustalino ",
+        "ability": "AGI",
+        "value": 40.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRUSTALINO",
+        "boss_name": "Crustalino ",
+        "ability": "CRITPOW",
+        "value": 20.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRYSTALGOLEM",
+        "boss_name": "Crystal Golem ",
+        "ability": "PDEF",
+        "value": 1500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRYSTALGOLEM",
+        "boss_name": "Crystal Golem ",
+        "ability": "MAXHP",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": null
+   },
+    {
+        "short_name": "CRYSTALGOLEM",
+        "boss_name": "Crystal Golem ",
+        "ability": "PIGNORE",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "DEVILSLAUGH",
+        "boss_name": "Devil Slaughterer ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "+3 Breeders Synergy, +5 Creature Mastery"
+   },
+    {
+        "short_name": "DOMINATUS",
+        "boss_name": "Dominatus The Mad ",
+        "ability": "INT",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Petrify on Target"
+   },
+    {
+        "short_name": "DOMINATUS",
+        "boss_name": "Dominatus The Mad ",
+        "ability": "WIS",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "DRAKA",
+        "boss_name": "Draka ",
+        "ability": "AGI",
+        "value": 70.0,
+        "percentage": 0.0,
+        "extra": "Max.HP +15%"
+   },
+    {
+        "short_name": "EMMANUEL",
+        "boss_name": "Emmanuel Raymond ",
+        "ability": "WIS",
+        "value": 10.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Silence on target"
+   },
+    {
+        "short_name": "ENT",
+        "boss_name": "Ent",
+        "ability": "PATK",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "ENT",
+        "boss_name": "Ent",
+        "ability": "ACCU",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "ERATIA",
+        "boss_name": "Queen Eratia ",
+        "ability": "WIS",
+        "value": 70.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Healing: Restoration"
+   },
+    {
+        "short_name": "EVA",
+        "boss_name": "Queen Eva ",
+        "ability": "DEX",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": "MP.Regen"
+   },
+    {
+        "short_name": "EVA",
+        "boss_name": "Queen Eva ",
+        "ability": "AGI",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "GARGOYLE",
+        "boss_name": "Stone Gargoyle ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "+3 Domestication, +5 Creature Mastery"
+   },
+    {
+        "short_name": "HECTOR_P",
+        "boss_name": "Grand Master Hector Card Of Courage ",
+        "ability": "PATK",
+        "value": 0.0,
+        "percentage": 15.0,
+        "extra": "+1 Creature Control, Healing: Absorbs 3% of damage as HP with normal attacks. "
+   },
+    {
+        "short_name": "HECTOR_M",
+        "boss_name": "Grand Master Hectors Card Of Knowledge ",
+        "ability": "MATK",
+        "value": 0.0,
+        "percentage": 15.0,
+        "extra": "+1 Creature Control , Reduce MP for all spells by 30% "
+   },
+    {
+        "short_name": "ILRIOS",
+        "boss_name": "Ilrios ",
+        "ability": "STR",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Reflective Shield 30% damage absorb."
+   },
+    {
+        "short_name": "ILRIOS",
+        "boss_name": "Ilrios ",
+        "ability": "DEX",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "KISCIA",
+        "boss_name": "Kiscia The Beautiful ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "+1 Divine Cluster, +1 Concentration, +2 Archery Training, +2 Dual Axe Training +2 Two-Handed Axe Training"
+   },
+    {
+        "short_name": "KRAKEN",
+        "boss_name": "Kraken ",
+        "ability": "PDEF",
+        "value": 750.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "KRAKEN",
+        "boss_name": "Kraken ",
+        "ability": "VIT",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "KYNISH",
+        "boss_name": "Sand Lord Kynish ",
+        "ability": "VIT",
+        "value": 70.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Gigantic +20% P.Atk, M.Atk"
+   },
+    {
+        "short_name": "LIKIRUS",
+        "boss_name": "Likirus ",
+        "ability": "INT",
+        "value": 40.0,
+        "percentage": 0.0,
+        "extra": "Healing, Lightning Bolt, and Force of Sacred Fire +1. "
+   },
+    {
+        "short_name": "LILITH",
+        "boss_name": "Lilith ",
+        "ability": "PATK",
+        "value": 600.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Provoke Buff. +11% P.Atk, -12% P.Def."
+   },
+    {
+        "short_name": "LILITH",
+        "boss_name": "Lilith ",
+        "ability": "MATK",
+        "value": 600.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "LION",
+        "boss_name": "Lion ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "+5 Creature HP Expansion  +5 Creature MP Expansion "
+   },
+    {
+        "short_name": "LUCIUS",
+        "boss_name": "Stormbringer Lucius ",
+        "ability": "INT",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Haste of Conjuror selfbuff"
+   },
+    {
+        "short_name": "LUCIUS",
+        "boss_name": "Stormbringer Lucius ",
+        "ability": "DEX",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "LUNACY",
+        "boss_name": "Soul Of Lunacy ",
+        "ability": "VIT",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Healing: Restores 25% of HP."
+   },
+    {
+        "short_name": "LUNACY",
+        "boss_name": "Soul Of Lunacy ",
+        "ability": "PDEF",
+        "value": 800.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "MAGMAGOLEM",
+        "boss_name": "Magma Golem ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "+3 Unholy Synergy, +5 Creature Mastery "
+   },
+    {
+        "short_name": "MEDUSA",
+        "boss_name": "Medusa ",
+        "ability": "PDEF",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": "+2 Provoke"
+   },
+    {
+        "short_name": "MEDUSA",
+        "boss_name": "Medusa ",
+        "ability": "BLOCK",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "MEPHISTO",
+        "boss_name": "Mephisto ",
+        "ability": "CRITPOW",
+        "value": 50.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "MEPHISTO",
+        "boss_name": "Mephisto ",
+        "ability": "CRIT",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": null
+   },
+    {
+        "short_name": "MICRORAPTOR",
+        "boss_name": "Microraptor ",
+        "ability": "PATK",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": "Aura of Atack (+100 P.Atk, M.Atk)"
+   },
+    {
+        "short_name": "MICRORAPTOR",
+        "boss_name": "Microraptor ",
+        "ability": "MATK",
+        "value": 500.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "OBSIDIKAR",
+        "boss_name": "Obsidikar ",
+        "ability": "INT",
+        "value": 90.0,
+        "percentage": 0.0,
+        "extra": "Essence of Invulnerability"
+   },
+    {
+        "short_name": "OFORIA",
+        "boss_name": "Oforia ",
+        "ability": "VIT",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Burn on target"
+   },
+    {
+        "short_name": "PRIMAL",
+        "boss_name": "Primal Scream ",
+        "ability": "INT",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Stunt on target"
+   },
+    {
+        "short_name": "REVIAC",
+        "boss_name": "Reviac (Devil)",
+        "ability": "CRIT",
+        "value": 0.0,
+        "percentage": -100.0,
+        "extra": null
+   },
+    {
+        "short_name": "REVIAC",
+        "boss_name": "Reviac (Devil)",
+        "ability": "CRITPOW",
+        "value": 0.0,
+        "percentage": 100.0,
+        "extra": null
+   },
+    {
+        "short_name": "RUINA",
+        "boss_name": "Lady Ruina ",
+        "ability": "DEX",
+        "value": 70.0,
+        "percentage": 0.0,
+        "extra": "Mov.Spd -25%"
+   },
+    {
+        "short_name": "RUINA",
+        "boss_name": "Lady Ruina ",
+        "ability": "ACCU",
+        "value": 130.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "RUINA",
+        "boss_name": "Lady Ruina ",
+        "ability": "CRITPOW",
+        "value": 9.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "SILEX",
+        "boss_name": "Silex ",
+        "ability": "VIT",
+        "value": 40.0,
+        "percentage": 0.0,
+        "extra": "+2 Deep Evasion, +2 Mental Concentration,  +2 Minor Healing "
+   },
+    {
+        "short_name": "SOULSEEKER",
+        "boss_name": "Soulseeker ",
+        "ability": "DEX",
+        "value": 40.0,
+        "percentage": 0.0,
+        "extra": "+300 Mov Speed "
+   },
+    {
+        "short_name": "TAKIN",
+        "boss_name": "Takin ",
+        "ability": "STR",
+        "value": 40.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Atk.Spd Buff"
+   },
+    {
+        "short_name": "TARANIDA",
+        "boss_name": "Taranida ",
+        "ability": "STR",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": "Chance of cast Hold on target"
+   },
+    {
+        "short_name": "TARANIDA",
+        "boss_name": "Taranida ",
+        "ability": "AGI",
+        "value": 30.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "TULA",
+        "boss_name": "Cruel Tula ",
+        "ability": "-",
+        "value": 0.0,
+        "percentage": 0.0,
+        "extra": "+3 Creature Breeding, +5 Creature Regeneration"
+   },
+    {
+        "short_name": "ULTIWITCH",
+        "boss_name": "Ultimate Witch ",
+        "ability": "WIS",
+        "value": 40.0,
+        "percentage": 0.0,
+        "extra": "Max.MP +15%"
+   },
+    {
+        "short_name": "VULCANUS",
+        "boss_name": "Vulcanus ",
+        "ability": "STR",
+        "value": 7.0,
+        "percentage": 0.0,
+        "extra": "+15% Ccreature EXP. "
+   },
+    {
+        "short_name": "VULCANUS",
+        "boss_name": "Vulcanus ",
+        "ability": "INT",
+        "value": 7.0,
+        "percentage": 0.0,
+        "extra": null
+   },
+    {
+        "short_name": "WOODEN",
+        "boss_name": "Wooden Devil ",
+        "ability": "PPIERCE",
+        "value": 0.0,
+        "percentage": 30.0,
+        "extra": null
+   },
+    {
+        "short_name": "WOODEN",
+        "boss_name": "Wooden Devil ",
+        "ability": "MPIERCE",
+        "value": 0.0,
+        "percentage": 30.0,
+        "extra": null
+   },
+    {
+        "short_name": "YUSHIVA",
+        "boss_name": "Yushiva ",
+        "ability": "MAXHP",
+        "value": 0.0,
+        "percentage": 100.0,
+        "extra": null
+   },
+    {
+        "short_name": "YUSHIVA",
+        "boss_name": "Yushiva ",
+        "ability": "MAX MP",
+        "value": 0.0,
+        "percentage": 100.0,
+        "extra": null
+   },
+    {
+        "short_name": "YUSHIVA",
+        "boss_name": "Yushiva ",
+        "ability": "PATK",
+        "value": 0.0,
+        "percentage": -50.0,
+        "extra": null
+   },
+    {
+        "short_name": "YUSHIVA",
+        "boss_name": "Yushiva ",
+        "ability": "MATK",
+        "value": 0.0,
+        "percentage": -50.0,
+        "extra": null
    }
 ]
