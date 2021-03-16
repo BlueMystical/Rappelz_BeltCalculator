@@ -50,7 +50,7 @@
    {
       "short_name":"BARGA",
       "boss_name":"Barga ",
-      "ability":"MRESIST",
+      "ability":"MRES",
       "value":0.0,
       "percentage":20.0,
       "extra":null

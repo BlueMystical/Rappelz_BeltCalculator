@@ -927,7 +927,7 @@
     "s5": 12.0
 }, {
    "pet_name": "WindPixie",
-    "ability": "MRES",
+    "ability": "MRESIST",
     "s0": 9.5,
     "s1": 10.0,
     "s2": 10.5,

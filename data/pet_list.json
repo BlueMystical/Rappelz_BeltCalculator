@@ -173,74 +173,74 @@
    },
    {
       "pet_name":"Soul_STR",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_INT",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_AGI",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_DEX",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_VIT",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_PDef",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_Accu",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_Evasion",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_AtkSpd",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_Patk",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_CritRate",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_Matk",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_CastSpd",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_Macc",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_MPrecov",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_Mdef",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_VIT_WIS",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    },
    {
       "pet_name":"Soul_VIT_WIS",
-      "tier":"6-Unique"
+      "tier":"8-SoulPet"
    }
 ]
