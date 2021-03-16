@@ -604,7 +604,7 @@ function CalcularBeltStats() {
         $('#text-CRIT').empty();
         $('#text-BLOCK').empty();
         $('#text-HPREGEN').empty();
-        $('#text-MRES').empty();
+        $('#text-MRESIST').empty();
         $('#text-PPIERCE').empty();
         $('#text-PIGNORE').empty();
 
@@ -1265,8 +1265,12 @@ function showPopUp(ShowBoss, CanChoose) {
 }
 
 function hidePopUp() {
-    $("#myPopup").popup("close");
-    $("#contenido").show();
+    try {
+    if (typeof $("#myPopup") !== "undefined" && $("#myPopup") !== null) {
+        $("#myPopup").popup("close");
+        $("#contenido").show();
+    }    
+    } catch (e) {}        
 }
 
 function ShowLoading(pText) {
