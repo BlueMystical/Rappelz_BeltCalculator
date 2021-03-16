@@ -152,22 +152,6 @@
         "extra": null
    },
     {
-        "short_name": "KRAKEN",
-        "boss_name": "Kraken ",
-        "ability": "PDEF",
-        "value": 750.0,
-        "percentage": 0.0,
-        "extra": null
-   },
-    {
-        "short_name": "KRAKEN",
-        "boss_name": "Kraken ",
-        "ability": "VIT",
-        "value": 50.0,
-        "percentage": 0.0,
-        "extra": null
-   },
-    {
         "short_name": "CRAZYHAGEN",
         "boss_name": "Crazy Hagen ",
         "ability": "PDEF",
