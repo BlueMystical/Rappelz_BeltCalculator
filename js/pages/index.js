@@ -190,7 +190,7 @@ function Iniciar() {
     });
 
     $(document).on("click", "#cmdShareDeck", function (evt) {
-        console.log('Sharing Your Deck..');
+        //console.log('Sharing Your Deck..');
         ShareDeck();
     });
 
@@ -229,16 +229,19 @@ function Iniciar() {
     $('#cboSearchStat').on('change', function () {
         //Busca la pet seleccionada:
         var mSeleccionado = $(this).val();
-        console.log(mSeleccionado);
+        //console.log(mSeleccionado);
         SearchPetsCards(mSeleccionado);
     });
 
     //- Evento al seleccionar un elemento del ListView:
     $(document).on("click", "#listSearchPets li", function (evt) {
         var _Pet = $(this).data("datos"); //<- Obtiene los datos del elemento seleccionado
-        console.log(_Pet);
+        //console.log(_Pet);
         ShowPetInfo(_Pet);
     });
+    
+   
+    
 
 }
 
@@ -410,7 +413,7 @@ function SetPetCard(_SlotId, _pet, _stage) {
 
                 //3.Establecer las Abilidades que ofrece el Pet:               
                 _petData.forEach(function (_petInfo) {
-                    //console.log(_petInfo);
+                    console.log(_petInfo);
                     var stat_value = parseFloat(_petInfo['s' + _stage]);
                     window[selected_slot].stats.push(new Stat(_petInfo.ability.trim(), 0, stat_value, 0, 0));
 
@@ -759,7 +762,6 @@ function CalcularStat(_petStat, pCalcular) {
                     };
                 }
 
-                //"&nbsp;<spam style='color:red'>(0% Extra)</spam>&nbsp;<spam style='color:greenyellow'>+0</spam>"
                 //---------------------------------
                 var set_html = '&nbsp;';
                 if (Math.abs(_Stat.percentage) > 0) {
@@ -1018,8 +1020,8 @@ function SearchPetsCards(_petStat) {
     var _BossData = jsonBossCardsData.filter(function (item) {
         return item.ability.trim() === _petStat;
     });
-    console.log(_petData);
-    console.log(_BossData);
+    //console.log(_petData);
+    //console.log(_BossData);
 
     var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
     $("#listSearchPets").empty(); //<- Borra todos los elementos presentes en el ListView
@@ -1073,28 +1075,54 @@ function ShowPetInfo(_Pet) {
 
             //Carga la Imagen de la Pet:
             var img_name = 'img/pets/' + _Pet.pet_name + '.jpg';
-            $('#popPetInfo_Imagen').attr("src", img_name);
-            $('#popPetInfo_Title').html("<h2>" + _Pet.pet_name + " (s0)</h2>");
+            $('#popPetInfo_Imagen').attr("src", img_name);            
+            $('#popPetInfo_Title').html("<h2>" + _Pet.pet_name + " (Stage 0)</h2>");
             //console.log(img_name);
 
-            //Carga los datos en un ListView
+            //Carga las Stats en un ListView:
             try {
                 if (pDatos != null) {
                     var HTML = ""; //<- Contendral el HTML de los elementos por agregar 
                     $("#popPetInfo_List").empty(); //<- Borra todos los elementos presentes en el ListView
+                    
                     pDatos.forEach(function (Dato) {
                         HTML += "<li>" + Dato.ability + ": " + Dato.s0 + "%</li>";
                     });
-
+                    
                     $("#popPetInfo_List").append(HTML).listview("refresh"); //<- Agrega los nuevos elementos y actualiza el control
                     $("#popPetInfo_List").listview().trigger('create');
+                    
+                    $("#petInfo_Slider").slider('enable');
+                    $("#petInfo_Slider").val(0).slider("refresh");
+                    $("#petInfo_Slider").attr("data-datos", JSON.stringify(pDatos));                  
+                    
+                    //Enlaza al Evento 'Change' del Slider:
+                    $("#petInfo_Slider").change(function() {
+                        var _Stage = $("#petInfo_Slider").val();
+                        var _Stats = $(this).data("datos"); //<- Obtiene los datos del elemento seleccionado
+                        
+                        $('#popPetInfo_Title').html("<h2>" + _Pet.pet_name + " (Stage " + _Stage + ")</h2>");
+                        
+                        if (_Stats!= null) {
+                            HTML = ""; 
+                            $("#popPetInfo_List").empty(); 
+
+                            pDatos.forEach(function (Dato) {
+                                HTML += "<li>" + Dato.ability + ": " + Dato['s' + _Stage] + "%</li>";
+                            });
+
+                            $("#popPetInfo_List").append(HTML).listview("refresh"); //<- Agrega los nuevos elementos y actualiza el control
+                            $("#popPetInfo_List").listview().trigger('create');
+                        }
+                    });
                 }
             } catch (e) {
                 console.log(e.stack);
             }
         } else {
-            console.log('Es una Boss Card!' + _Pet.short_name);
-            console.log(_Pet);
+           
+            //console.log('Es una Boss Card!' + _Pet.short_name);
+            //console.log(_Pet);
 
             //BUSCAR EN LAS BOSS CARDS:
             pDatos = jsonBossCardsData.filter(function (item) {
@@ -1102,6 +1130,7 @@ function ShowPetInfo(_Pet) {
             });
             //console.log(pDatos);
             if (typeof pDatos !== "undefined" && pDatos !== null && pDatos.length > 0) {
+                
                 //Carga la Imagen de la Pet:
                 var img_name = 'img/boss_cards/' + _Pet.short_name + '.png';
                 $('#popPetInfo_Imagen').attr("src", img_name);
@@ -1133,6 +1162,9 @@ function ShowPetInfo(_Pet) {
 
                         $("#popPetInfo_List").append(HTML).listview("refresh"); //<- Agrega los nuevos elementos y actualiza el control
                         $("#popPetInfo_List").listview().trigger('create');
+
+                        $("#petInfo_Slider").slider('disable');
+                        $("#petInfo_Slider").val(0).slider("refresh");
                     }
                 } catch (e) {
                     console.log(e.stack);
