@@ -298,14 +298,14 @@
         </div>
         
         <div data-role="popup" id="popPetInfo" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
             <label id="popPetInfo_Title"></label>
             <fieldset class="ui-grid-a" data-theme="b">
                 <div class="ui-block-a">
-                        <img id="popPetInfo_Imagen" src="" alt="Pet Image" style="width:70%" />
+                    <img id="popPetInfo_Imagen" src="" alt="Pet Image" style="width:70%" />
                 </div>
-                <div class="ui-block-b">
-                    
-                    <ul data-role="listview" id="popPetInfo_List">
+                <div class="ui-block-b">                    
+                    <ul data-role="listview" id="popPetInfo_List" data-inset="true">
                         <li>INT: 11%</li>
                         <li>WIS: 11%</li>
                         <li>STR: 24%</li>
@@ -313,10 +313,10 @@
                         <li>MATK: 15%</li>
                     </ul>
                 </div>
-            </fieldset>
-            
-            <!--<button type="submit" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</button>-->
-            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Close</a>
+            </fieldset>            
+
+            <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Close</a>-->
+            <input type="range" name="petInfo_Slider" id="petInfo_Slider" data-highlight="true" min="0" max="5" value="0"  data-datos="" >
         </div>        
         
         <div data-role="popup" id="popShareDeck" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
@@ -337,13 +337,16 @@
                 <li>Can Select Any Pet or Soul Pet.</li>
                 <li>Can Select Any Boss Card.</li>
                 <li>Some belt slots lets you choose only pets, some only boss cards, and some lets you select anything.</li>
-                <li>There is an option to switch between selecting a Pet or a Boss card (if allowed).</li>
-                <li>Red Numbers are the % in excess a certain stat has, so you can use that excess in some other stat.</li>
+                <li>Red Numbers are the % in excess a certain stat has, so you can know when 'wasting' resources.</li>
                 <li>Green Numbers show flat values granted by Boss cards or indirect stat bonus gained from other stats,<br>
                  for example:   1 Str = 2,8 P.Atk and 10 Max.Weight. (flat values are not Percentages).</li>
-                <li>Yushiva Belt option removes the 1% bonus extra gained for having more than 1 of the same pet stat equiped.</li>
-                <li>Death Gladiator can be belted.</li>
+                <li>Maxed Stats are hightlightened.</li>
+                <li>Belt Enchantment increases the Cap for all stats.</li>
+                <li>Belt Awakening provides Amplification of Boss Cards.</li>
                 <li>All cards are illustrated.</li>
+                <li>You can 'Share' your current Deck with other players.</li>
+                <li>Search funtionality of cards with certain stat.</li>
+                
                 <li>Responsive design, fully tested in Chrome, Firefox and Android Mobile devices.</li>
             </ul>
             <p>You can contact me anytime: <a href="https://rappelz.fandom.com/wiki/User:BlueMystical" target="_blank" title="Start">BlueMystical</a></p>
