@@ -255,54 +255,71 @@
     <div data-role="page" id="page2" data-theme="b" style="width: 100%">
 
         <!-- Ventana Flotante para Elejir un Pet -->
-        <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">
+        <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:500px;">
             
-            <div class="ui-field-contain" id='grpPet'>
-                <div style="vertical-align: middle;text-align: center;">
-                    <img src="img/UniqueCard.jpg" alt="login" height="40" style="vertical-align: middle" />
-                </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><div class="ui-bar ui-bar-b" style="height:200px;">
 
-                <label for="cboPetChoose">Pet:</label>
-                <select name="cboPetChoose" id="cboPetChoose" data-native-menu="false">
-                    <option></option>
-                </select>
+                    <div class="ui-field-contain" id='grpPet'>
+                        <label for="cboPetChoose">Pet:</label>
+                        <select name="cboPetChoose" id="cboPetChoose" data-native-menu="false">
+                            <option></option>
+                        </select>
+        
+                        <label for="cboPetStage">Stage:</label>
+                        <select name="cboPetStage" id="cboPetStage" data-native-menu="false">
+                            <option value="0">Stage 0</option>
+                            <option value="1">Stage 1</option>
+                            <option value="2">Stage 2</option>
+                            <option value="3">Stage 3</option>
+                            <option value="4">Stage 4</option>
+                            <option value="5">Stage 5</option>
+                        </select>
+                    </div>
 
-                <label for="cboPetStage">Stage:</label>
-                <select name="cboPetStage" id="cboPetStage" data-native-menu="false">
-                    <option value="0">Stage 0</option>
-                    <option value="1">Stage 1</option>
-                    <option value="2">Stage 2</option>
-                    <option value="3">Stage 3</option>
-                    <option value="4">Stage 4</option>
-                    <option value="5">Stage 5</option>
-                </select>
-            </div>
+                    <div class="ui-field-contain" id='grpBoss'>
+                        <div style="vertical-align: middle;text-align: center;">
+                            <img src="img/EpicCard.png" alt="login" height="40" style="vertical-align: middle" />
+                        </div>
+        
+                        <label for="cboBossChoose">Boss Card:</label>
+                        <select name="cboBossChoose" id="cboBossChoose" data-native-menu="false">
+                            <option></option>
+                        </select>
+                    </div>
+                </div></div>
+                <div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:200px;">
+                    <div style="vertical-align: middle;text-align: center;">
+                        <img id="imgCardPreview" src="" alt="login" height="200px" style="vertical-align: middle" />
+                        <div id="CardPreviewInfo" class="bottom-right" ></div>
+                    </div>
+                </div></div>
+            </div><!-- /grid-a -->
             
-            <div class="ui-field-contain" id='grpBoss'>
-                <div style="vertical-align: middle;text-align: center;">
-                    <img src="img/EpicCard.png" alt="login" height="40" style="vertical-align: middle" />
-                </div>
-
-                <label for="cboBossChoose">Boss Card:</label>
-                <select name="cboBossChoose" id="cboBossChoose" data-native-menu="false">
-                    <option></option>
-                </select>
-            </div>  
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><div class="ui-bar ui-bar-b" style="height:60px">
+                    <div id="BeggersArentChoosers" class="ui-btn-inline">
+                        <input data-role="flipswitch" id="flipPetBossGrps" 
+                           data-on-text="Boss Card" 
+                           data-off-text="Pet Card" 
+                           data-wrapper-class="custom-size-flipswitch" type="checkbox" />
+                        <a href = "#popup_tooltip" data-rel = "popup" 
+                               data-transition = "pop"  class = "ui-btn ui-alt-icon ui-nodisc-icon 
+                               ui-btn-inline ui-icon-info ui-btn-icon-notext" title = "Flip this if you are equiping a Boss Card">
+                               More Info
+                            </a>
+                    </div>
+                </div></div>
+                <div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:60px">
+                    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Cancel</a>
+                    <a href="#" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</a>
+                </div></div>
+            </div><!-- /grid-a -->
+             
             
-            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Cancel</a>
-            <a href="#" id="cmdSetPetInBelt" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a">Accept</a>
             
-            <div id="BeggersArentChoosers" class="ui-btn-inline">
-                <input data-role="flipswitch" id="flipPetBossGrps" 
-                   data-on-text="Boss Card" 
-                   data-off-text="Pet Card" 
-                   data-wrapper-class="custom-size-flipswitch" type="checkbox" />
-                <a href = "#popup_tooltip" data-rel = "popup" 
-                       data-transition = "pop"  class = "ui-btn ui-alt-icon ui-nodisc-icon 
-                       ui-btn-inline ui-icon-info ui-btn-icon-notext" title = "Flip this if you are equiping a Boss Card">
-                       More Info
-                    </a>
-            </div>
+            
+            
         </div>
         
         <div data-role="popup" id="popPetInfo" class="ui-content" data-overlay-theme="a" data-theme="b" data-dismissible="false" style="width:350px;">

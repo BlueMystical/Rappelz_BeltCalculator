@@ -240,9 +240,31 @@ function Iniciar() {
         ShowPetInfo(_Pet);
     });
     
-   
-    
-
+   //Evento al cambiar el valor de un combo select:
+   $('#cboPetChoose').on('change', function() {
+        if (_state == false) {
+            var _pet = $('#cboPetChoose').val().trim();
+            var _stage = $('#cboPetStage').val().trim();
+            ShowPetCard(_pet, _stage);
+        } else {
+            var _cardName = $('#cboBossChoose').val().trim();
+            ShowBossCard(_cardName);
+        }        
+    });
+    $('#cboPetStage').on('change', function() {
+        if (_state == false) {
+            var _pet = $('#cboPetChoose').val().trim();
+            var _stage = $('#cboPetStage').val().trim();
+            ShowPetCard(_pet, _stage);
+        } else {
+            var _cardName = $('#cboBossChoose').val().trim();
+            ShowBossCard(_cardName);
+        } 
+    }); 
+    $('#cboBossChoose').on('change', function() {
+        var _cardName = $('#cboBossChoose').val().trim();
+        ShowBossCard(_cardName);
+    });
 }
 
 function CargarDatosJSON() {
@@ -479,6 +501,96 @@ function SetPetCard(_SlotId, _pet, _stage) {
         console.error(e);
     }
 }
+function ShowPetCard(_pet, _stage) {
+    /*  ESTABLECE LA PET SELECCIONADA **/
+
+    /*console.log(_SlotId);
+    console.log(_pet);
+    console.log(_stage);*/
+
+    try {
+        if (typeof _pet !== "undefined" && _pet !== null && _pet !== '') {
+
+            //1.Cambiar la Imagen de la Pet Seleccionada:     
+            var img_name = 'img/pets/' + _pet + '.jpg';
+            $('#imgCardPreview').attr("src", img_name);
+
+            //2.Obtener los datos de la Pet:
+            var _petData = jsonPet_abilities.filter(function (item) {
+                return item.pet_name.trim() === _pet;
+            });
+            if (typeof _petData !== "undefined" && _petData !== null) {
+                //console.log(_petData);
+                //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
+                window[selected_slot] = new BeltSlot(_pet, parseInt(_stage), null, null);
+                window[selected_slot].slot_id = selected_slot;
+                window[selected_slot].card_type = 'pet';
+                window[selected_slot].stats = [];
+
+                //Texto Sobre la Imagen del Pet:
+                var _petBonus = '<p style="font-size:8px">' + _pet + '<br>Stage: ' + _stage;
+                var _petTitle = _pet + ' (Stage ' + _stage + '): ';
+
+                //3.Establecer las Abilidades que ofrece el Pet:               
+                _petData.forEach(function (_petInfo) {
+                    //console.log(_petInfo);
+                    var stat_value = parseFloat(_petInfo['s' + _stage]);
+                    window[selected_slot].stats.push(new Stat(_petInfo.ability.trim(), 0, stat_value, 0, 0));
+
+                    //4. Mostrar sobre la imagen del Pet sus Datos:
+                    _petBonus += '<br>' + _petInfo.ability.trim() + ': ' + stat_value + '%';
+                    _petTitle += ', ' + _petInfo.ability.trim() + ': ' + stat_value + '%';
+
+                    $('#imgCardPreview').attr("alt", _petTitle);
+                    $('#imgCardPreview').attr("title", _petTitle);
+                    $('#CardPreviewInfo').html(_petBonus + '</p>');
+
+                });
+                //console.log(window[selected_slot]);
+            }
+
+        } else {
+            var img_id = '';
+            switch (_SlotId) {
+                case '1':
+                    img_id = 'img/card_any.jpg';
+                    break;
+                case '2':
+                    img_id = 'img/card_pet_0.jpg';
+                    break;
+                case '3':
+                    img_id = 'img/card_pet_1.jpg';
+                    break;
+                case '4':
+                    img_id = 'img/card_pet_2.jpg';
+                    break;
+                case '5':
+                    img_id = 'img/card_any.jpg';
+                    break;
+                case '6':
+                    img_id = 'img/card_any.jpg';
+                    break;
+                case '7':
+                    img_id = 'img/card_boss.jpg';
+                    break;
+                case '8':
+                    img_id = 'img/card_boss.jpg';
+                    break;
+
+                default:
+                    break;
+            }
+
+            //Clear the Pet Slot;
+            window[selected_slot] = null;
+            $('#imgCardPreview').attr("src", img_id);
+            $('#CardPreviewInfo').html('');
+        }
+       
+    } catch (e) {
+        console.error(e);
+    }
+}
 
 function SetBossCard(_cardName) {
     try {
@@ -551,6 +663,71 @@ function SetBossCard(_cardName) {
         console.error(e);
     }
 }
+function ShowBossCard(_cardName) {
+    try {
+        //var _cardName = $('#cboBossChoose').val().trim();
+
+        if (typeof _cardName !== "undefined" && _cardName !== null && _cardName !== '') {
+
+            //1.Cambiar la Imagen de la BossCard Seleccionada:     
+            var img_name = 'img/boss_cards/' + _cardName + '.png';
+            $('#imgCardPreview').attr("src", img_name);
+
+            //2.Obtener los datos de la BossCard:
+            var _BossData = jsonBossCardsData.filter(function (item) {
+                return item.short_name.trim() === _cardName;
+            });
+
+            if (typeof _BossData !== "undefined" && _BossData !== null) {
+                //console.log(_BossData);
+
+                //Instancio una Variable Global con la Informacion de la Pet grabada en el Slot Seleccionado:
+                window[selected_slot] = new BeltSlot(_cardName, 0, null, null);
+                window[selected_slot].slot_id = selected_slot;
+                window[selected_slot].card_type = 'boss';
+                window[selected_slot].stats = [];
+                window[selected_slot].info = _BossData[0].extra;
+
+                //Texto Sobre la Imagen del Pet:
+                var _petBonus = '<p style="font-size:8px">' + _cardName;
+                var _petTitle = _cardName + ': ';
+
+                //3.Establecer las Abilidades que ofrece el Pet:               
+                _BossData.forEach(function (_CardInfo) {
+
+                    var stat_value = parseFloat(_CardInfo.value);
+                    var stat_perce = parseFloat(_CardInfo.percentage);
+                    var stat_extra = parseFloat(_CardInfo.extra);
+
+                    window[selected_slot].stats.push(new Stat(_CardInfo.ability.trim(), stat_value, stat_perce, stat_extra, 0));
+
+                    //4. Mostrar sobre la imagen del Pet sus Datos:
+                    if (stat_value == 0 && stat_perce !== 0) {
+                        stat_value = stat_perce + '%';
+                    }
+
+                    _petBonus += '<br>' + _CardInfo.ability.trim() + ': +' + stat_value;
+                    _petTitle += ', ' + _CardInfo.ability.trim() + ': +' + stat_value;
+                });
+
+                $('#imgCardPreview').attr("alt", _petTitle);
+                $('#imgCardPreview').attr("title", _petTitle);
+                $('#CardPreviewInfo').html(_petBonus + '</p>');
+
+                //console.log(_petBonus);
+                console.log(window[selected_slot]);
+            }
+        } else {
+            //Clear the Pet Slot;
+            window[selected_slot] = null;
+            $('#imgCardPreview').attr("src", 'img/card_boss.jpg');
+            $('#CardPreviewInfo').html('');
+        }
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 
 function CalcularBeltStats() {
     try {
@@ -1294,6 +1471,15 @@ function showPopUp(ShowBoss, CanChoose) {
         transition: "flip"
     });
     $('#cboPetChoose').focus();
+
+    if (_state == false) {
+        var _pet = $('#cboPetChoose').val().trim();
+        var _stage = $('#cboPetStage').val().trim();
+        ShowPetCard(_pet, _stage);
+    } else {
+        var _cardName = $('#cboBossChoose').val().trim();
+        ShowBossCard(_cardName);
+    } 
 }
 
 function hidePopUp() {
