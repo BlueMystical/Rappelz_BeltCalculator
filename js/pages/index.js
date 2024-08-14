@@ -268,12 +268,8 @@ function Iniciar() {
 }
 
 function CargarDatosJSON() {
-    //Cargar los Datos de las Abilidades de los Pets:
-    /*$.getJSON('data/pet_card_abilities.json', function (data) {
-        jsonPet_abilities = data;
-    });*/ // <- Quitado xQ la carga es Asyncronica, 
     $.ajax({ //<- este modo espera a que termine la tarea
-        url: 'data/pet_card_abilities.json',
+        url: 'data/pet_card_abilities.json?version=1',
         dataType: 'json',
         async: false,
         data: null,
@@ -284,12 +280,13 @@ function CargarDatosJSON() {
 
     //Cargar los Datos de las BossCards:
     $.ajax({ //<- este modo espera a que termine la tarea
-        url: 'data/boss_cards.json',
+        url: 'data/boss_cards.json?version=1',
         dataType: 'json',
         async: false,
         data: null,
         success: function (data) {
             jsonBossCardsData = data;
+            //console.log(jsonBossCardsData);
         }
     });
     /*$.getJSON('data/boss_cards.json', function (data) {
@@ -299,7 +296,7 @@ function CargarDatosJSON() {
 
     //Cargar la lista de BossCards:
     $.ajax({ //<- este modo espera a que termine la tarea
-        url: 'data/boss_list.json',
+        url: 'data/boss_list.json?version=1',
         dataType: 'json',
         async: false,
         data: null,

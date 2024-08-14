@@ -6,7 +6,7 @@
         "value": 15.0,
         "percentage": 0.0,
         "extra": "Chance of cast Fear on target"
-   },
+    },
     {
         "short_name": "ABHUVA",
         "boss_name": "Abhuva",
@@ -14,7 +14,7 @@
         "value": 15.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "ASHMAW",
         "boss_name": "Ashmaw The Devourer ",
@@ -22,7 +22,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": "Chance of cast Debuff P.Def, M.Def -30%"
-   },
+    },
     {
         "short_name": "ASHMAW",
         "boss_name": "Ashmaw The Devourer ",
@@ -30,7 +30,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "AURUMIS",
         "boss_name": "Aurumis ",
@@ -38,7 +38,7 @@
         "value": 70.0,
         "percentage": 0.0,
         "extra": "Chance of cast Bloodthirst heal, drain HP from enemies when using basic attacks."
-   },
+    },
     {
         "short_name": "BARGA",
         "boss_name": "Barga ",
@@ -46,7 +46,7 @@
         "value": 0.0,
         "percentage": 20.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BARGA",
         "boss_name": "Barga ",
@@ -54,7 +54,7 @@
         "value": 0.0,
         "percentage": 20.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BARON",
         "boss_name": "Baron Madius ",
@@ -62,7 +62,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": "Chance of cast Poison on target."
-   },
+    },
     {
         "short_name": "BEARMOTHER",
         "boss_name": "Bear Mother ",
@@ -70,7 +70,7 @@
         "value": 20.0,
         "percentage": 0.0,
         "extra": "Chance of cast Buff Drop Rate."
-   },
+    },
     {
         "short_name": "BETRAYAL",
         "boss_name": "Betrayal ",
@@ -78,7 +78,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": "Dual Summoning +1"
-   },
+    },
     {
         "short_name": "BETRAYAL",
         "boss_name": "Betrayal ",
@@ -86,7 +86,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BLACKWIDOW",
         "boss_name": "Black Widow ",
@@ -94,7 +94,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": "Aura of Defense (+100 P.Def, M.Def)"
-   },
+    },
     {
         "short_name": "BLACKWIDOW",
         "boss_name": "Black Widow ",
@@ -102,7 +102,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BLOODTHIRSTY",
         "boss_name": "Bloodthirsty Slaughterer ",
@@ -110,7 +110,7 @@
         "value": 1500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BLOODTHIRSTY",
         "boss_name": "Bloodthirsty Slaughterer ",
@@ -118,7 +118,7 @@
         "value": 0.0,
         "percentage": 10.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BLOODTHIRSTY",
         "boss_name": "Bloodthirsty Slaughterer ",
@@ -126,7 +126,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "BONEDRAGON",
         "boss_name": "Bone Dragon ",
@@ -134,7 +134,7 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "10% Damage transferred to MP "
-   },
+    },
     {
         "short_name": "BUTKADAH",
         "boss_name": "Butkadah ",
@@ -142,7 +142,7 @@
         "value": 80.0,
         "percentage": 0.0,
         "extra": "Grace +2, Debuff: P.Def, M.Def -30%, P.Atk, Mov.Spd -15%"
-   },
+    },
     {
         "short_name": "BUTKADAH",
         "boss_name": "Butkadah ",
@@ -150,7 +150,138 @@
         "value": 80.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
+    {
+        "short_name": "CHAPHOENIXWARR",
+        "boss_name": "Chaotic Phoenix - Warrior ",
+        "ability": "STR",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": "Chance to absorb 1% of damage as HP with physical attacks.\r\nStops HP Regen."
+    },
+    {
+        "short_name": "CHAPHOENIXWARR",
+        "boss_name": "Chaotic Phoenix - Warrior ",
+        "ability": "DEX",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXWARR",
+        "boss_name": "Chaotic Phoenix - Warrior ",
+        "ability": "MAXHP",
+        "value": 0.0,
+        "percentage": 20.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXWARR",
+        "boss_name": "Chaotic Phoenix - Warrior ",
+        "ability": "CRITPOW",
+        "value": 0.0,
+        "percentage": 30.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXWARR",
+        "boss_name": "Chaotic Phoenix - Warrior ",
+        "ability": "ATKSPD",
+        "value": 0.0,
+        "percentage": 30.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXWARR",
+        "boss_name": "Chaotic Phoenix - Warrior ",
+        "ability": "PATK",
+        "value": 0.0,
+        "percentage": 50.0,
+        "extra": null
+    },
+
+    {
+        "short_name": "CHAPHOENIXMAGE",
+        "boss_name": "Chaotic Phoenix - Magician ",
+        "ability": "INT",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": "20% of Mana for all spells reduced. Stops HP Regen."
+    },
+    {
+        "short_name": "CHAPHOENIXMAGE",
+        "boss_name": "Chaotic Phoenix - Magician ",
+        "ability": "WIS",
+        "value": 0.0,
+        "percentage": 10.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXMAGE",
+        "boss_name": "Chaotic Phoenix - Magician ",
+        "ability": "CRITPOW",
+        "value": 0.0,
+        "percentage": 30.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXMAGE",
+        "boss_name": "Chaotic Phoenix - Magician ",
+        "ability": "MATK",
+        "value": 0.0,
+        "percentage": 50.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXMAGE",
+        "boss_name": "Chaotic Phoenix - Magician ",
+        "ability": "CASTSPD",
+        "value": 0.0,
+        "percentage": 70.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXMAGE",
+        "boss_name": "Chaotic Phoenix - Magician ",
+        "ability": "MPREGEN",
+        "value": 0.0,
+        "percentage": 25.0,
+        "extra": null
+    },
+
+    {
+        "short_name": "CHAPHOENIXSUMM",
+        "boss_name": "Chaotic Phoenix - Summoner ",
+        "ability": "STR",
+        "value": 0.0,
+        "percentage": 5.0,
+        "extra": "+3 Creature Mastery, +3 Creature HP-MP Expansion"
+    },
+    {
+        "short_name": "CHAPHOENIXSUMM",
+        "boss_name": "Chaotic Phoenix - Summoner ",
+        "ability": "VIT",
+        "value": 0.0,
+        "percentage": 5.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXSUMM",
+        "boss_name": "Chaotic Phoenix - Summoner ",
+        "ability": "INT",
+        "value": 0.0,
+        "percentage": 5.0,
+        "extra": null
+    },
+    {
+        "short_name": "CHAPHOENIXSUMM",
+        "boss_name": "Chaotic Phoenix - Summoner ",
+        "ability": "CRITPOW",
+        "value": 0.0,
+        "percentage": 20.0,
+        "extra": null
+    },
+
     {
         "short_name": "CRAZYHAGEN",
         "boss_name": "Crazy Hagen ",
@@ -158,7 +289,7 @@
         "value": 1000.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRAZYHAGEN",
         "boss_name": "Crazy Hagen ",
@@ -166,7 +297,7 @@
         "value": 1000.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRAZYHAGEN",
         "boss_name": "Crazy Hagen ",
@@ -174,7 +305,7 @@
         "value": 1500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRUSTALINO",
         "boss_name": "Crustalino ",
@@ -182,7 +313,7 @@
         "value": 40.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRUSTALINO",
         "boss_name": "Crustalino ",
@@ -190,7 +321,7 @@
         "value": 20.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRYSTALGOLEM",
         "boss_name": "Crystal Golem ",
@@ -198,7 +329,7 @@
         "value": 1500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRYSTALGOLEM",
         "boss_name": "Crystal Golem ",
@@ -206,7 +337,7 @@
         "value": 0.0,
         "percentage": 10.0,
         "extra": null
-   },
+    },
     {
         "short_name": "CRYSTALGOLEM",
         "boss_name": "Crystal Golem ",
@@ -214,7 +345,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "DEVILSLAUGH",
         "boss_name": "Devil Slaughterer ",
@@ -222,7 +353,23 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "+3 Breeders Synergy, +5 Creature Mastery"
-   },
+    },
+    {
+        "short_name": "DEVILSKELLETON",
+        "boss_name": "Devil Skeleton ",
+        "ability": "MAXHP",
+        "value": 0.0,
+        "percentage": -20.0,
+        "extra": "Damage to all races increased by 30%. Healing Decrease 30%"
+    },
+    {
+        "short_name": "DEVILSKELLETON",
+        "boss_name": "Devil Skeleton ",
+        "ability": "MAXMP",
+        "value": 0.0,
+        "percentage": -20.0,
+        "extra": null
+    },
     {
         "short_name": "DOMINATUS",
         "boss_name": "Dominatus The Mad ",
@@ -230,7 +377,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": "Chance of cast Petrify on Target"
-   },
+    },
     {
         "short_name": "DOMINATUS",
         "boss_name": "Dominatus The Mad ",
@@ -238,7 +385,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "DRAKA",
         "boss_name": "Draka ",
@@ -246,7 +393,7 @@
         "value": 70.0,
         "percentage": 0.0,
         "extra": "Max.HP +15%"
-   },
+    },
     {
         "short_name": "EMMANUEL",
         "boss_name": "Emmanuel Raymond ",
@@ -254,7 +401,7 @@
         "value": 10.0,
         "percentage": 0.0,
         "extra": "Chance of cast Silence on target"
-   },
+    },
     {
         "short_name": "ENT",
         "boss_name": "Ent",
@@ -262,7 +409,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "ENT",
         "boss_name": "Ent",
@@ -270,7 +417,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "ERATIA",
         "boss_name": "Queen Eratia ",
@@ -278,7 +425,7 @@
         "value": 70.0,
         "percentage": 0.0,
         "extra": "Chance of cast Healing: Restoration"
-   },
+    },
     {
         "short_name": "EVA",
         "boss_name": "Queen Eva ",
@@ -286,7 +433,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": "MP.Regen"
-   },
+    },
     {
         "short_name": "EVA",
         "boss_name": "Queen Eva ",
@@ -294,7 +441,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "GARGOYLE",
         "boss_name": "Stone Gargoyle ",
@@ -302,7 +449,7 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "+3 Domestication, +5 Creature Mastery"
-   },
+    },
     {
         "short_name": "HECTOR_P",
         "boss_name": "Grand Master Hector Card Of Courage ",
@@ -310,7 +457,7 @@
         "value": 0.0,
         "percentage": 15.0,
         "extra": "+1 Creature Control, Healing: Absorbs 3% of damage as HP with normal attacks. "
-   },
+    },
     {
         "short_name": "HECTOR_M",
         "boss_name": "Grand Master Hectors Card Of Knowledge ",
@@ -318,7 +465,7 @@
         "value": 0.0,
         "percentage": 15.0,
         "extra": "+1 Creature Control , Reduce MP for all spells by 30% "
-   },
+    },
     {
         "short_name": "ILRIOS",
         "boss_name": "Ilrios ",
@@ -326,7 +473,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": "Chance of cast Reflective Shield 30% damage absorb."
-   },
+    },
     {
         "short_name": "ILRIOS",
         "boss_name": "Ilrios ",
@@ -334,7 +481,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "KISCIA",
         "boss_name": "Kiscia The Beautiful ",
@@ -342,7 +489,7 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "+1 Divine Cluster, +1 Concentration, +2 Archery Training, +2 Dual Axe Training +2 Two-Handed Axe Training"
-   },
+    },
     {
         "short_name": "KRAKEN",
         "boss_name": "Kraken ",
@@ -350,7 +497,7 @@
         "value": 750.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "KRAKEN",
         "boss_name": "Kraken ",
@@ -358,7 +505,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "KYNISH",
         "boss_name": "Sand Lord Kynish ",
@@ -366,7 +513,7 @@
         "value": 70.0,
         "percentage": 0.0,
         "extra": "Chance of cast Gigantic +20% P.Atk, M.Atk"
-   },
+    },
     {
         "short_name": "LIKIRUS",
         "boss_name": "Likirus ",
@@ -374,7 +521,7 @@
         "value": 40.0,
         "percentage": 0.0,
         "extra": "Healing, Lightning Bolt, and Force of Sacred Fire +1. "
-   },
+    },
     {
         "short_name": "LILITH",
         "boss_name": "Lilith ",
@@ -382,7 +529,7 @@
         "value": 600.0,
         "percentage": 0.0,
         "extra": "Chance of cast Provoke Buff. +11% P.Atk, -12% P.Def."
-   },
+    },
     {
         "short_name": "LILITH",
         "boss_name": "Lilith ",
@@ -390,7 +537,7 @@
         "value": 600.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "LION",
         "boss_name": "Lion ",
@@ -398,7 +545,7 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "+5 Creature HP Expansion  +5 Creature MP Expansion "
-   },
+    },
     {
         "short_name": "LUCIUS",
         "boss_name": "Stormbringer Lucius ",
@@ -406,7 +553,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": "Chance of cast Haste of Conjuror selfbuff"
-   },
+    },
     {
         "short_name": "LUCIUS",
         "boss_name": "Stormbringer Lucius ",
@@ -414,7 +561,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "LUNACY",
         "boss_name": "Soul Of Lunacy ",
@@ -422,7 +569,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": "Chance of cast Healing: Restores 25% of HP."
-   },
+    },
     {
         "short_name": "LUNACY",
         "boss_name": "Soul Of Lunacy ",
@@ -430,7 +577,7 @@
         "value": 800.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "MAGMAGOLEM",
         "boss_name": "Magma Golem ",
@@ -438,7 +585,7 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "+3 Unholy Synergy, +5 Creature Mastery "
-   },
+    },
     {
         "short_name": "MEDUSA",
         "boss_name": "Medusa ",
@@ -446,7 +593,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": "+2 Provoke"
-   },
+    },
     {
         "short_name": "MEDUSA",
         "boss_name": "Medusa ",
@@ -454,7 +601,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "MEPHISTO",
         "boss_name": "Mephisto ",
@@ -462,7 +609,7 @@
         "value": 50.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "MEPHISTO",
         "boss_name": "Mephisto ",
@@ -470,7 +617,7 @@
         "value": 0.0,
         "percentage": 10.0,
         "extra": null
-   },
+    },
     {
         "short_name": "MICRORAPTOR",
         "boss_name": "Microraptor ",
@@ -478,7 +625,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": "Aura of Atack (+100 P.Atk, M.Atk)"
-   },
+    },
     {
         "short_name": "MICRORAPTOR",
         "boss_name": "Microraptor ",
@@ -486,7 +633,7 @@
         "value": 500.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "OBSIDIKAR",
         "boss_name": "Obsidikar ",
@@ -494,7 +641,7 @@
         "value": 90.0,
         "percentage": 0.0,
         "extra": "Essence of Invulnerability"
-   },
+    },
     {
         "short_name": "OFORIA",
         "boss_name": "Oforia ",
@@ -502,7 +649,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": "Chance of cast Burn on target"
-   },
+    },
     {
         "short_name": "PRIMAL",
         "boss_name": "Primal Scream ",
@@ -510,7 +657,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": "Chance of cast Stunt on target"
-   },
+    },
     {
         "short_name": "REVIAC",
         "boss_name": "Reviac (Devil)",
@@ -518,7 +665,7 @@
         "value": 0.0,
         "percentage": -100.0,
         "extra": null
-   },
+    },
     {
         "short_name": "REVIAC",
         "boss_name": "Reviac (Devil)",
@@ -526,7 +673,7 @@
         "value": 0.0,
         "percentage": 100.0,
         "extra": null
-   },
+    },
     {
         "short_name": "RUINA",
         "boss_name": "Lady Ruina ",
@@ -534,7 +681,7 @@
         "value": 70.0,
         "percentage": 0.0,
         "extra": "Mov.Spd -25%"
-   },
+    },
     {
         "short_name": "RUINA",
         "boss_name": "Lady Ruina ",
@@ -542,7 +689,7 @@
         "value": 130.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "RUINA",
         "boss_name": "Lady Ruina ",
@@ -550,7 +697,7 @@
         "value": 9.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "SILEX",
         "boss_name": "Silex ",
@@ -558,7 +705,7 @@
         "value": 40.0,
         "percentage": 0.0,
         "extra": "+2 Deep Evasion, +2 Mental Concentration,  +2 Minor Healing "
-   },
+    },
     {
         "short_name": "SOULSEEKER",
         "boss_name": "Soulseeker ",
@@ -566,7 +713,7 @@
         "value": 40.0,
         "percentage": 0.0,
         "extra": "+300 Mov Speed "
-   },
+    },
     {
         "short_name": "TAKIN",
         "boss_name": "Takin ",
@@ -574,7 +721,7 @@
         "value": 40.0,
         "percentage": 0.0,
         "extra": "Chance of cast Atk.Spd Buff"
-   },
+    },
     {
         "short_name": "TARANIDA",
         "boss_name": "Taranida ",
@@ -582,7 +729,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": "Chance of cast Hold on target"
-   },
+    },
     {
         "short_name": "TARANIDA",
         "boss_name": "Taranida ",
@@ -590,7 +737,7 @@
         "value": 30.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "TULA",
         "boss_name": "Cruel Tula ",
@@ -598,7 +745,7 @@
         "value": 0.0,
         "percentage": 0.0,
         "extra": "+3 Creature Breeding, +5 Creature Regeneration"
-   },
+    },
     {
         "short_name": "ULTIWITCH",
         "boss_name": "Ultimate Witch ",
@@ -606,7 +753,7 @@
         "value": 40.0,
         "percentage": 0.0,
         "extra": "Max.MP +15%"
-   },
+    },
     {
         "short_name": "VULCANUS",
         "boss_name": "Vulcanus ",
@@ -614,7 +761,7 @@
         "value": 7.0,
         "percentage": 0.0,
         "extra": "+15% Ccreature EXP. "
-   },
+    },
     {
         "short_name": "VULCANUS",
         "boss_name": "Vulcanus ",
@@ -622,7 +769,7 @@
         "value": 7.0,
         "percentage": 0.0,
         "extra": null
-   },
+    },
     {
         "short_name": "WOODEN",
         "boss_name": "Wooden Devil ",
@@ -630,7 +777,7 @@
         "value": 0.0,
         "percentage": 30.0,
         "extra": null
-   },
+    },
     {
         "short_name": "WOODEN",
         "boss_name": "Wooden Devil ",
@@ -638,7 +785,7 @@
         "value": 0.0,
         "percentage": 30.0,
         "extra": null
-   },
+    },
     {
         "short_name": "YUSHIVA",
         "boss_name": "Yushiva ",
@@ -646,7 +793,7 @@
         "value": 0.0,
         "percentage": 100.0,
         "extra": null
-   },
+    },
     {
         "short_name": "YUSHIVA",
         "boss_name": "Yushiva ",
@@ -654,7 +801,7 @@
         "value": 0.0,
         "percentage": 100.0,
         "extra": null
-   },
+    },
     {
         "short_name": "YUSHIVA",
         "boss_name": "Yushiva ",
@@ -662,7 +809,7 @@
         "value": 0.0,
         "percentage": -50.0,
         "extra": null
-   },
+    },
     {
         "short_name": "YUSHIVA",
         "boss_name": "Yushiva ",
@@ -670,5 +817,5 @@
         "value": 0.0,
         "percentage": -50.0,
         "extra": null
-   }
+    }
 ]

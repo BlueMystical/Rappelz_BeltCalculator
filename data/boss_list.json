@@ -43,6 +43,18 @@
 		"short_name": "BUTKADAH",
 		"boss_name": "Butkadah "
 	},
+	{
+		"short_name": "CHAPHOENIXWARR",
+		"boss_name": "Chaotic Phoenix - Warrior "
+	},
+	{
+		"short_name": "CHAPHOENIXMAGE",
+		"boss_name": "Chaotic Phoenix - Magician "
+	},
+	{
+		"short_name": "CHAPHOENIXSUMM",
+		"boss_name": "Chaotic Phoenix - Summoner "
+	},
     {
 		"short_name": "CRAKEN",
 		"boss_name": "Craken "
@@ -66,6 +78,10 @@
 	{
 		"short_name": "DEVILSLAUGH",
 		"boss_name": "Devil Slaughterer "
+	},
+	{
+		"short_name": "DEVILSKELLETON",
+		"boss_name": "Devil Skeleton "
 	},
 	{
 		"short_name": "DOMINATUS",
