@@ -1,0 +1,95 @@
+[
+    {
+        "short_name": "HP",
+        "full_name": "Health Points"
+    },    
+    {
+        "short_name": "MP",
+        "full_name": "Magic Points"
+    },
+    {
+        "short_name": "PDEF",
+        "full_name": "Defense Points"
+    },
+    {
+        "short_name": "MDEF",
+        "full_name": "Magical Defense"
+    },
+    {
+        "short_name": "PATK",
+        "full_name": "Attack Points"
+    },
+    {
+        "short_name": "MATK",
+        "full_name": "Magical Attack"
+    },
+    {
+        "short_name": "VIT",
+        "full_name": "Vitality"
+    },
+    {
+        "short_name": "STR",
+        "full_name": "Strenght"
+    },
+    {
+        "short_name": "DEX",
+        "full_name": "Dexterity"
+    },
+    {
+        "short_name": "INT",
+        "full_name": "Inteligence"
+    },
+    {
+        "short_name": "WIS",
+        "full_name": "Wisdom"
+    },
+    {
+        "short_name": "AGI",
+        "full_name": "Agility"
+    },
+    {
+        "short_name": "EVA",
+        "full_name": "Evasion"
+    },
+    {
+        "short_name": "ACCU",
+        "full_name": "Accuracity"
+    },
+    {
+        "short_name": "ATKSPD",
+        "full_name": "Attack Speed"
+    },
+    {
+        "short_name": "MACC",
+        "full_name": "Maical Accuracity"
+    },
+    {
+        "short_name": "MRESIST",
+        "full_name": "Magi Resistance"
+    },
+    {
+        "short_name": "BLOCK",
+        "full_name": "Block Chance"
+    },
+    {
+        "short_name": "HPREGEN",
+        "full_name": "Hit Points Regeneration"
+    },
+    {
+        "short_name": "MPREGEN",
+        "full_name": "Magic Points Regeneration"
+    },
+    {
+        "short_name": "CAST",
+        "full_name": "Cast Time"
+    },
+    {
+        "short_name": "LUCK",
+        "full_name": "Luck"
+    },
+    {
+        "short_name": "CRIT",
+        "full_name": "Critical Chance"
+    }
+
+]

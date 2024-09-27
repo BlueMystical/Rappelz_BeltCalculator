@@ -1,92 +1,92 @@
 [
     {
-        short_name: "MB",
-        long_name: "Master Breeder",
-        race: "Deva",
-        type: "Summoner"
+        "short_name": "MB",
+        "long_name": "Master Breeder",
+        "race": "Deva",
+        "type": "Summoner"
    },
     {
-        short_name: "OC",
-        long_name: "Oracle",
-        race: "Deva",
-        type: "Healer"
+        "short_name": "OC",
+        "long_name": "Oracle",
+        "race": "Deva",
+        "type": "Healer"
    },
     {
-        short_name: "CAR",
-        long_name: "Cardinal",
-        race: "Deva",
-        type: "Healer"
+        "short_name": "CAR",
+        "long_name": "Cardinal",
+        "race": "Deva",
+        "type": "Healer"
    },
     {
-        short_name: "MERC",
-        long_name: "Mercenary",
-        race: "Deva",
-        type: "Warrior"
+        "short_name": "MERC",
+        "long_name": "Mercenary",
+        "race": "Deva",
+        "type": "Warrior"
    },
     {
-        short_name: "TEMP",
-        long_name: "Templar",
-        race: "Deva",
-        type: "Tank"
+        "short_name": "TEMP",
+        "long_name": "Templar",
+        "race": "Deva",
+        "type": "Tank"
    },
     {
-        short_name: "BM",
-        long_name: "Beast Master",
-        race: "Gaia",
-        type: "Summoner"
+        "short_name": "BM",
+        "long_name": "Beast Master",
+        "race": "Gaia",
+        "type": "Summoner"
     },
     {
-        short_name: "MG",
-        long_name: "Magus",
-        race: "Gaia",
-        type: "Mage"
+        "short_name": "MG",
+        "long_name": "Magus",
+        "race": "Gaia",
+        "type": "Mage"
     },
     {
-        short_name: "WK",
-        long_name: "War Kahuna",
-        race: "Gaia",
-        type: "Mage"
+        "short_name": "WK",
+        "long_name": "War Kahuna",
+        "race": "Gaia",
+        "type": "Mage"
     },
     {
-        short_name: "ZERK",
-        long_name: "Berserker",
-        race: "Gaia",
-        type: "Warrior"
+        "short_name": "ZERK",
+        "long_name": "Berserker",
+        "race": "Gaia",
+        "type": "Warrior"
     },
     {
-        short_name: "MK",
-        long_name: "Marksman",
-        race: "Gaia",
-        type: "Archer"
+        "short_name": "MK",
+        "long_name": "Marksman",
+        "race": "Gaia",
+        "type": "Archer"
     },
     {
-        short_name: "OL",
-        long_name: "Overlord",
-        race: "Asura",
-        type: "Summoner"
+        "short_name": "OL",
+        "long_name": "Overlord",
+        "race": "Asura",
+        "type": "Summoner"
     },
     {
-        short_name: "SL",
-        long_name: "Slayer",
-        race: "Asura",
-        type: "Warrior"
+        "short_name": "SL",
+        "long_name": "Slayer",
+        "race": "Asura",
+        "type": "Warrior"
     },
     {
-        short_name: "DE",
-        long_name: "Deadeye",
-        race: "Asura",
-        type: "Archer"
+        "short_name": "DE",
+        "long_name": "Deadeye",
+        "race": "Asura",
+        "type": "Archer"
     },
     {
-        short_name: "VM",
-        long_name: "Void Mage",
-        race: "Asura",
-        type: "Mage"
+        "short_name": "VM",
+        "long_name": "Void Mage",
+        "race": "Asura",
+        "type": "Mage"
     },
     {
-        short_name: "COR",
-        long_name: "Corruptor",
-        race: "Asura",
-        type: "Mage"
+        "short_name": "COR",
+        "long_name": "Corruptor",
+        "race": "Asura",
+        "type": "Mage"
     }
 ]
